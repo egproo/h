@@ -27,16 +27,6 @@ Route::get('/page/{page:slug}', function (Page $page) {
 	return view('livewire.page', ['page' => $page]);
 });
 
-Route::get('/service/{service:slug}', function (Service $service, Request $request) {
-$searchTerm = request()->input('searchTerm', ''); // القيمة الافتراضية هي فارغة إذا لم يتم تحديدها
-$city = request()->input('city', '');
-$order = request()->input('order', '');
+Route::get('/service/{slug}', [ServiceController::class, 'show']);
 
-$service['searchTerm'] = $searchTerm;
-$service['city'] = $city;
-$service['order'] = $order;
 
-    return view('livewire.service', ['service' => $service]);
-});
-
-Route::get('service/{slug}', \App\Livewire\Servicepage::class);
