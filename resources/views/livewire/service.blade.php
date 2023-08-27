@@ -199,7 +199,7 @@
   <meta property="og:url" content="حريص">
   <meta property="og:type" content="website">
     @livewireStyles
-  @livewireScripts
+
 </head>
 
 <body class="u-body u-xl-mode" data-lang="ar" style="max-width:100%;font-family: 'Tajawal-Bold';">
@@ -272,7 +272,7 @@
 
   <section class="u-clearfix u-custom-color-5 u-section-1" id="sec-3e49">
 
-    <div class="u-clearfix u-sheet u-sheet-1">
+    <div wire:poll="refreshservicepage" class="u-clearfix u-sheet u-sheet-1">
 @livewire('servicepage', ['slug' => $slug,'service' => $service])
 
     </div>
@@ -293,7 +293,7 @@
       </div>
     </footer>
   </div>
-
+  @livewireScripts
 </body>
 
 </html>

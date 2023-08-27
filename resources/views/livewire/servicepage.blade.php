@@ -1,14 +1,12 @@
 <div  data-animation-name="pulse" style="width: auto;margin: 0 auto;text-align: center;margin-top: 10px;margin-bottom: 10px;"
 
         data-animation-duration="3500" data-animation-direction="" style="margin-bottom: 30px;">
-<input style="height:50px;width: 180px;" type="text" wire:model.debounce.300ms="searchTerm" placeholder="بحث بالاسم...">
-<select  style="height:50px;width: 180px;" wire:model="city">
+<input style="height:50px;width: 180px;" type="text" wire:model.live.debounce.300ms="searchTerm" placeholder="بحث بالاسم...">
+<select  style="height:50px;width: 180px;" wire:model.live="city">
     <option value="">اختر المدينة</option>
-@foreach($activezones as $zone)
-    <option wire:key="{{ $zone->id }}" value="{{$zone->id}}">{{$zone->name}}</option>
-@endforeach
+
 </select>
-<select  style="height:50px;width: 180px;" wire:model="order">
+<select  style="height:50px;width: 180px;" wire:model.live="order">
     <option value="asc">السعر الأقل</option>
     <option value="desc">السعر الأعلى</option>
 </select>
@@ -21,7 +19,7 @@
         </div>
       </div>
 		@foreach($providers as $provider)
-      <div class="u-align-left u-container-style u-expanded-width u-group u-radius-12 u-shape-round u-white u-group-2">
+      <div wire:key="{{$provider->id}}" class="u-align-left u-container-style u-expanded-width u-group u-radius-12 u-shape-round u-white u-group-2">
         <div class="u-container-layout u-container-layout-2">
           <div class="u-border-2 u-border-grey-40 u-hover-feature u-image u-image-circle u-radius-10 u-image-1" alt="{{$provider->name}}"
             data-image-width="128" data-image-height="128" style="background-image: url({{$provider->image}});"></div>

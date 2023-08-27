@@ -60,6 +60,16 @@ class Provider extends Model
     {
         return $this->hasMany(ServicesSession::class);
     }
+    public function zones(): HasMany
+    {
+        return $this->hasMany(ServicesZone::class);
+    }	
+	
+	public function services_zones()
+	{
+		return $this->belongsToMany(Zone::class, 'services_zones', 'services_id', 'zone_id')->where('services_id', $this->id);
+
+	}	
 public function sessionsForService($serviceId)
 {
     return $this->hasMany(ServiceSession::class, 'provider_id')
