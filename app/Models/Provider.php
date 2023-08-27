@@ -47,7 +47,8 @@ class Provider extends Model
      * العلاقة بين موفر الخدمة والخدمات التي يقدمها.
      */
 
-    public function services()
+
+   public function services()
     {
         return $this->belongsToMany(Service::class, 'services_providers', 'provider_id', 'services_id')
                     ->withPivot('price');

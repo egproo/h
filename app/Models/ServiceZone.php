@@ -5,21 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Zone extends Model
+class ServiceZone extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name',
+        'services_id',
+        'zone_id',
     ];
 
     public function service()
     {
-        return $this->hasMany(ServiceZone::class);
+        return $this->belongsTo(Service::class, 'services_id');
     }
 
-    public function services_zones()
+    public function zone()
     {
-        return $this->hasMany(ServiceZone::class);
-    }	
+        return $this->belongsTo(Zone::class, 'zone_id');
+    }
 }

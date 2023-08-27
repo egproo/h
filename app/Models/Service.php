@@ -40,7 +40,7 @@ public function activeProvidersInZone($zoneId)
                               $zoneQuery->where('zone_id', $zoneId);
                           });
                 })
-                ->withPivot('price');
+                ->withPivot(['price', 'duration_in_minutes']);
 }
     public function childServices()
     {
@@ -69,8 +69,15 @@ public function activeProviders()
 
     public function zones()
     {
-        return $this->belongsToMany(Zone::class, 'services_zones');
+        return $this->belongsToMany(Zone::class, 'services_zones')->whereHas('services_zones', function ($query) {
+                    $query->where('services_zones.services_id', $this->id);
+                });
     }
+	public function services_zones()
+	{
+		return $this->belongsToMany(Zone::class, 'services_zones', 'services_id', 'zone_id')->where('services_id', $this->id);
+
+	}
 
     public function sessions()
     {

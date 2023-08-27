@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ServiceController;
+use App\Http\Livewire\ServiceSearch;
+use Illuminate\Http\Request;
 
 use App\Models\Page;
 use App\Models\Service;
@@ -25,6 +27,16 @@ Route::get('/page/{page:slug}', function (Page $page) {
 	return view('livewire.page', ['page' => $page]);
 });
 
-Route::get('/service/{service:slug}', function (Service $service) {
-	return view('livewire.service', ['service' => $service]);
+Route::get('/service/{service:slug}', function (Service $service, Request $request) {
+$searchTerm = request()->input('searchTerm', ''); // القيمة الافتراضية هي فارغة إذا لم يتم تحديدها
+$city = request()->input('city', '');
+$order = request()->input('order', '');
+
+$service['searchTerm'] = $searchTerm;
+$service['city'] = $city;
+$service['order'] = $order;
+
+    return view('livewire.service', ['service' => $service]);
 });
+
+Route::get('service/{slug}', \App\Livewire\Servicepage::class);
