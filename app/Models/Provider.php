@@ -46,11 +46,12 @@ class Provider extends Model
     /**
      * العلاقة بين موفر الخدمة والخدمات التي يقدمها.
      */
-    public function services(): HasMany
-    {
-        return $this->hasMany(ServicesProvider::class);
-    }
 
+    public function services()
+    {
+        return $this->belongsToMany(Service::class, 'services_providers', 'provider_id', 'services_id')
+                    ->withPivot('price');
+    }
     /**
      * العلاقة بين موفر الخدمة والجلسات.
      */
@@ -58,7 +59,11 @@ class Provider extends Model
     {
         return $this->hasMany(ServicesSession::class);
     }
-
+public function sessionsForService($serviceId)
+{
+    return $this->hasMany(ServiceSession::class, 'provider_id')
+                ->where('services_id', $serviceId);
+}
     /**
      * العلاقة بين موفر الخدمة والرسائل.
      */

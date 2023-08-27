@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('phone')->unique();
             $table->string('email')->nullable();
+			$table->string('image')->nullable();
             $table->timestamp('verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
@@ -24,7 +25,8 @@ return new class extends Migration
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->nullable();			
+            $table->string('email')->nullable();
+			$table->string('image')->nullable();	
             $table->string('phone')->unique();
             $table->timestamp('verified_at')->nullable();
             $table->string('password');
@@ -38,6 +40,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->nullable();
             $table->string('phone')->unique();
+			$table->string('image')->nullable();
             $table->string('slug')->unique();
             $table->string('title')->nullable();
             $table->longText('description')->nullable();

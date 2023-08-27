@@ -18,6 +18,7 @@ class Service extends Model
         'description',
         'position',
         'is_visible',
+		'is_home',
         'seo_title',
         'seo_description',
     ];
@@ -26,7 +27,33 @@ class Service extends Model
     {
         return $this->belongsTo(Service::class, 'parent_id');
     }
-
+    public function isMainService()
+    {
+        return is_null($this->parent_id);
+    }
+public function activeProvidersInZone($zoneId)
+{
+    return $this->belongsToMany(Provider::class, 'services_providers', 'services_id', 'provider_id')
+                ->whereHas('services', function ($query) use ($zoneId) {
+                    $query->where('is_visible', 1)
+                          ->whereHas('zones', function ($zoneQuery) use ($zoneId) {
+                              $zoneQuery->where('zone_id', $zoneId);
+                          });
+                })
+                ->withPivot('price');
+}
+    public function childServices()
+    {
+        return $this->hasMany(Service::class, 'parent_id');
+    }
+public function activeProviders()
+{
+    return $this->belongsToMany(Provider::class, 'services_providers', 'services_id', 'provider_id')
+                ->whereHas('services', function ($query) {
+                    $query->where('is_visible', 1);
+                })
+                ->withPivot(['price', 'duration_in_minutes']);
+}
     public function type()
     {
         return $this->belongsTo(ServicesType::class, 'services_type_id');

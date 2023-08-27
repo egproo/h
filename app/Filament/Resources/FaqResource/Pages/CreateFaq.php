@@ -18,5 +18,6 @@ class CreateFaq extends CreateRecord
         $resource = static::getResource();
 
         return $resource::getUrl('index');
-    }		
+    }	
+	
 }

@@ -82,6 +82,10 @@ class Register extends Registerbase
     {
         return $form
             ->schema([
+			                                Forms\Components\FileUpload::make('image')
+                                    ->label('صورة الملف الشخصي')
+                                    ->image()
+                                    ->disableLabel(),
                 $this->getNameFormComponent(),
                 $this->getPhoneFormComponent(),
 				TextInput::make('identification')->number()->maxLength(14)->minLength(14)->label('رقم الهوية')->required(),

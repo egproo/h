@@ -15,7 +15,7 @@ class Page extends Model
         'status',
         'content',
 		'image',
-		'kewwords',
+		'keywords',
         'meta_title',
         'meta_description',
     ];

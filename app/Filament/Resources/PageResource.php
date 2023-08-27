@@ -52,9 +52,19 @@ class PageResource extends Resource
                                     ->unique(Page::class, 'slug', ignoreRecord: true),
 
                                 Forms\Components\RichEditor::make('content')->label('محتوى الصفحة')
-                                    ->required()
                                     ->columnSpan('full'),
-									
+                                Forms\Components\TextInput::make('meta_title')->label('عنوان لمحركات البحث')
+                                    ->required()
+									->minLength(2)
+									->maxLength(70)									
+                                    ->columnSpan('full'),
+
+                                Forms\Components\Textarea::make('meta_description')->label('وصف لمحركات البحث( حد أقصى 120 حرف )')
+                                    ->required()
+									->minLength(2)
+									->rows(2)
+									->maxLength(120)
+                                    ->columnSpan('full'),
 								Forms\Components\Textarea::make('keywords')->label('الكلمات الدلالية')
 																	->required()
 																	->columnSpan('full'),
@@ -101,6 +111,16 @@ class PageResource extends Resource
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('content')->label('المحتوى')
+                    ->searchable()
+                    ->sortable()
+					->html()
+                    ->toggleable(isToggledHiddenByDefault: true),	
+                Tables\Columns\TextColumn::make('meta_title')->label('عنوان البحث')
+                    ->searchable()
+                    ->sortable()
+					->html()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('meta_description')->label('وصف البحث')
                     ->searchable()
                     ->sortable()
 					->html()

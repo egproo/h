@@ -15,10 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('question');
             $table->text('answer');
-            $table->string('slug')->unique();
-            $table->text('image')->nullable();				
-            $table->string('meta_title')->nullable();
-            $table->string('meta_description')->nullable();
             $table->boolean('status')->default(false);
             $table->timestamps();
         });

@@ -57,7 +57,6 @@ return new class extends Migration
             $table->integer('day_of_week');
             $table->time('start_time');
             $table->time('end_time');
-            $table->unsignedInteger('duration_in_minutes');
             $table->timestamps();
         });
         Schema::create('appointments', function (Blueprint $table) {

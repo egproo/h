@@ -86,6 +86,10 @@ class Register extends Registerbase
     {
         return $form
             ->schema([
+				Forms\Components\FileUpload::make('image')
+					->label('صورة الملف الشخصي')
+					->image()
+					->disableLabel(),
                 $this->getNameFormComponent(),
                 $this->getPhoneFormComponent(),
 				Select::make('type')

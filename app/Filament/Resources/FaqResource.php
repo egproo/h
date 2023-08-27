@@ -26,6 +26,17 @@ class FaqResource extends Resource
     {
         return 'الأسئلة المتكررة';
     }
+public static function validationAttributes(): array
+{
+    return [
+        'question' => 'السؤال',
+        'slug' => 'الرابط المختصر',
+        'answer' => 'الإجابة',
+        'meta_title' => 'عنوان الوصف الواضح',
+        'meta_description' => 'وصف الوصف الواضح',
+        'status' => 'الحالة',
+    ];
+}
 public static function getNavigationBadge(): ?string
 {
     return static::getModel()::count();
@@ -39,32 +50,14 @@ public static function getNavigationBadge(): ?string
                         Forms\Components\Section::make()
                             ->schema([
                                 Forms\Components\TextInput::make('question')->label('السؤال المتكرر')
-                                    ->required()
-                                    ->live(onBlur: true)
-                                    ->afterStateUpdated(fn (string $operation, $state, Forms\Set $set) => $operation === 'create' ? $set('slug', Str::slug($state)) : null),
+                                    ->required(),
+ 
 
-                                Forms\Components\TextInput::make('slug')
-                                   // ->disabled()
-                                    ->dehydrated()
-                                    ->required()
-                                    ->unique(Faq::class, 'slug', ignoreRecord: true),
 
-                                Forms\Components\RichEditor::make('answer')->label('الإجابة')
+                                Forms\Components\MarkdownEditor::make('answer')->label('الإجابة')
                                     ->required()
                                     ->columnSpan('full'),
 
-                                Forms\Components\TextInput::make('meta_title')->label('عنوان لمحركات البحث')
-                                    ->required()
-									->minLength(2)
-									->maxLength(70)									
-                                    ->columnSpan('full'),
-
-                                Forms\Components\Textarea::make('meta_description')->label('وصف لمحركات البحث( حد أقصى 120 حرف )')
-                                    ->required()
-									->minLength(2)
-									->rows(2)
-									->maxLength(120)
-                                    ->columnSpan('full'),
 
                                 Forms\Components\Toggle::make('status')
                                     ->label('الحالة')
@@ -74,14 +67,6 @@ public static function getNavigationBadge(): ?string
                             ])
                             ->columns(2),
 
-                        Forms\Components\Section::make('الصورة')
-                            ->schema([
-                                Forms\Components\FileUpload::make('image')
-                                    ->label('الصورة')
-                                    ->image()
-                                    ->disableLabel(),
-                            ])
-                            ->collapsible(),
                     ])
                     ->columnSpan(['lg' => fn (?Faq $record) => $record === null ? 3 : 3]),
 
@@ -96,32 +81,15 @@ public static function getNavigationBadge(): ?string
     {
         return $table
             ->columns([
-                Tables\Columns\ImageColumn::make('image')
-                    ->label('الصورة'),
 
                 Tables\Columns\TextColumn::make('question')->label('السؤال')
                     ->searchable()
                     ->sortable(),
-
-                Tables\Columns\TextColumn::make('slug')
-                    ->searchable()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('answer')->label('الإجابة')
                     ->searchable()
                     ->sortable()
 					->html()
                     ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('meta_title')->label('عنوان البحث')
-                    ->searchable()
-                    ->sortable()
-					->html()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('meta_description')->label('وصف البحث')
-                    ->searchable()
-                    ->sortable()
-					->html()
-                    ->toggleable(isToggledHiddenByDefault: true),					
                 Tables\Columns\BadgeColumn::make('status')->label('الحالة')
                     ->getStateUsing(fn (Faq $record): string => $record->status ? 'منشور' : 'مسودة')
                     ->colors([
@@ -154,7 +122,7 @@ public static function getNavigationBadge(): ?string
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [

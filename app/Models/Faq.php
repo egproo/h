@@ -12,10 +12,6 @@ class Faq extends Model
     protected $fillable = [
         'question',
         'answer',
-        'slug',
-		'image',		
-        'meta_title',
-        'meta_description',
         'status',
     ];
 }

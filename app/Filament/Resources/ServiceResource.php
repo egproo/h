@@ -85,12 +85,15 @@ FileUpload::make('image')->label('صورة الفئة')
                                     ->unique(Service::class, 'slug', ignoreRecord: true),
                             ]),
 
-
-
+                Forms\Components\Section::make()
+                    ->schema([
+                        Forms\Components\Toggle::make('is_home')
+                            ->label('عرض بالرئيسية')
+                            ->default(true),
                         Forms\Components\Toggle::make('is_visible')
                             ->label('حالة الخدمة')
                             ->default(true),
-
+                     ])->columns(2),
                         Forms\Components\MarkdownEditor::make('description')
                             ->label('وصف الخدمة'),
                     ])

@@ -11,7 +11,7 @@
 ">
   <title>حريص</title>
   <link rel="stylesheet" href="css/style.css" media="screen">
-  <link rel="stylesheet" href="{{ url('css/Home.css?ver=1.0.0.7') }}" media="screen">
+  <link rel="stylesheet" href="css/Home.css" media="screen">
   <link rel="stylesheet" href="css/nav.css" media="screen">
   <script class="u-script" type="text/javascript" src="js/jquery.js" defer=""></script>
   <script class="u-script" type="text/javascript" src="js/main.js" defer=""></script>
@@ -47,31 +47,42 @@
   <header class="u-clearfix u-header u-sticky u-sticky-bad1 u-white u-header" id="sec-e836">
     <div
       class="u-clearfix u-sheet u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xs u-sheet-1">
-      <span class="u-align-left-xl u-file-icon u-icon u-icon-1"><a href="{{ url('/dashboard/login') }}"><img src="{{ url('/images/11496762.png') }}" alt="حريص"></a></span>
-      <a href="{{ url('/') }}/"<h3 class="u-custom-font u-text u-text-black u-text-default u-text-1">حريص</h3></a>
-      <a href="{{ url('/dashboard/login') }}"
+      <span class="u-align-left-xl u-file-icon u-icon u-icon-1"><img src="images/11496762.png" alt=""></span>
+      <h3 class="u-custom-font u-text u-text-black u-text-default u-text-1">حريص</h3>
+      <!--Replace the link with the registration pages-->
+      <a href="https://elwhab.com/"
         class="u-border-2 u-border-grey-75 u-btn u-btn-round u-button-style u-custom-color-2 u-custom-font u-hover-palette-1-light-1 u-radius-6 u-btn-1">تسجيل
         الدخول</a>
       <nav class="u-hidden-md u-hidden-sm u-hidden-xs u-menu u-menu-dropdown u-menu-open-right u-offcanvas u-menu-1"
         data-responsive-from="MD">
         <div class="menu-collapse u-custom-font" style="font-family: Almarai; font-weight: 800; font-size: 0.875rem;">
           <a class="u-button-style u-file-icon u-nav-link u-file-icon-2" href="#">
-            <img src="{{ url('/images/10985613.png') }}" alt="حريص">
+            <img src="images/10985613.png" alt="">
           </a>
         </div>
         <div class="u-custom-menu u-nav-container">
           <ul class="u-custom-font u-nav u-unstyled u-nav-1">
-
-            <li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{ url('/') }}/"
-                style="padding: 10px 24px;">الرئيسية</a>
-            </li>            <li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{ url('/page/policy') }}"
+            <li class="u-nav-item"><a class="u-button-style u-nav-link" style="padding: 10px 24px;">انضم كموفر خدمة</a>
+              <div class="u-nav-popup">
+                <!--Replace the link with the registration pages-->
+                <ul class="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10">
+                  <li class="u-nav-item"><a class="u-button-style u-nav-link u-white" href="https://elwhab.com/">فرد</a>
+                  </li>
+                  <!--Replace the link with the registration pages-->
+                  <li class="u-nav-item"><a class="u-button-style u-nav-link u-white" href="https://elwhab.com/">(مؤسسة
+                      (أعمال</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="u-nav-item"><a class="u-button-style u-nav-link" href="terms.html"
                 style="padding: 10px 24px;">سياسة الخصوصية</a>
             </li>
-            <li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{ url('/page/about') }}" style="padding: 10px 24px;">من
+            <li class="u-nav-item"><a class="u-button-style u-nav-link" href="About.html" style="padding: 10px 24px;">من
                 نحن</a>
             </li>
-            <li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{ url('/panel/register') }}"
-                style="padding: 10px 24px;">انضم كموفر خدمة</a>
+            <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Home.html"
+                style="padding: 10px 24px;">الرئيسية</a>
             </li>
           </ul>
         </div>
@@ -80,16 +91,25 @@
             <div class="u-inner-container-layout u-sidenav-overflow">
               <div class="u-menu-close"></div>
               <ul class="u-align-center u-custom-font u-nav u-popupmenu-items u-unstyled u-nav-3">
-
-                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{ url('/') }}/">الرئيسية</a>
-                </li>			
-                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{ url('/page/policy') }}">سياسة الخصوصية</a>
+                <li class="u-nav-item"><a class="u-button-style u-nav-link">انضم كموفر خدمة</a>
+                  <div class="u-nav-popup">
+                    <ul class="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10">
+                      <!--Replace the link with the registration pages-->
+                      <li class="u-nav-item"><a class="u-button-style u-nav-link" href="https://elwhab.com/">فرد</a>
+                      </li>
+                      <!--Replace the link with the registration pages-->
+                      <li class="u-nav-item"><a class="u-button-style u-nav-link" href="https://elwhab.com/">(مؤسسة
+                          (أعمال</a>
+                      </li>
+                    </ul>
+                  </div>
                 </li>
-                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{ url('/page/about') }}">من نحن</a>
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="terms.html">سياسة الخصوصية</a>
                 </li>
-            <li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{ url('/panel/register') }}"
-                style="padding: 10px 24px;">انضم كموفر خدمة</a>
-            </li>
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="About.html">من نحن</a>
+                </li>
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Home.html">الرئيسية</a>
+                </li>
               </ul>
             </div>
           </div>
@@ -132,19 +152,76 @@
       <div
         class="u-container-style u-custom-color-2 u-expanded-width u-group u-opacity u-opacity-30 u-radius-20 u-shape-round u-group-3">
         <div class="u-container-layout u-container-layout-3">
-@foreach(App\Models\Service::where('is_home', 1)->get() as $service)
-<div class="u-align-left u-container-style u-group u-radius-15 u-shape-round u-white u-group-n" data-href="{{ $service->link }}" title="{{ $service->name }}">
-   <a style="
-    color: #000 !important;
-" href="/service/{{ $service->slug }}" > <div class="u-container-layout u-container-layout-4">
-        <span class="u-file-icon u-icon u-icon-1">
-            <img src="{{ asset('storage/' . $service->image) }}" alt="{{ $service->name }}">
-        </span>
-        <h4 class="u-custom-font u-text u-text-default u-text-3">{{ $service->name }}</h4>
-    </div></a>
-</div>
-@endforeach
-
+          <div class="u-align-left u-container-style u-group u-radius-15 u-shape-round u-white u-group-4"
+            data-href="virtual-services.html" title="virtual-services">
+            <div class="u-container-layout u-container-layout-4"><span class="u-file-icon u-icon u-icon-1"><img
+                  src="images/10845964.png" alt=""></span>
+              <h4 class="u-custom-font u-text u-text-default u-text-3">استشارات عن بعد</h4>
+            </div>
+          </div>
+          <div class="u-align-left u-container-style u-group u-radius-15 u-shape-round u-white u-group-5"
+            data-href="analysis.html" title="analysis">
+            <div class="u-container-layout u-container-layout-5"><span class="u-file-icon u-icon u-icon-2"><img
+                  src="images/6401477.png" alt=""></span>
+              <h4 class="u-custom-font u-text u-text-default u-text-4">خدمات التحليل</h4>
+            </div>
+          </div>
+          <div class="u-align-center-xl u-container-style u-group u-radius-15 u-shape-round u-white u-group-6"
+            data-href="search-result.html" title="search-result">
+            <div class="u-container-layout u-container-layout-6"><span class="u-file-icon u-icon u-icon-3"><img
+                  src="images/6260300.png" alt=""></span>
+              <h4 class="u-custom-font u-text u-text-5">زيارة طبيب</h4>
+            </div>
+          </div>
+          <div class="u-align-center-xl u-container-style u-group u-radius-15 u-shape-round u-white u-group-7"
+            data-href="nursing.html" title="nursing">
+            <div class="u-container-layout u-container-layout-7"><span class="u-file-icon u-icon u-icon-4"><img
+                  src="images/5872821.png" alt=""></span>
+              <h4 class="u-custom-font u-text u-text-6">زيارة ممرض</h4>
+            </div>
+          </div>
+          <div class="u-align-center-xl u-container-style u-group u-radius-15 u-shape-round u-white u-group-8"
+            data-href="search-result.html" title="search-result">
+            <div class="u-container-layout u-container-layout-8"><span class="u-file-icon u-icon u-icon-5"><img
+                  src="images/3003312.png" alt=""></span>
+              <h4 class="u-custom-font u-text u-text-7">محلول وريدي</h4>
+            </div>
+          </div>
+          <div class="u-container-style u-group u-radius-15 u-shape-round u-white u-group-9"
+            data-href="search-result.html" title="search-result">
+            <div class="u-container-layout"><span class="u-file-icon u-icon u-icon-6"><img src="images/4190707.png"
+                  alt=""></span>
+              <h4 class="u-custom-font u-text u-text-default u-text-8">فحص كروونا</h4>
+            </div>
+          </div>
+          <div class="u-container-style u-group u-radius-15 u-shape-round u-white u-group-10"
+            data-href="search-result.html" title="search-result">
+            <div class="u-container-layout"><span class="u-file-icon u-icon u-icon-7"><img src="images/9098623.png"
+                  alt=""></span>
+              <h4 class="u-custom-font u-text u-text-default u-text-9">أشعة</h4>
+            </div>
+          </div>
+          <div class="u-align-center u-container-style u-group u-radius-15 u-shape-round u-white u-group-11"
+            data-href="search-result.html" title="search-result">
+            <div class="u-container-layout u-container-layout-11"><span class="u-file-icon u-icon u-icon-8"><img
+                  src="images/2621722.png" alt=""></span>
+              <h4 class="u-custom-font u-text u-text-10">تطعيم طفل</h4>
+            </div>
+          </div>
+          <div class="u-container-style u-group u-radius-15 u-shape-round u-white u-group-12"
+            data-href="search-result.html" title="search-result">
+            <div class="u-container-layout u-container-layout-12"><span class="u-file-icon u-icon u-icon-9"><img
+                  src="images/8123360.png" alt=""></span>
+              <h4 class="u-custom-font u-text u-text-default u-text-11">العلاج الطبيعي</h4>
+            </div>
+          </div>
+          <div class="u-container-style u-group u-radius-15 u-shape-round u-white u-group-13"
+            data-href="search-result.html" title="search-result">
+            <div class="u-container-layout u-container-layout-13"><span class="u-file-icon u-icon u-icon-10"><img
+                  src="images/4200528.png" alt=""></span>
+              <h4 class="u-align-left u-custom-font u-text u-text-default u-text-12">مرافق صحي</h4>
+            </div>
+          </div>
         </div>
       </div>
       <div
@@ -200,7 +277,7 @@
             نفسك وعلي عائلتك</h3>
           <h3 class="u-align-center u-custom-font u-text u-text-custom-color-2 u-text-default u-text-3" style="direction: rtl;"> نحن نتعاون مع
             مجموعة متنوعة من مقدمي الرعاية الصحية، مما يضمن أنك تحصل على أفضل رعاية ممكنة.</h3>
-          <a href="#sec-863c"
+          <a href="Home.html#sec-863c"
             class="u-align-center u-border-2 u-border-grey-75 u-btn u-btn-round u-button-style u-custom-color-2 u-custom-font u-hover-custom-color-1 u-radius-6 u-btn-1">أحصل
             علي الرعاية</a>
         </div>
@@ -221,7 +298,7 @@
             تفصلك عن الانضمام سواء كنت طبيب او ممرض او مرافق او غير ذلك..
           </h3>
           <!--Replace the link with the registration pages-->
-          <a href="{{ url('/dashboard/register') }}"
+          <a href="https://elwhab.com/"
             class="u-align-center u-border-2 u-border-grey-75 u-btn u-btn-round u-button-style u-custom-color-2 u-custom-font u-hover-custom-color-1 u-radius-6 u-btn-1">سجل
             كفرد</a>
         </div>
@@ -234,7 +311,7 @@
           <h3 class="u-align-right u-custom-font u-text u-text-custom-color-2 u-text-default u-text-5" style="direction: rtl;">يمكنك الانضمام
             الي قسم المؤسسات في حريص لتتمكن من توفير كل خدمات مؤسستك ومتابعة الطلبات..</h3>
           <!--Replace the link with the registration pages-->
-          <a href="{{ url('/dashboard/register') }}"
+          <a href="https://elwhab.com/"
             class="u-align-center u-border-2 u-border-grey-75 u-btn u-btn-round u-button-style u-custom-color-2 u-custom-font u-hover-custom-color-1 u-radius-6 u-btn-2">سجل
             كمؤسسة</a>
         </div>
@@ -247,26 +324,70 @@
           alt=""></span>
       <h4 class="u-align-center u-custom-font u-text u-text-custom-color-3 u-text-default u-text-1"> أسئلة متكررة</h4>
       <div class="u-accordion u-collapsed-by-default u-spacing-2 u-accordion-1">
-     @foreach(App\Models\Faq::where('status', 1)->get() as $faq)
         <div class="u-accordion-item">
           <a class="u-accordion-link u-active-palette-3-base u-border-2 u-border-active-white u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-border-palette-1-light-1 u-button-style u-custom-font u-hover-grey-5 u-text-active-custom-color-2 u-text-black u-text-hover-grey-75 u-white u-accordion-link-1"
             id="link-accordion-ef97" aria-controls="accordion-ef97" aria-selected="false">
-            <span class="u-accordion-link-text"  style="direction: rtl;    margin-inline-end: auto;">{{ $faq->question }}</span>
-			
-			
-          <span class="u-accordion-link-icon u-file-icon u-icon u-icon-2" style="margin-left: 0px;"><img src="images/10949014.png" alt=""></span>
-		  </a>
-          <div class="u-accordion-pane u-align-right u-container-style u-accordion-pane-1" 
+            <span class="u-accordion-link-text"  style="direction: rtl;">ماذا يميز حريص...؟</span><span
+              class="u-accordion-link-icon u-file-icon u-icon u-icon-2"><img src="images/10949014.png" alt=""></span>
+          </a>
+          <div class="u-accordion-pane u-align-right u-container-style u-accordion-pane-1" id="accordion-ef97"
             aria-labelledby="link-accordion-ef97">
             <div class="u-container-layout u-valign-top u-container-layout-1">
-              <p class="u-custom-font u-text u-text-custom-color-2 u-text-default u-text-2"  style="direction: rtl;"> 
-			  {!! $faq->answer !!}
+              <p class="u-custom-font u-text u-text-custom-color-2 u-text-default u-text-2"  style="direction: rtl;"> "حريص&nbsp;هو مستشفى
+                افتراضي يقدم خدمات شاملة للرعاية الصحية بالتعاون مع مختلف مقدمي الخدمات الصحية في جميع أنحاء المملكة
+                العربية السعودية."نقدم في المنزل خدمات شاملة للرعاية الأولية.<br><i></i>عدد زيارات المستشفى
+                أقل.<br><i></i>رعاية افتراضية على مدار الساعة، دون الحاجة للانتظار لفترات طويلة.<br><i></i>لا يقتصر على
+                المنطقة الجغرافية ( موجودون في جميع مناطق المملكة
               </p>
             </div>
           </div>
         </div>
-		
-    @endforeach
+        <div class="u-accordion-item">
+          <a class="u-accordion-link u-active-palette-3-base u-border-2 u-border-active-white u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-border-palette-1-light-1 u-button-style u-custom-font u-hover-grey-5 u-text-active-custom-color-2 u-text-black u-text-hover-grey-75 u-white u-accordion-link-2"
+            id="link-accordion-60fa" aria-controls="accordion-60fa" aria-selected="false">
+            <span class="u-accordion-link-text">ماذا في حالة الغي الطبيب الحجز ..؟</span><span
+              class="u-accordion-link-icon u-file-icon u-icon u-icon-3"><img src="images/10949014.png" alt=""></span>
+          </a>
+          <div class="u-accordion-pane u-align-right u-container-style u-accordion-pane-2" id="accordion-60fa"
+            aria-labelledby="link-accordion-60fa">
+            <div class="u-container-layout u-valign-top u-container-layout-2">
+              <p class="u-custom-font u-text u-text-black u-text-default u-text-3"  style="direction: rtl;">يمكنك <span
+                  style="font-weight: 700;"> استرداد اموالك بالكامل عن طريق التواصل مع الادارة</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="u-accordion-item">
+          <a class="u-accordion-link u-active-palette-3-base u-border-2 u-border-active-white u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-border-palette-1-light-1 u-button-style u-custom-font u-hover-grey-5 u-text-active-custom-color-2 u-text-black u-text-hover-grey-75 u-white u-accordion-link-3"
+            id="link-accordion-1582" aria-controls="accordion-1582" aria-selected="false">
+            <span class="u-accordion-link-text">هل يمكن ادارة الطلبات من الهاتف ..؟</span><span
+              class="u-accordion-link-icon u-file-icon u-icon u-icon-4"><img src="images/10949014.png" alt=""></span>
+          </a>
+          <div class="u-accordion-pane u-align-right u-container-style u-accordion-pane-3" id="accordion-1582"
+            aria-labelledby="link-accordion-1582">
+            <div class="u-container-layout u-container-layout-3">
+              <p class="u-custom-font u-text u-text-black u-text-default u-text-4"  style="direction: rtl;">نعم بمكنك متابعة الطلبات الواردة اليك
+                في حالة كنت موفر خدمة , من خلال تطبيق حريص للاعمال </p>
+            </div>
+          </div>
+        </div>
+        <div class="u-accordion-item">
+          <a class="u-accordion-link u-active-palette-3-base u-border-2 u-border-active-white u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-border-palette-1-light-1 u-button-style u-custom-font u-hover-grey-5 u-text-active-custom-color-2 u-text-black u-text-hover-grey-75 u-white u-accordion-link-4"
+            id="link-accordion-16ba" aria-controls="accordion-16ba" aria-selected="false">
+            <span class="u-accordion-link-text"  style="direction: rtl;">كيف اتواصل مع الدعم ...؟</span><span
+              class="u-accordion-link-icon u-file-icon u-icon u-icon-5"><img src="images/10949014.png" alt=""></span>
+          </a>
+          <div class="u-accordion-pane u-align-right u-container-style u-accordion-pane-4" id="accordion-16ba"
+            aria-labelledby="link-accordion-16ba">
+            <div class="u-container-layout u-container-layout-4">
+              <p class="u-custom-font u-text u-text-black u-text-5"  style="direction: rtl;">يمكنك التواصل مع اقسام الدم الفني من <a
+                  href="contact.html"
+                  class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-1"
+                  target="_blank">هنا</a>
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="u-shape u-shape-svg u-text-custom-color-2 u-shape-1">
         <svg class="u-svg-link" preserveAspectRatio="none" viewBox="0 0 160 160">
@@ -286,7 +407,7 @@
             الإستفسارات</h3>
           <h3 class="u-align-center u-custom-font u-text u-text-custom-color-2 u-text-default u-text-7"  style="direction: rtl;">نحن في خدمتكم
            علي مدار اليوم...</h3>
-          <a href="{{ url('page/contact') }}"
+          <a href="contact.html"
             class="u-align-center u-border-2 u-border-grey-75 u-btn u-btn-round u-button-style u-custom-color-2 u-custom-font u-hover-custom-color-1 u-radius-6 u-btn-2">تواصل
             معنا</a>
         </div>
@@ -302,7 +423,7 @@
         <div class="u-container-layout u-container-layout-1"><span class="u-file-icon u-icon u-icon-2"><img
               src="images/888857.png" alt=""></span>
           <h4 class="u-custom-font u-text u-text-black u-text-default u-text-2"  style="direction: rtl;">متوفر لدي Google play&nbsp;</h4>
-          <a href="{{ url('/page/app') }}"
+          <a href="app.html"
             class="u-border-2 u-border-grey-75 u-btn u-btn-round u-button-style u-custom-color-4 u-custom-font u-hover-custom-color-2 u-radius-6 u-btn-1">أحصل
             علية الان</a>
         </div>
@@ -312,7 +433,7 @@
         <div class="u-container-layout u-container-layout-2"><span class="u-file-icon u-icon u-text-white u-icon-3"><img
               src="images/747-e7c1157e.png" alt=""></span>
           <h4 class="u-custom-font u-text u-text-default u-text-3"  style="direction: rtl;">متوفر في App store</h4>
-          <a href="{{ url('/page/app') }}"
+          <a href="app.html"
             class="u-border-2 u-border-grey-75 u-btn u-btn-round u-button-style u-custom-font u-hover-custom-color-2 u-radius-6 u-white u-btn-2">أحصل
             علية الان</a>
         </div>
@@ -449,22 +570,23 @@
       </div>
     </div>
   </section>
-  <div class="nav-bot">
-    <footer class="u-align-center u-clearfix u-custom-color-7 u-footer u-footer" id="sec-dafd">
-      <div class="u-clearfix u-sheet u-valign-middle-xs u-sheet-1"><span
-          class="u-custom-color-2 u-file-icon u-icon u-icon-circle u-text-white u-icon-1" data-href="{{ url('/dashboard') }}"
-          title="التنبيهات"><img src="images/10950520-bf79d9e0.png" alt="التنبيهات"></span><span
-          class="u-custom-color-2 u-file-icon u-icon u-icon-circle u-icon-2" data-href="{{ url('/') }}/" title="الرئيسية"><img
-            src="images/6997164-89ff8112.png" alt="الرئيسية"></span><span
-          class="u-custom-color-2 u-file-icon u-icon u-icon-circle u-icon-3" data-href="{{ url('/dashboard/messages') }}/"><img
-            src="images/6974466-e47ca945.png" alt="الرسائل"></span><span
-          class="u-custom-color-2 u-file-icon u-icon u-icon-circle u-icon-4" data-href="{{ url('/dashboard/appointments') }}" title="الطلبات"><img
-            src="images/6619116-9c3f2e77.png" alt="الطلبات"></span><span
-          class="u-custom-color-2 u-file-icon u-icon u-icon-circle u-icon-5" title="الملف الشخصي" data-href="{{ url('/dashboard/profile') }}/"><img
-            src="images/8042444-972ca745.png" alt="الملف الشخصي"></span>
-      </div>
-    </footer>
-  </div>
+
+<div class="nav-bot">
+  <footer class="u-align-center u-clearfix u-custom-color-7 u-footer u-footer" id="sec-dafd">
+    <div class="u-clearfix u-sheet u-valign-middle-xs u-sheet-1"><span
+        class="u-custom-color-2 u-file-icon u-icon u-icon-circle u-text-white u-icon-1" data-href="notifications.html"
+        title="notifications"><img src="images/10950520-bf79d9e0.png" alt=""></span><span
+        class="u-custom-color-2 u-file-icon u-icon u-icon-circle u-icon-2" data-href="Home.html" title="Home"><img
+          src="images/6997164-89ff8112.png" alt=""></span><span
+        class="u-custom-color-2 u-file-icon u-icon u-icon-circle u-icon-3" data-href="https://elwhab.com/"><img
+          src="images/6974466-e47ca945.png" alt=""></span><span
+        class="u-custom-color-2 u-file-icon u-icon u-icon-circle u-icon-4" data-href="orders.html" title="orders"><img
+          src="images/6619116-9c3f2e77.png" alt=""></span><span
+        class="u-custom-color-2 u-file-icon u-icon u-icon-circle u-icon-5" data-href="https://elwhab.com/"><img
+          src="images/8042444-972ca745.png" alt=""></span>
+    </div>
+  </footer>
+</div>
 
 </body>
 

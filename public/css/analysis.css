@@ -406,7 +406,14 @@
   .u-section-1 .u-sheet-1 {
     min-height: 978px;
   }
-
+.u-section-1 .u-group-n {
+min-height: 93px;
+    height: auto;
+    box-shadow: 5px 5px 20px 0 rgb(0 0 0 / 40%);
+    width: calc(25% - 20px);
+    margin: 10px 10px;
+    float: right;
+}
   .u-section-1 .u-group-1 {
     margin-top: 66px;
     height: auto;
@@ -875,7 +882,14 @@
     height: 50px;
     margin-top: 13px;
   }
-
+.u-section-1 .u-group-n {
+min-height: 93px;
+    height: auto;
+    box-shadow: 5px 5px 20px 0 rgb(0 0 0 / 40%);
+    width: calc(50% - 20px);
+    margin: 10px 10px;
+    float: right;
+}
   .u-section-1 .u-text-16 {
     font-size: 1.125rem;
     width: auto;
@@ -1331,4 +1345,12 @@
   font-style: normal;
   font-weight: 400;
   src: url(../fonts/Tajawal-Bold.ttf);
+}
+.u-section-1 .u-group-n {
+min-height: 93px;
+    height: auto;
+    box-shadow: 5px 5px 20px 0 rgb(0 0 0 / 40%);
+    width: calc(25% - 20px);
+    margin: 10px 10px;
+    float: right;
 }

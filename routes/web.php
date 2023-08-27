@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PageController;
+use App\Http\Controllers\ServiceController;
+
 use App\Models\Page;
+use App\Models\Service;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,4 +23,8 @@ Route::get('/', function () {
 
 Route::get('/page/{page:slug}', function (Page $page) {
 	return view('livewire.page', ['page' => $page]);
+});
+
+Route::get('/service/{service:slug}', function (Service $service) {
+	return view('livewire.service', ['service' => $service]);
 });
