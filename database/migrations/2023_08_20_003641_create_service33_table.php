@@ -47,6 +47,7 @@ return new class extends Migration
         Schema::create('services_zones', function (Blueprint $table) {
             $table->id();
             $table->foreignId('services_id')->nullable()->constrained()->cascadeOnDelete();
+            $table->bigInteger('provider_id');
             $table->bigInteger('zone_id');
             $table->timestamps();
         });

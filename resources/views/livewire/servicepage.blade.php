@@ -1,12 +1,15 @@
+<div>
 <div  data-animation-name="pulse" style="width: auto;margin: 0 auto;text-align: center;margin-top: 10px;margin-bottom: 10px;"
 
         data-animation-duration="3500" data-animation-direction="" style="margin-bottom: 30px;">
-<input style="height:50px;width: 180px;" type="text" wire:model.live.debounce.300ms="searchTerm" placeholder="بحث بالاسم...">
-<select  style="height:50px;width: 180px;" wire:model.live="city">
+<input style="height:50px;width: 180px;text-align: center;" type="text" wire:model.live.debounce.300ms="searchTerm" placeholder="بحث بالاسم...">
+<select  style="height:50px;width: 180px;text-align: center;" wire:model.live="city">
     <option value="">اختر المدينة</option>
-
+@foreach($service->services_zones as $zone)
+    <option wire:key="{{ $zone->id }}" value="{{$zone->id}}">{{$zone->name}}</option>
+@endforeach
 </select>
-<select  style="height:50px;width: 180px;" wire:model.live="order">
+<select  style="height:50px;width: 180px;text-align: center;" wire:model.live="order">
     <option value="asc">السعر الأقل</option>
     <option value="desc">السعر الأعلى</option>
 </select>
@@ -36,3 +39,4 @@
       </div>
 		@endforeach
 
+</div>

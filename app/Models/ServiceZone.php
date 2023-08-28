@@ -12,6 +12,7 @@ class ServiceZone extends Model
     protected $fillable = [
         'services_id',
         'zone_id',
+		'provider_id',
     ];
 
     public function service()

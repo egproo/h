@@ -27,18 +27,29 @@ class Servicepage extends Component
     public function updatedSearchTerm()
     {
         $this->loadProviders();
-    }
+        $this->dispatch('refreshservicepage'); 
+  
+  }
 
     public function updatedCity()
     {
        $this->loadProviders();
-    }
+        $this->dispatch('refreshservicepage'); 
+   
+   }
 
     public function updatedOrder()
     {
         $this->loadProviders();
+        $this->dispatch('refreshservicepage'); 
 		
     }
+public function refreshservicepage()
+{
+    // هنا يمكنك إضافة الأوامر التي تريد تنفيذها عند تحديث المكون
+    $this->loadProviders();
+}
+
 
     public function loadProviders()
     {
@@ -52,7 +63,7 @@ class Servicepage extends Component
             $this->order = 'asc';
         }		
         $this->providers = $query->orderBy('price', $this->order)->get();
-        $this->dispatch('refreshservicepage'); 
+		
     }
 
     public function render()

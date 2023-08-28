@@ -272,7 +272,7 @@
 
   <section class="u-clearfix u-custom-color-5 u-section-1" id="sec-3e49">
 
-    <div wire:poll="refreshservicepage" class="u-clearfix u-sheet u-sheet-1">
+    <div  class="u-clearfix u-sheet u-sheet-1">
 @livewire('servicepage', ['slug' => $slug,'service' => $service])
 
     </div>
