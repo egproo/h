@@ -56,7 +56,7 @@ class Register extends Registerbase
         );
         event(new Registered($user));
 
-        Filament::auth()->login($user);
+        Filament::auth('dashboard')->login($user);
 
         session()->regenerate();
 

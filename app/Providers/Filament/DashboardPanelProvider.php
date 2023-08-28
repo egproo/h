@@ -39,8 +39,6 @@ class DashboardPanelProvider extends PanelProvider
 			->databaseNotificationsPolling('160s')			
             ->login(Login::class)
             ->registration(Register::class)
-			->passwordReset()
-			->emailVerification()
 			->profile()
 			->colors([
                 'primary' => Color::Red,
