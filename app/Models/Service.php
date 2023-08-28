@@ -34,14 +34,14 @@ class Service extends Model
 public function activeProvidersInZone($zoneId)
 {
     return $this->belongsToMany(Provider::class, 'services_providers', 'services_id', 'provider_id')
-                ->whereHas('services', function ($query) use ($zoneId) {
-                    $query->where('is_visible', 1)
-                          ->whereHas('zones', function ($zoneQuery) use ($zoneId) {
-                              $zoneQuery->where('zone_id', $zoneId);
-                          });
+                ->whereHas('zones', function ($zoneQuery) use ($zoneId) {
+                    $zoneQuery->where('zone_id', $zoneId);
                 })
                 ->withPivot(['price', 'duration_in_minutes']);
 }
+
+
+
     public function childServices()
     {
         return $this->hasMany(Service::class, 'parent_id');

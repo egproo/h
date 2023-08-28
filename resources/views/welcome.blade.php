@@ -221,7 +221,7 @@
             تفصلك عن الانضمام سواء كنت طبيب او ممرض او مرافق او غير ذلك..
           </h3>
           <!--Replace the link with the registration pages-->
-          <a href="{{ url('/dashboard/register') }}"
+          <a href="{{ url('/panel/register') }}"
             class="u-align-center u-border-2 u-border-grey-75 u-btn u-btn-round u-button-style u-custom-color-2 u-custom-font u-hover-custom-color-1 u-radius-6 u-btn-1">سجل
             كفرد</a>
         </div>
@@ -234,7 +234,7 @@
           <h3 class="u-align-right u-custom-font u-text u-text-custom-color-2 u-text-default u-text-5" style="direction: rtl;">يمكنك الانضمام
             الي قسم المؤسسات في حريص لتتمكن من توفير كل خدمات مؤسستك ومتابعة الطلبات..</h3>
           <!--Replace the link with the registration pages-->
-          <a href="{{ url('/dashboard/register') }}"
+          <a href="{{ url('/panel/register') }}"
             class="u-align-center u-border-2 u-border-grey-75 u-btn u-btn-round u-button-style u-custom-color-2 u-custom-font u-hover-custom-color-1 u-radius-6 u-btn-2">سجل
             كمؤسسة</a>
         </div>

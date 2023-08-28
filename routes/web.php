@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ServiceController;
-use App\Http\Livewire\ServiceSearch;
+
+
 use Illuminate\Http\Request;
 
 use App\Models\Page;
@@ -22,7 +23,15 @@ use App\Models\Service;
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/login', function () {
+    return redirect('dashboard/login');
+})->name('login');
+Route::get('/register', function () {
+    return redirect('dashboard/register');
+})->name('register');
+Route::get('/booking', function () {
+    return redirect('dashboard/appointments/booking');
+})->name('booking');
 Route::get('/page/{page:slug}', function (Page $page) {
 	return view('livewire.page', ['page' => $page]);
 });

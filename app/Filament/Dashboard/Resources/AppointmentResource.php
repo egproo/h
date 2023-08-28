@@ -101,6 +101,8 @@ public static function getNavigationBadge(): ?string
     {
         return [
             'index' => Pages\ListAppointments::route('/'),
+	        'booking' => Pages\Booking::route('/booking'),
+
         ];
     }    
 }

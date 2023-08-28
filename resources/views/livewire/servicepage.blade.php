@@ -33,8 +33,10 @@
           <h5 style="direction: rtl;"class="u-align-center u-custom-font u-text u-text-default u-text-6"> &nbsp;الخبرة :&nbsp;{{ $provider->eyears }} سنوات</h5>
           <h5 style="direction: rtl;"class="u-align-center u-custom-font u-text u-text-default u-text-7" >   تقدم الخدمة خلال&nbsp;: {{$provider->pivot->duration_in_minutes}} دقيقة
           </h5>
-          <a href="profile.html" style="margin-top: -10px;margin-left: 15px;"
-            class="u-border-2 u-border-grey-75 u-btn u-btn-round u-button-style u-custom-color-2 u-custom-font u-hover-custom-color-1 u-radius-10 u-btn-1">حجز</a>
+<a wire:click="redirectToBookingOrLogin({{ $provider->id }}, {{ $service->id }})" style="margin-top: -10px;margin-left: 15px;"
+   class="u-border-2 u-border-grey-75 u-btn u-btn-round u-button-style u-custom-color-2 u-custom-font u-hover-custom-color-1 u-radius-10 u-btn-1">حجز</a>
+
+
         </div>
       </div>
 		@endforeach
