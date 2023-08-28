@@ -22,6 +22,8 @@ use Illuminate\Auth\SessionGuard;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Select;
 class Register extends Registerbase
 {
     public function register(): ?RegistrationResponse
@@ -74,21 +76,19 @@ class Register extends Registerbase
     protected function getPhoneFormComponent(): Component
     {
         return TextInput::make('phone')->tel()->label('رقم الجوال')
-                            ->maxValue(50)->required()
-                            ->telRegex('/^(?:\+966|0)(?:\d{9})$/')
-                            ->rules('required', 'regex:/^(?:\+966|0)(?:\d{9})$/', 'unique:users,phone','رقم الجوال غير صحيح أو مستخدم من قبل');
+							->rules('unique:App\Models\User,phone')
+							->regex('/^(?:\+966|0)(?:\d{9})$/')
+							->required();
     }    
     public function form(Form $form): Form
     {
         return $form
             ->schema([
-			                                Forms\Components\FileUpload::make('image')
-                                    ->label('صورة الملف الشخصي')
-                                    ->image()
-                                    ->disableLabel(),
+			                                FileUpload::make('image')
+                                    ->label('صورة الملف الشخصي'),
                 $this->getNameFormComponent(),
                 $this->getPhoneFormComponent(),
-				TextInput::make('identification')->number()->maxLength(14)->minLength(14)->label('رقم الهوية')->required(),
+						TextInput::make('identification')->type('number')->maxLength(14)->minLength(14)->label('رقم الهوية')->required(),
 
                 $this->getPasswordFormComponent(),
             ])

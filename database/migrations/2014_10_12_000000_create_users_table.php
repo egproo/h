@@ -43,6 +43,8 @@ return new class extends Migration
 			$table->string('image')->nullable();
             $table->string('slug')->unique();
             $table->string('title')->nullable();
+            $table->string('tax_number')->nullable();
+            $table->string('register_number')->nullable();
             $table->longText('description')->nullable();
             $table->longText('short_description')->nullable();
             $table->integer('eyears');			

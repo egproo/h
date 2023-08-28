@@ -41,7 +41,10 @@ public function activeProvidersInZone($zoneId)
 }
 
 
-
+public function children()
+{
+    return $this->hasMany(Service::class, 'parent_id');
+}
     public function childServices()
     {
         return $this->hasMany(Service::class, 'parent_id');

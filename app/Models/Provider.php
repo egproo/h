@@ -7,10 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Hash;
 use Filament\Pages\Page;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
-class Provider extends Model
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+class Provider extends Authenticatable implements FilamentUser
 {
-    use HasFactory;
+    use HasApiTokens, HasFactory, Notifiable;
 
     protected $fillable = [
         'name',
@@ -23,7 +28,6 @@ class Provider extends Model
         'image', // شعار المؤسسة أو الصورة الشخصية
         'register_number', // رقم السجل التجاري
         'tax_number', // الرقم الضريبي
-        'docs', // المرفقات
     ];
 
     protected $hidden = [
@@ -86,10 +90,10 @@ public function sessionsForService($serviceId)
     /**
      * تحديد إذا كان موفر الخدمة يمكنه الوصول إلى اللوحة أم لا.
      */
-    public function canAccessPanel(Page $panel): bool
+    public function canAccessPanel(Panel $panel): bool
     {
-        return true; // هنا يمكنك تحديد الشروط حسب احتياجاتك
-    }
+        return true;
+    }	
 
     /**
      * تعيين كلمة المرور بشكل آمن باستخدام التشفير.

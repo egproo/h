@@ -15,6 +15,8 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\FileUpload;
 use App\Models\Service;
 use App\Models\ServicesType;
+use App\Models\ProvidersDoc;
+use App\Models\ServicesProvider;
 use Filament\Forms\Form;
 use Filament\Http\Responses\Auth\Contracts\RegistrationResponse;
 use Filament\Notifications\Notification;
@@ -28,6 +30,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
 use Filament\Forms\Get;
 use Filament\Forms\Components\Grid;
+use Illuminate\Validation\Rules\Unique; // <- correct import
+use Filament\Forms\Components\Field;
 class Register extends Registerbase
 {
     public function register(): ?RegistrationResponse
@@ -53,16 +57,43 @@ class Register extends Registerbase
         $data = $this->form->getState();
 
         $user = $this->getUserModel()::create($data);
+    if (isset($data['docs']) && is_array($data['docs'])) {
+        foreach ($data['docs'] as $docFile) {
+            ProvidersDoc::create([
+                'provider_id' => $user->id,
+                'filename' => $docFile,
+                'title' => '',
+            ]);
+        }
+    }
+if (isset($data['service']) && is_array($data['service'])) {	
+    foreach ($data['service'] as $service) {
+        // Check if the service ID exists in the services table
+        $serviceExists = Service::find((int)$service); // Assuming the model name for the services table is 'Service'
 
+        if ($serviceExists) {
+            ServicesProvider::create([
+                'provider_id' => (int)$user->id,
+                'services_id' => (int)$service,
+                'price' => 0,
+                'duration_in_minutes' => 30,
+            ]);
+        } else {
+            // Optionally, you can handle the case where the service ID doesn't exist
+            // For example, log an error or send a notification
+        }
+    }
+}
+	
         app()->bind(
             \Illuminate\Auth\Listeners\SendEmailVerificationNotification::class,
             \Filament\Listeners\Auth\SendEmailVerificationNotification::class,
         );
         event(new Registered($user));
 
-        Filament::auth()->login($user);
 
         session()->regenerate();
+        Filament::auth('panel')->login($user);
 
         return app(RegistrationResponse::class);
     }
@@ -79,19 +110,17 @@ class Register extends Registerbase
 
     protected function getPhoneFormComponent(): Component
     {
-        return TextInput::make('phone')->tel()->label('رقم الجوال')
-                            ->maxValue(50)->required()
-                            ->telRegex('/^(?:\+966|0)(?:\d{9})$/')
-                            ->rules('required', 'regex:/^(?:\+966|0)(?:\d{9})$/', 'unique:users,phone','رقم الجوال غير صحيح أو مستخدم من قبل');
-    }      
+        return TextInput::make('phone')->label('رقم الجوال')
+							->rules('unique:App\Models\Provider,phone')
+							->regex('/^(?:\+966|0)(?:\d{9})$/')
+							->required();
+    }
+	
     public function form(Form $form): Form
     {
+	
         return $form
             ->schema([
-			                                Forms\Components\FileUpload::make('image')
-                                    ->label('صورة الملف الشخصي')
-                                    ->image()
-                                    ->disableLabel(),
 								$this->getNameFormComponent(),
 								$this->getPhoneFormComponent(),
 								$this->getPasswordFormComponent(),
@@ -115,16 +144,32 @@ class Register extends Registerbase
 						'2' => [
 						TextInput::make('title')->label('إسم المؤسسة')->required(),
 							FileUpload::make('image')->label('شعار المؤسسة')
-								->image()
 								->required(),				
-								Select::make('service')->multiple()
-								->label('حدد التخصصات')
-								->options(Service::where('parent_id','>',0)->pluck('name', 'id'))
-								->required(),								
+Select::make('service')
+    ->multiple()
+    ->label('حدد التخصصات')
+    ->options(function() {
+        // جلب الخدمات التي ليس لها خدمات فرعية
+        $servicesWithoutSubservices = Service::whereNull('parent_id')
+            ->whereDoesntHave('children') // هذا الشرط يضمن أن الخدمة ليس لها خدمات فرعية
+            ->pluck('name', 'id');
+
+        // جلب الخدمات التي لها خدمات فرعية
+        $servicesWithSubservices = Service::where('parent_id', '>', 0)
+            ->get()
+            ->mapWithKeys(function ($service) {
+                $parent = $service->parent;
+                return [$service->id => "{$parent->name} - {$service->name}"];
+            });
+
+        // دمج القوائم معًا
+        return $servicesWithoutSubservices->concat($servicesWithSubservices)->toArray();
+    })
+    ->required(),
+								
 								],
 								'1' => [
 									FileUpload::make('image')->label('الصورة الشخصية')
-										->image()
 										->required(),		
 
 								],
@@ -136,14 +181,30 @@ class Register extends Registerbase
 						'2' => [
 							TextInput::make('register_number')->label('رقم السجل التجاري')
 								->required(),
-							TextInput::make('register_number')->label('الرقم الضريبي')
+							TextInput::make('tax_number')->label('الرقم الضريبي')
 								->required(),		
 						],
 						'1' => [
 
 				Select::make('service')
 				->label('التخصص')
-				->options(Service::where('parent_id','>',0)->pluck('name', 'id'))
+    ->options(function() {
+        // جلب الخدمات التي ليس لها خدمات فرعية
+        $servicesWithoutSubservices = Service::whereNull('parent_id')
+            ->whereDoesntHave('children') // هذا الشرط يضمن أن الخدمة ليس لها خدمات فرعية
+            ->pluck('name', 'id');
+
+        // جلب الخدمات التي لها خدمات فرعية
+        $servicesWithSubservices = Service::where('parent_id', '>', 0)
+            ->get()
+            ->mapWithKeys(function ($service) {
+                $parent = $service->parent;
+                return [$service->id => "{$parent->name} - {$service->name}"];
+            });
+
+        // دمج القوائم معًا
+        return $servicesWithoutSubservices->concat($servicesWithSubservices)->toArray();
+    })
 				->required(),
 							TextInput::make('title')->label('المسمى الوظيفي')->required(),				
 						],
