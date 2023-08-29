@@ -79,9 +79,10 @@
 }
 
 .u-section-1 .u-text-3 {
-  font-family: Tajawal-Bold;
-  font-size: 1.25rem;
-  margin: -37px 74px 0 auto;
+    font-family: Tajawal-Bold;
+    font-size: 0.95rem;
+    margin: -33px 72px 0 auto;
+    font-weight: 900;
 }
 
 .u-section-1 .u-group-5 {
@@ -365,7 +366,16 @@
   font-weight: normal;
   margin: 13px 0 0 468px;
 }
-
+@media (min-width: 1199px) {
+.u-section-1 .u-group-n {
+min-height: 70px;
+    height: auto;
+    box-shadow: 5px 5px 20px 0 rgb(0 0 0 / 40%);
+    width: calc(25% - 20px);
+    margin: 10px 10px;
+    float: right;
+}	
+}
 @media (max-width: 1199px) {
    .u-section-1 {
     background-position: 50% 50%;

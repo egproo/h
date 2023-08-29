@@ -11,8 +11,8 @@
   <meta name="description" content="">
   <title>{{$service->name}} | حريص</title>
      <base href="{{ url('/') }}" />
- 
-  <link rel="stylesheet" href="{{ url('/css/style.css') }}" media="screen">
+
+  <link rel="stylesheet" href="{{ url('/css/style.css?ver=10.5.0.2') }}" media="screen">
   <link rel="stylesheet" href="{{ url('/css/nav.css') }}" media="screen">
   <script class="u-script" type="text/javascript" src="js/nav.js" defer=""></script>
   <script class="u-script" type="text/javascript" src="js/jquery.js" defer=""></script>
@@ -112,7 +112,7 @@
         </div>
       </div>
  
-  <link rel="stylesheet" href="{{url('/')}}/css/analysis.css?ver=1.0.50" media="screen">	
+  <link rel="stylesheet" href="{{url('/')}}/css/analysis.css?ver=1.0.67" media="screen">	
 
 
   <section class="u-clearfix u-custom-color-5 u-section-1" id="sec-3e49">
@@ -169,7 +169,7 @@
   <title>{{$service->name}} | حريص</title>
      <base href="{{ url('/') }}" />
  
-  <link rel="stylesheet" href="{{ url('/css/style.css') }}" media="screen">
+  <link rel="stylesheet" href="{{ url('/css/style.css?ver=1.0.5.20') }}" media="screen">
   <link rel="stylesheet" href="{{ url('/css/nav.css') }}" media="screen">
   <script class="u-script" type="text/javascript" src="js/nav.js" defer=""></script>
   <script class="u-script" type="text/javascript" src="js/jquery.js" defer=""></script>
@@ -268,7 +268,7 @@
         </div>
       </div>
  
-  <link rel="stylesheet" href="{{url('/')}}/css/search-result.css?ver=1.0.50" media="screen">	
+  <link rel="stylesheet" href="{{url('/')}}/css/search-result.css?ver=1.0.57" media="screen">	
 
   <section class="u-clearfix u-custom-color-5 u-section-1" id="sec-3e49">
 

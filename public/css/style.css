@@ -2395,6 +2395,23 @@ a {
   margin-right: 0 !important;
 }
 @media (max-width: 767px) {
+.u-section-7 .u-group-x {
+    min-height: 44px;
+    width: calc(50% - 17px);
+    font-weight: 900;
+    float: right;
+    margin: 10px 8px;
+    padding: 0px;
+}
+.u-section-7 .u-text-4 {
+    font-size: 0.95rem !important;
+    margin-top: 30px !important;
+}
+.u-section-7 .u-text-7 {
+    font-size: 0.655rem !important;
+    margin-top: -21px !important;
+    margin-right: 40px !important;
+}	
   .u-form-horizontal {
     flex-direction: column;
     align-items: stretch;
@@ -40991,7 +41008,43 @@ background-color: #c73039 !important
     margin-left: 40px;
   }
 }
+@media (min-width: 992px){
+.u-section-7 .u-group-x {
+    min-height: 44px;
+    width: calc(25% - 17px);
+    font-weight: 900;
+    float: right;
+    margin: 10px 8px;
+    padding: 0px;
+}
+.u-section-7 .u-text-4 {
+    font-size: 0.95rem !important;
+    margin-top: 30px !important;
+}
+.u-section-7 .u-text-7 {
+    font-size: 0.655rem !important;
+    margin-top: -21px !important;
+    margin-right: 40px !important;
+}	
+}
 @media (max-width: 991px) {
+.u-section-7 .u-group-x {
+    min-height: 53px;
+    width: calc(33% - 17px);
+    font-weight: 900;
+    float: right;
+    margin: 10px 8px;
+    padding: 0px;
+}
+.u-section-7 .u-text-4 {
+    font-size: 0.95rem !important;
+    margin-top: 36px !important;
+}
+.u-section-7 .u-text-7 {
+    font-size: 0.655rem !important;
+    margin-top: -21px !important;
+    margin-right: 40px !important;
+}	
   .u-footer .u-icon-1 {
     margin-right: 13px;
   }
@@ -41009,6 +41062,23 @@ background-color: #c73039 !important
   }
 }
 @media (max-width: 767px) {
+.u-section-7 .u-group-x {
+    min-height: 44px;
+    width: calc(50% - 17px);
+    font-weight: 900;
+    float: right;
+    margin: 10px 8px;
+    padding: 0px;
+}
+.u-section-7 .u-text-4 {
+    font-size: 0.95rem !important;
+    margin-top: 30px !important;
+}
+.u-section-7 .u-text-7 {
+    font-size: 0.655rem !important;
+    margin-top: -21px !important;
+    margin-right: 40px !important;
+}	
   .u-footer .u-icon-1 {
     margin-right: 0;
   }

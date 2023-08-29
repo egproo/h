@@ -12,5 +12,10 @@ class ServiceController extends Controller
 		return view('livewire.service',['slug'=>$slug, 'service' => $service]);
 		
     }
+    public function all()
+    {
+		return view('livewire.services');
+		
+    }	
 }
 //

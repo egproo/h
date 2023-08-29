@@ -37,5 +37,6 @@ Route::get('/page/{page:slug}', function (Page $page) {
 });
 
 Route::get('/service/{slug}', [ServiceController::class, 'show']);
+Route::get('/services', [ServiceController::class, 'all']);
 
 

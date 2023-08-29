@@ -509,8 +509,12 @@
     margin-left: 7px;
   }
 }
-
+@media (min-width: 768px) {
+.bhagz{margin-top:-10px}
+.providerg{}
+}
 @media (max-width: 767px) {
+	
   .u-section-1 .u-sheet-1 {
     min-height: 1109px;
   }

@@ -10,8 +10,8 @@
 نقدم في المنزل خدمات شاملة للرعاية الأولية.
 ">
   <title>حريص</title>
-  <link rel="stylesheet" href="css/style.css" media="screen">
-  <link rel="stylesheet" href="{{ url('css/Home.css?ver=1.0.0.7') }}" media="screen">
+  <link rel="stylesheet" href="{{ url('css/style.css?ver=1.0.14.9') }}" media="screen">
+  <link rel="stylesheet" href="{{ url('css/Home.css?ver=1.0.14.9') }}" media="screen">
   <link rel="stylesheet" href="css/nav.css" media="screen">
   <script class="u-script" type="text/javascript" src="js/jquery.js" defer=""></script>
   <script class="u-script" type="text/javascript" src="js/main.js" defer=""></script>
@@ -55,7 +55,7 @@
       <nav class="u-hidden-md u-hidden-sm u-hidden-xs u-menu u-menu-dropdown u-menu-open-right u-offcanvas u-menu-1"
         data-responsive-from="MD">
         <div class="menu-collapse u-custom-font" style="font-family: Almarai; font-weight: 800; font-size: 0.875rem;">
-          <a class="u-button-style u-file-icon u-nav-link u-file-icon-2" href="#">
+          <a class="u-button-style u-file-icon u-nav-link u-file-icon-2" href="{{ url('/') }}/">
             <img src="{{ url('/images/10985613.png') }}" alt="حريص">
           </a>
         </div>
@@ -109,8 +109,7 @@
         </div>
       </div>
     </div>
-    <!--===========================================-->
-  <section class="skrollable u-clearfix u-hidden-md u-hidden-sm u-hidden-xs u-image u-parallax u-shading u-section-1"
+ <section class="skrollable u-clearfix u-hidden-md u-hidden-sm u-hidden-xs u-image u-parallax u-shading u-section-1"
     id="sec-863c" data-image-width="4357" data-image-height="3229">
     <div class="u-clearfix u-sheet u-sheet-1">
       <div
@@ -325,8 +324,10 @@
     <div class="u-clearfix u-sheet u-sheet-1">
       <div class="u-container-style u-gradient u-group u-radius-15 u-shape-round u-group-1">
         <div class="u-container-layout u-valign-middle-md u-valign-middle-sm u-valign-middle-xs u-container-layout-1">
-          <h4 class="u-custom-font u-text u-text-default-md u-text-default-sm u-text-default-xs u-text-white u-text-1">
+          <a href="{{ url('/') }}/">
+		  <h4 class="u-custom-font u-text u-text-default-md u-text-default-sm u-text-default-xs u-text-white u-text-1">
             حريص</h4>
+	</a>		
         </div>
       </div>
       <div
@@ -337,106 +338,27 @@
             بياناتك في قواعد بيانات مشفرة , لا يمكن سوي للك والطبيب الاطلاع عليها</h4>
         </div>
       </div>
-      <h5
-        class="u-align-left-md u-align-left-sm u-custom-font u-text u-text-default-md u-text-default-sm u-text-default-xs u-text-3">
-        الخدمات الطبية الافتراضية</h5>
-      <h5 class="u-custom-font u-text u-text-default-md u-text-default-sm u-text-default-xs u-text-4"> الخدمات المنزلية
+
+      <h5 class="u-custom-font u-text u-text-default-md u-text-default-sm u-text-default-xs u-text-4"> خدمات حريص
       </h5>
+
+
+
+
+@foreach(App\Models\Service::where('is_home', 1)->get() as $service)
       <div
-        class="u-align-left-md u-align-left-sm u-border-2 u-border-grey-75 u-border-no-bottom u-border-no-left u-border-no-top u-container-style u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-group u-radius-15 u-shape-round u-white u-group-3"
-        data-href="virtual-services.html" title="virtual-services">
-        <div class="u-container-layout u-container-layout-3"><span class="u-file-icon u-icon u-icon-2"><img
-              src="images/9553959.png" alt=""></span>
-          <h6 class="u-custom-font u-text u-text-default-md u-text-default-sm u-text-default-xs u-text-5">استشارات عن
-            بعد</h6>
-        </div>
-      </div>
-      <div
-        class="u-align-left-md u-align-left-sm u-border-2 u-border-grey-75 u-border-no-bottom u-border-no-left u-border-no-top u-container-style u-group u-radius-15 u-shape-round u-white u-group-4"
-        data-href="virtual-services.html" title="virtual-services">
-        <div class="u-container-layout u-container-layout-4"><span class="u-file-icon u-icon u-icon-3"><img
-              src="images/9553959.png" alt=""></span>
-          <h6 class="u-custom-font u-text u-text-default-md u-text-default-sm u-text-6">استشارات افتراضية</h6>
-        </div>
-      </div>
-      <div
-        class="u-border-2 u-border-grey-75 u-border-no-bottom u-border-no-left u-border-no-top u-container-style u-group u-radius-15 u-shape-round u-white u-group-5"
-        data-href="search-result.html" title="search-result">
+        class="u-border-2 u-border-grey-75 u-border-no-bottom u-border-no-left u-border-no-top u-container-style u-group u-radius-15 u-shape-round u-white u-group-x"
+        data-href="/service/{{ $service->slug }}" title="search-result">
         <div class="u-container-layout u-container-layout-5"><span class="u-file-icon u-icon u-icon-4"><img
-              src="images/3567474.png" alt=""></span>
+              src="{{ asset('storage/' . $service->image) }}" alt="{{ $service->name }}"></span>
           <h6
             class="u-align-center-md u-align-center-sm u-align-center-xs u-custom-font u-text u-text-default-md u-text-default-sm u-text-default-xs u-text-7">
-            مرافق صحي</h6>
+            {{ $service->name }} </h6>
         </div>
       </div>
-      <div
-        class="u-align-left-md u-align-left-sm u-border-2 u-border-grey-75 u-border-no-bottom u-border-no-left u-border-no-top u-container-style u-group u-radius-15 u-shape-round u-white u-group-6"
-        data-href="analysis.html" title="analysis">
-        <div class="u-container-layout u-container-layout-6"><span class="u-file-icon u-icon u-icon-5"><img
-              src="images/7918332.png" alt=""></span>
-          <h6 class="u-custom-font u-text u-text-default-md u-text-default-sm u-text-default-xs u-text-8">خدمات التحليل
-          </h6>
-        </div>
-      </div>
-      <div
-        class="u-border-2 u-border-grey-75 u-border-no-bottom u-border-no-left u-border-no-top u-container-style u-group u-radius-15 u-shape-round u-white u-group-7"
-        data-href="search-result.html" title="search-result">
-        <div class="u-container-layout u-container-layout-7"><span class="u-file-icon u-icon u-icon-6"><img
-              src="images/9442145.png" alt=""></span>
-          <h6
-            class="u-align-center-md u-align-center-sm u-align-center-xs u-custom-font u-text u-text-default-md u-text-default-sm u-text-default-xs u-text-9">
-            علاج طبيعي</h6>
-        </div>
-      </div>
-      <div
-        class="u-border-2 u-border-grey-75 u-border-no-bottom u-border-no-left u-border-no-top u-container-style u-group u-radius-15 u-shape-round u-white u-group-8"
-        data-href="search-result.html" title="search-result">
-        <div class="u-container-layout u-container-layout-8"><span class="u-file-icon u-icon u-icon-7"><img
-              src="images/2621722.png" alt=""></span>
-          <h6
-            class="u-align-center-md u-align-center-sm u-align-center-xs u-custom-font u-text u-text-default-md u-text-default-sm u-text-default-xs u-text-10">
-            التطعيمات</h6>
-        </div>
-      </div>
-      <div
-        class="u-border-2 u-border-grey-75 u-border-no-bottom u-border-no-left u-border-no-top u-container-style u-group u-radius-15 u-shape-round u-white u-group-9"
-        data-href="search-result.html" title="search-result">
-        <div class="u-container-layout u-container-layout-9"><span class="u-file-icon u-icon u-icon-8"><img
-              src="images/10476427.png" alt=""></span>
-          <h6
-            class="u-align-center-md u-align-center-sm u-align-center-xs u-custom-font u-text u-text-default-md u-text-default-sm u-text-default-xs u-text-11">
-            الأشعة</h6>
-        </div>
-      </div>
-      <div
-        class="u-border-2 u-border-grey-75 u-border-no-bottom u-border-no-left u-border-no-top u-container-style u-group u-radius-15 u-shape-round u-white u-group-10"
-        data-href="search-result.html" title="search-result">
-        <div class="u-container-layout u-container-layout-10"><span class="u-file-icon u-icon u-icon-9"><img
-              src="images/4190707.png" alt=""></span>
-          <h6
-            class="u-align-center-md u-align-center-sm u-align-center-xs u-custom-font u-text u-text-default-md u-text-default-sm u-text-default-xs u-text-12">
-            فحص كوفيد 19</h6>
-        </div>
-      </div>
-      <div
-        class="u-align-left-md u-align-left-sm u-border-2 u-border-grey-75 u-border-no-bottom u-border-no-left u-border-no-top u-container-style u-group u-radius-15 u-shape-round u-white u-group-11"
-        data-href="search-result.html" title="search-result">
-        <div class="u-container-layout u-container-layout-11"><span class="u-file-icon u-icon u-icon-10"><img
-              src="images/6401060.png" alt=""></span>
-          <h6
-            class="u-align-center-xs u-custom-font u-text u-text-default-md u-text-default-sm u-text-default-xs u-text-13">
-            زيارة الطبيب</h6>
-        </div>
-      </div>
-      <div
-        class="u-align-left-md u-align-left-sm u-border-2 u-border-grey-75 u-border-no-bottom u-border-no-left u-border-no-top u-container-style u-group u-radius-15 u-shape-round u-white u-group-12"
-        data-href="nursing.html" title="nursing">
-        <div class="u-container-layout u-container-layout-12"><span class="u-file-icon u-icon u-icon-11"><img
-              src="images/9842273.png" alt=""></span>
-          <h6 class="u-custom-font u-text u-text-default-md u-text-default-sm u-text-default-xs u-text-14">زيارة ممرض
-          </h6>
-        </div>
-      </div>
+     
+@endforeach
+	  
       <div
         class="u-border-2 u-border-grey-75 u-border-no-bottom u-border-no-left u-border-no-top u-container-style u-group u-radius-15 u-shape-round u-white u-group-13"
         data-href="search-result.html" title="search-result">

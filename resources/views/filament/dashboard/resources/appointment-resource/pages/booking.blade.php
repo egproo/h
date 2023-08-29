@@ -1,100 +1,60 @@
 <x-filament-panels::page>
-<div class="booking-container">
-    <h2>تفاصيل الحجز</h2>
-
-    <!-- تفاصيل مزود الخدمة -->
-    <div class="booking-section">
-        <h3>مزود الخدمة: {{ session('booking_details.provider_id') }}</h3>
-        <!-- يمكنك إضافة المزيد من التفاصيل هنا -->
+@livewire('notifications')
+<div class="p-6">
+    <div class="flex items-center space-x-4 mb-4">
+        <div class="w-1/4">
+            <img src="{{ $provider->image }}" alt="{{ $provider->name }}" class="rounded-full w-24 h-24">
+        </div>
+        <div class="w-3/4">
+            <h2 class="text-xl font-bold" style="padding-right:10px"> {{ $provider->name }}</h2>
+            <p class="text-gray-600"  style="padding-right:10px;text-align:center"> {{ $provider->title }}</p>
+        </div>
     </div>
 
-    <!-- تفاصيل الخدمة -->
-    <div class="booking-section">
-        <h3>الخدمة: {{ session('booking_details.service_id') }}</h3>
-        <!-- يمكنك إضافة المزيد من التفاصيل هنا -->
-    </div>
+    <form wire:submit.prevent="bookService">
+        <div class="bg-white p-4 rounded shadow-md mb-6">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">الخدمة المطلوبة</h3>
+					 <p>{{$fullServiceName}}</p>
+                </div>
+                <div class="text-right">
+                    <span class="text-lg font-bold"><span class="text-center" style="margin: 0 auto;padding-right: 15px;">السعر</span> <br> {{ $servicePrice }} ريال </span>
+                </div>
+            </div>
+        </div>
 
-    <!-- اختيار اليوم والمواعيد -->
-    <div class="booking-section">
-        <label for="date">اختر اليوم:</label>
-        <input type="date" id="date" name="date">
-        
-        <!-- يمكنك إضافة قائمة منسدلة أو أي واجهة مستخدم أخرى لعرض المواعيد المتاحة هنا -->
-    </div>
+        <div class="bg-white p-4 rounded shadow-md mb-6">
+            <h3 class="text-lg font-semibold mb-2">Available Sessions</h3>
+            <div class="flex flex-wrap">
+                @foreach($sessions as $session)
+                    <button wire:model="session_id" value="{{ $session->id }}" class="bg-info-500 text-white px-4 py-2 m-1 rounded hover:bg-info-600">
+                        {{ $session->time }}
+                    </button>
+                @endforeach
+            </div>
+        </div>
 
-    <!-- ملاحظات -->
-    <div class="booking-section">
-        <label for="notes">ملاحظات:</label>
-        <textarea id="notes" name="notes" rows="3"></textarea>
-    </div>
+        <div class="bg-white p-4 rounded shadow-md mb-6">
+            <h3 class="text-lg font-semibold mb-2">Payment Details</h3>
+            <div class="space-y-4">
+                <div class="flex items-center space-x-2">
+                    <span class="heroicon-o-credit-card w-6 h-6"></span>
+                    <input type="text" wire:model="credit_card.number" placeholder="Card Number" class="border p-2 rounded w-full">
+                </div>
+                <div class="flex items-center space-x-2">
+                    <span class="heroicon-o-calendar w-6 h-6"></span>
+                    <input type="text" wire:model="credit_card.expiry" placeholder="Expiry Date (MM/YY)" class="border p-2 rounded w-1/2">
+                    <input type="text" wire:model="credit_card.cvv" placeholder="CVV" class="border p-2 rounded w-1/4">
+                </div>
+            </div>
+        </div>
 
-    <!-- بيانات الفيزا أو الماستر كارد -->
-    <div class="booking-section">
-        <label for="cardNumber">رقم البطاقة:</label>
-        <input type="text" id="cardNumber" name="cardNumber">
-
-        <label for="expiryDate">تاريخ الانتهاء:</label>
-        <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY">
-
-        <label for="cvv">CVV:</label>
-        <input type="text" id="cvv" name="cvv">
-    </div>
-
-    <!-- زر الحجز -->
-    <div class="booking-section">
-        <button style="background-color: #0056b3;" type="submit">حجز</button>
-    </div>
+        <div class="text-right">
+            <button type="submit" class="bg-primary-500 text-white px-6 py-2 rounded hover:bg-primary-600">
+                <span class="heroicon-o-arrow-right w-5 h-5 inline-block mr-1"></span> Book Now
+            </button>
+        </div>
+    </form>
 </div>
-
-<style>
-    .booking-container {
-        width: 80%;
-        max-width: 600px;
-        margin: 40px auto;
-        padding: 20px;
-        border: 1px solid #e0e0e0;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    h2 {
-        text-align: center;
-        margin-bottom: 20px;
-    }
-
-    .booking-section {
-        margin-bottom: 20px;
-    }
-
-    label {
-        display: block;
-        margin-bottom: 8px;
-        font-weight: bold;
-    }
-
-    input, textarea {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #e0e0e0;
-        border-radius: 4px;
-        box-sizing: border-box;
-    }
-
-    button {
-        display: block;
-        width: 100%;
-        padding: 10px;
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-
-    button:hover {
-        background-color: #0056b3;
-    }
-</style>
-
 </x-filament-panels::page>

@@ -19,6 +19,8 @@ use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use App\Filament\Dashboard\Pages\Login;
 use App\Filament\Dashboard\Pages\Register;
+use Filament\Navigation\NavigationItem;
+use Njxqlus\FilamentProgressbar\FilamentProgressbarPlugin;
 
 class DashboardPanelProvider extends PanelProvider
 {
@@ -31,8 +33,21 @@ class DashboardPanelProvider extends PanelProvider
             ->path('dashboard')
 			->breadcrumbs(false)
 			->plugins([                
-  
-            ])			
+               FilamentProgressbarPlugin::make()->color('#FF0000')
+            ])
+	
+			->navigationItems([
+            NavigationItem::make('home')->label('الرئيسية')
+                ->url('https://haris.egproo.com/', shouldOpenInNewTab: true)
+                ->icon('heroicon-o-presentation-chart-line')
+				->group('وصول سريع')
+                ->sort(1),
+            NavigationItem::make('addservice')->label('حجز خدمة جديدة')
+                ->url('https://haris.egproo.com/services', shouldOpenInNewTab: true)
+                ->icon('heroicon-o-plus-circle')
+				->group('وصول سريع')
+                ->sort(1),				
+			])			
 			->font('Almarai')
 			->sidebarCollapsibleOnDesktop()
 			->databaseNotifications()

@@ -1,21 +1,23 @@
 <div>
+@if(count($providers) > 0)
 <div  data-animation-name="pulse" style="width: auto;margin: 0 auto;text-align: center;margin-top: 10px;margin-bottom: 10px;"
 
         data-animation-duration="3500" data-animation-direction="" style="margin-bottom: 30px;">
-<input style="height:50px;width: 180px;text-align: center;" type="text" wire:model.live.debounce.300ms="searchTerm" placeholder="بحث بالاسم...">
-<select  style="height:50px;width: 180px;text-align: center;" wire:model.live="city">
+<input style="height:50px;width: 180px;text-align: center;max-width: 30%;font-size: 12px;" type="text" wire:model.live.debounce.300ms="searchTerm" placeholder="بحث بالاسم...">
+<select  style="height:50px;width: 180px;text-align: center;max-width: 30%;font-size: 12px" wire:model.live="city">
     <option value="">اختر المدينة</option>
 @foreach($service->services_zones as $zone)
     <option wire:key="{{ $zone->id }}" value="{{$zone->id}}">{{$zone->name}}</option>
 @endforeach
 </select>
-<select  style="height:50px;width: 180px;text-align: center;" wire:model.live="order">
+<select  style="height:50px;width: 180px;text-align: center;max-width: 30%;font-size: 12px;" wire:model.live="order">
     <option value="asc">السعر الأقل</option>
     <option value="desc">السعر الأعلى</option>
 </select>
 
 </div>	
-      <div class="u-container-style u-group u-radius-25 u-shape-round u-white u-group-1" data-animation-name="pulse"
+@endif
+      <div class="providerg u-container-style u-group u-radius-25 u-shape-round u-white u-group-1" data-animation-name="pulse"
         data-animation-duration="3500" data-animation-direction="" style="margin-bottom: 30px;">
         <div class="u-container-layout u-valign-middle-sm u-container-layout-1">
           <h3 class="u-align-center u-custom-font u-text u-text-custom-color-2 u-text-1"> {{ $service->name }} </h3>
@@ -33,12 +35,15 @@
           <h5 style="direction: rtl;"class="u-align-center u-custom-font u-text u-text-default u-text-6"> &nbsp;الخبرة :&nbsp;{{ $provider->eyears }} سنوات</h5>
           <h5 style="direction: rtl;"class="u-align-center u-custom-font u-text u-text-default u-text-7" >   تقدم الخدمة خلال&nbsp;: {{$provider->pivot->duration_in_minutes}} دقيقة
           </h5>
-<a wire:click="redirectToBookingOrLogin({{ $provider->id }}, {{ $service->id }})" style="margin-top: -10px;margin-left: 15px;"
-   class="u-border-2 u-border-grey-75 u-btn u-btn-round u-button-style u-custom-color-2 u-custom-font u-hover-custom-color-1 u-radius-10 u-btn-1">حجز</a>
+<a wire:click="redirectToBookingOrLogin({{ $provider->id }}, {{ $service->id }})" style=";margin-left: 15px;"
+   class="bhagz u-border-2 u-border-grey-75 u-btn u-btn-round u-button-style u-custom-color-2 u-custom-font u-hover-custom-color-1 u-radius-10 u-btn-1">حجز</a>
 
 
         </div>
       </div>
 		@endforeach
-
+@if(count($providers) == 0)
+          <h5 style="direction: rtl;text-align: center;
+    margin: 30px 50px;"class="u-align-center u-custom-font u-text u-text-custom-color-2 u-text-default u-text-2">لا يوجد موفري خدمات متاحين في الوقت الحالي لهذة الخدمة</h5>
+@endif
 </div>

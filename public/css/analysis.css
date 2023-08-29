@@ -371,10 +371,13 @@
 }
 
 .u-section-1 .u-text-15 {
-  font-family: Tajawal-Bold;
-  font-size: 1.25rem;
-  width: 177px;
-  margin: -45px auto 0;
+font-family: Tajawal-Bold;
+    font-size: 0.850rem;
+    width: auto;
+    margin-top: -45px !important;
+    margin-right: 65px;
+    margin-left: 21px;
+    text-align: center; 
 }
 
 .u-section-1 .u-group-16 {
@@ -401,11 +404,38 @@
   font-size: 1.25rem;
   margin: -44px auto 0 74px;
 }
-
+@media (min-width: 1200px) {
+.u-section-1 .u-text-15 {
+font-family: Tajawal-Bold;
+    font-size: 0.850rem;
+    width: auto;
+    margin-top: -45px !important;
+    margin-right: 65px;
+    margin-left: 21px;
+    text-align: center; 
+}	
+.u-section-1 .u-group-n {
+min-height: 93px;
+    height: auto;
+    box-shadow: 5px 5px 20px 0 rgb(0 0 0 / 40%);
+    width: calc(25% - 20px);
+    margin: 10px 10px;
+    float: right;
+}
+}
 @media (max-width: 1199px) {
   .u-section-1 .u-sheet-1 {
     min-height: 978px;
   }
+ .u-section-1 .u-text-15 {
+font-family: Tajawal-Bold;
+    font-size: 0.850rem;
+    width: auto;
+    margin-top: -45px !important;
+    margin-right: 65px;
+    margin-left: 21px;
+    text-align: center;
+} 
 .u-section-1 .u-group-n {
 min-height: 93px;
     height: auto;
@@ -855,13 +885,13 @@ min-height: 93px;
   .u-section-1 .u-icon-14 {
     width: 50px;
     height: 50px;
-    margin-top: 13px;
+    margin-top: 13px !important;
   }
 
   .u-section-1 .u-text-15 {
     font-size: 1.125rem;
     width: auto;
-    margin-top: -36px;
+    margin-top: -36px !important;
     margin-right: 30px;
     margin-left: 20px;
   }
@@ -883,10 +913,10 @@ min-height: 93px;
     margin-top: 13px;
   }
 .u-section-1 .u-group-n {
-min-height: 93px;
+min-height: 70px;
     height: auto;
     box-shadow: 5px 5px 20px 0 rgb(0 0 0 / 40%);
-    width: calc(50% - 20px);
+    width: calc(33% - 20px);
     margin: 10px 10px;
     float: right;
 }
@@ -899,6 +929,14 @@ min-height: 93px;
 }
 
 @media (max-width: 767px) {
+.u-section-1 .u-group-n {
+min-height: 72px;
+    height: auto;
+    box-shadow: 5px 5px 20px 0 rgb(0 0 0 / 40%);
+    width: calc(50% - 20px);
+    margin: 10px 10px;
+    float: right;
+}	
   .u-section-1 .u-sheet-1 {
     min-height: 1338px;
   }
@@ -987,6 +1025,17 @@ min-height: 93px;
   .u-section-1 .u-group-16 {
     margin-top: -181px;
   }
+ .u-section-1 .u-icon-14 {
+    width: 30px;
+    height: 30px;
+    margin-top: 20px !important;
+} 
+.u-section-1 .u-text-15 {
+    font-size: 0.625rem;
+    margin-top: -25px  !important;
+    margin-right: 41px;
+    margin-left: 21px;
+}
 }
 
 @media (max-width: 575px) {
@@ -1345,12 +1394,4 @@ min-height: 93px;
   font-style: normal;
   font-weight: 400;
   src: url(../fonts/Tajawal-Bold.ttf);
-}
-.u-section-1 .u-group-n {
-min-height: 93px;
-    height: auto;
-    box-shadow: 5px 5px 20px 0 rgb(0 0 0 / 40%);
-    width: calc(25% - 20px);
-    margin: 10px 10px;
-    float: right;
 }
