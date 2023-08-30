@@ -37,6 +37,7 @@ return new class extends Migration
             $table->id();
             $table->integer('type');
             $table->integer('identification');
+            $table->string('regnumber')->unique();
             $table->string('name');
             $table->string('email')->nullable();
             $table->string('phone')->unique();

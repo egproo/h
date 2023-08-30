@@ -37,7 +37,9 @@ class Booking extends Page
 
 protected function getViewData(): array
 {
+
     $bookingDetails = Session::get('booking_details', []);
+if(!empty($bookingDetails)){
     $this->services_id = $bookingDetails['service_id'] ?? null;
     $this->provider_id = $bookingDetails['provider_id'] ?? null;
 
@@ -54,14 +56,25 @@ protected function getViewData(): array
 
     // جلب سعر الخدمة للمقدم المعني
     $servicePrice = $service->activeProviders()->where('provider_id', $this->provider_id)->first()->pivot->price ?? null;
+	$sessionsx = ServicesSession::where('services_id', $this->services_id)->where('provider_id', $this->provider_id)->get(); 
 
-    return [
+ return [
         'service' => $service,
         'provider' => $provider,
-        'sessions' => ServicesSession::where('services_id', $this->services_id)->get(),
+        'sessions' => $sessionsx,
         'fullServiceName' => $fullServiceName,
         'servicePrice' => $servicePrice,
     ];
+}else{
+	
+    return [
+        'service' => [],
+        'provider' => [],
+        'sessions' => [],
+        'fullServiceName' => '',
+        'servicePrice' => '',
+    ];	
+}
 }
 
 

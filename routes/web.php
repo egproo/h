@@ -23,6 +23,9 @@ use App\Models\Service;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/dashboard', function () {
+    return redirect('dashboard/appointments');
+})->name('appointments');
 Route::get('/login', function () {
     return redirect('dashboard/login');
 })->name('login');

@@ -23,6 +23,7 @@ class Provider extends Authenticatable implements FilamentUser
 		'email',
         'password',
         'identification',
+		'regnumber',
         'type', // فرد أو مؤسسة
         'title', // إسم المؤسسة أو المسمى الوظيفي
         'image', // شعار المؤسسة أو الصورة الشخصية

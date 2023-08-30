@@ -34,6 +34,13 @@ use Illuminate\Validation\Rules\Unique; // <- correct import
 use Filament\Forms\Components\Field;
 class Register extends Registerbase
 {
+public function mount(): void {
+    $this->data = [
+        'docs' => [],
+        // 'service' => [],
+        // ... other keys if needed
+    ];
+}
     public function register(): ?RegistrationResponse
     {
         try {
@@ -65,6 +72,8 @@ class Register extends Registerbase
                 'title' => '',
             ]);
         }
+    $user->load('docs');  // Refresh the docs relationship
+		
     }
 if (isset($data['service']) && is_array($data['service'])) {	
     foreach ($data['service'] as $service) {
@@ -219,6 +228,8 @@ Select::make('service')
 								],
 								'1' => [
 
+							TextInput::make('regnumber')->label('رقم التصنيف الصحي')
+								->required(),
 								],
 								default => [],
 					})

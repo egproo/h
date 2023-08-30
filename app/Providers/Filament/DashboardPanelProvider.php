@@ -35,7 +35,6 @@ class DashboardPanelProvider extends PanelProvider
 			->plugins([                
                FilamentProgressbarPlugin::make()->color('#FF0000')
             ])
-	
 			->navigationItems([
             NavigationItem::make('home')->label('الرئيسية')
                 ->url('https://haris.egproo.com/', shouldOpenInNewTab: true)
