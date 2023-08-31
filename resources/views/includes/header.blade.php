@@ -25,10 +25,10 @@
               <div class="u-nav-popup">
                 <ul class="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10">
                   <!--الأفراد-->
-                  <li class="u-nav-item"><a class="u-button-style u-nav-link u-white" href="{{ url('/')}}/dashboard/login">فرد</a>
+                  <li class="u-nav-item"><a class="u-button-style u-nav-link u-white" href="{{ url('/')}}/panel/login">فرد</a>
                   </li>
                   <!--الجهات-->
-                  <li class="u-nav-item"><a class="u-button-style u-nav-link u-white" href="{{ url('/')}}/dashboard/login">(مؤسسة
+                  <li class="u-nav-item"><a class="u-button-style u-nav-link u-white" href="{{ url('/')}}/panel/login">(مؤسسة
                       (أعمال</a>
                   </li>
                 </ul>
@@ -69,6 +69,7 @@
 						style="padding-top: 0px; padding-bottom: 0px;">حسابي</a>
 					</li>			  
 	    	  @else
+				  
 				    @auth('dashboard')
 						<li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{ url('/') }}/dashboard/profile"
 							style="padding-top: 0px; padding-bottom: 0px;">حسابي</a>
