@@ -1,6 +1,18 @@
 <x-filament-panels::page>
 @livewire('notifications')
 @if($fullServiceName != '')
+@if(session('message'))
+    <div class="alert alert-success">
+        {{ session('message') }}
+    </div>
+@endif
+
+@if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
+	
 <!-- Moyasar Styles -->
 <link rel="stylesheet" href="https://cdn.moyasar.com/mpf/1.10.0/moyasar.css" />
 

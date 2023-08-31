@@ -60,58 +60,41 @@ class Booking extends Page
             ->get();
     }
 
-    public function bookService()
-    {
-        // 1. Validate the input data
-        $validatedData = $this->validate([
-            'services_id' => 'required|exists:services,id',
-            'session_id' => 'required|exists:services_sessions,id',
-            'notes' => 'nullable|string',
-        ]);
+public function bookService()
+{
+    // 1. Validate the input data
+    $validatedData = $this->validate([
+        'services_id' => 'required|exists:services,id',
+        'session_id' => 'required|exists:services_sessions,id',
+        'notes' => 'nullable|string',
+    ]);
 
-        // 2. Get the current user
-        $userId = Filament::auth()->user()->id;
-        $user = User::find($userId);
+    // 2. Get the current user
+    $userId = Filament::auth()->user()->id;
 
-        // 3. Fetch service and provider details
-        $service = Service::find($this->services_id);
-        $provider = Provider::find($service->provider_id);
+    // 3. Check session availability
+    $existingAppointment = Appointment::where('services_session_id', $this->session_id)
+        ->whereDate('appointment_date', $this->desiredDate)
+        ->first();
 
-        // 4. Check session availability
-        $session = ServicesSession::find($this->session_id);
-
-        $existingAppointment = Appointment::where('services_session_id', $this->session_id)
-            ->whereDate('appointment_date', $this->desiredDate)
-            ->first();
-
-        if ($existingAppointment) {
-            session()->flash('error', 'Session is not available');
-            return;
-        }
-
-        // 5. Create a preliminary appointment
-        $appointment = new Appointment();
-        $appointment->user_id = $userId;
-        $appointment->service_id = $this->services_id;
-        $appointment->services_session_id  = $this->session_id;
-        $appointment->notes = $this->notes;
-        $appointment->appointment_date = $this->desiredDate;
-        $appointment->status = 'pending';
-        $appointment->save();
-
-        // 6. Redirect to payment gateway (this should be handled in the blade using JavaScript as you mentioned)
-        // After payment, the callback function will handle the payment status and update the appointment status accordingly.
-
-        // 7. Notify user, provider, and all admins
-        $this->sendNotification($user, 'Your booking is confirmed.');
-        $this->sendNotification($provider, 'A new booking has been made for your service.');
-        $admins = Admin::all();
-        foreach ($admins as $admin) {
-            $this->sendNotification($admin, 'A new booking has been made.');
-        }
-
-        session()->flash('message', 'Booking confirmed and payment successful');
+    if ($existingAppointment) {
+        session()->flash('error', 'Session is not available');
+        return;
     }
+
+    // 4. Create a preliminary appointment
+    $appointment = new Appointment();
+    $appointment->user_id = $userId;
+    $appointment->service_id = $this->services_id;
+    $appointment->services_session_id  = $this->session_id;
+    $appointment->notes = $this->notes;
+    $appointment->appointment_date = $this->desiredDate;
+    $appointment->status = 'pending';
+    $appointment->save();
+
+    session()->flash('message', 'Please complete the payment process.');
+}
+
 
     protected function getViewData(): array
     {
