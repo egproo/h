@@ -65,45 +65,46 @@
                 </li>
 				<!--  موفر الخدمات مسجل او لا-->
               @auth('panel')
-					<li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{ url('/') }}/dashboard/profile"
+					<li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{ url('/') }}/panel/profile"
 						style="padding-top: 0px; padding-bottom: 0px;">حسابي</a>
 					</li>			  
 	    	  @else
+				    @auth('dashboard')
+						<li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{ url('/') }}/dashboard/profile"
+							style="padding-top: 0px; padding-bottom: 0px;">حسابي</a>
+						</li>
+					
+						<li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{ url('/') }}/dashboard/appointments"
+							style="padding-top: 0px; padding-bottom: 0px;">حجوزاتي</a>
+						</li>
+						<li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{ url('/') }}/dashboard/messages"
+							style="padding-top: 0px; padding-bottom: 0px;">الرسائل</a>
+						</li>
+						<li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{ url('/') }}/dashboard/tickets"
+							style="padding-top: 0px; padding-bottom: 0px;">تذاكر الدعم</a>
+						</li>				
+						<li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{ url('/') }}/dashboard/invoices"
+							style="padding-top: 0px; padding-bottom: 0px;">مدفوعاتي</a>
+						</li>
+						<li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{ url('/') }}/logout"
+							style="padding-top: 0px; padding-bottom: 0px;">تسجيل الخروج</a>
+						</li>				
+					@else
 					<li class="u-nav-item"><a class="u-button-style u-nav-link"
 						style="padding-top: 0px; padding-bottom: 0px;">انضم كموفر خدمة</a>
 					  <div class="u-nav-popup">
 						<ul class="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10">
-						  <li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{ url('/') }}/dashboard/login">فرد</a>
+						  <li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{ url('/') }}/panel/login">فرد</a>
 						  </li>
-						  <li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{ url('/') }}/dashboard/login">(مؤسسة
+						  <li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{ url('/') }}/panel/login">(مؤسسة
 							  (أعمال</a>
 						  </li>
 						</ul>
 					  </div>
-					</li>				  
+					</li>		
+					@endauth
 			  @endauth			  
 
-				@auth('dashboard')
-					<li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{ url('/') }}/dashboard/profile"
-						style="padding-top: 0px; padding-bottom: 0px;">حسابي</a>
-					</li>
-				
-					<li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{ url('/') }}/dashboard/appointments"
-						style="padding-top: 0px; padding-bottom: 0px;">حجوزاتي</a>
-					</li>
-					<li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{ url('/') }}/dashboard/messages"
-						style="padding-top: 0px; padding-bottom: 0px;">الرسائل</a>
-					</li>
-					<li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{ url('/') }}/dashboard/tickets"
-						style="padding-top: 0px; padding-bottom: 0px;">تذاكر الدعم</a>
-					</li>				
-					<li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{ url('/') }}/dashboard/invoices"
-						style="padding-top: 0px; padding-bottom: 0px;">مدفوعاتي</a>
-					</li>
-					<li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{ url('/') }}/logout"
-						style="padding-top: 0px; padding-bottom: 0px;">تسجيل الخروج</a>
-					</li>
-				@endauth
               </ul>
             </div>
           </div>
