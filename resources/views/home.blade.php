@@ -205,71 +205,24 @@
           class="u-file-icon u-icon"><img src="{{ url('/')}}/images/10792960.png" alt=""></span>&nbsp;​أسئلة متكررة
       </h4>
       <div class="u-accordion u-collapsed-by-default u-spacing-2 u-accordion-1">
-        <div class="u-accordion-item">
-          <a class="u-accordion-link u-active-palette-3-base u-border-2 u-border-active-white u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-border-palette-1-light-1 u-button-style u-custom-font u-hover-grey-5 u-text-active-custom-color-2 u-text-black u-text-hover-grey-75 u-white u-accordion-link-1"
-            id="link-accordion-ef97" aria-controls="accordion-ef97" aria-selected="false">
-            <span class="u-accordion-link-text">ماذا يميز حريص...؟</span><span
-              class="u-accordion-link-icon u-file-icon u-icon u-icon-2"><img src="{{ url('/')}}/images/10949014.png" alt=""></span>
-          </a>
-          <div class="u-accordion-pane u-align-right u-container-style u-accordion-pane-1" id="accordion-ef97"
-            aria-labelledby="link-accordion-ef97">
-            <div class="u-container-layout u-valign-top u-container-layout-1">
-              <p class="u-custom-font u-text u-text-custom-color-2 u-text-default u-text-2" style="direction: rtl;"> "حريص&nbsp;هو مستشفى
-                افتراضي يقدم خدمات شاملة للرعاية الصحية بالتعاون مع مختلف مقدمي الخدمات الصحية في جميع أنحاء المملكة
-                العربية السعودية."نقدم في المنزل خدمات شاملة للرعاية الأولية.<br><i></i>عدد زيارات المستشفى
-                أقل.<br><i></i>رعاية افتراضية على مدار الساعة، دون الحاجة للانتظار لفترات طويلة.<br><i></i>لا يقتصر على
-                المنطقة الجغرافية ( موجودون في جميع مناطق المملكة
-              </p>
-            </div>
-          </div>
-        </div>
+     @foreach(App\Models\Faq::where('status', 1)->get() as $faq)
         <div class="u-accordion-item">
           <a class="u-accordion-link u-active-palette-3-base u-border-2 u-border-active-white u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-border-palette-1-light-1 u-button-style u-custom-font u-hover-grey-5 u-text-active-custom-color-2 u-text-black u-text-hover-grey-75 u-white u-accordion-link-2"
             id="link-accordion-60fa" aria-controls="accordion-60fa" aria-selected="false">
-            <span class="u-accordion-link-text">ماذا في حالة الغي الطبيب الحجز ..؟</span><span
+            <span class="u-accordion-link-text">{{ $faq->question }}</span><span
               class="u-accordion-link-icon u-file-icon u-icon u-icon-3"><img src="{{ url('/')}}/images/10949014.png" alt=""></span>
           </a>
           <div class="u-accordion-pane u-align-right u-container-style u-accordion-pane-2" id="accordion-60fa"
             aria-labelledby="link-accordion-60fa">
             <div class="u-container-layout u-valign-top u-container-layout-2">
-              <p class="u-custom-font u-text u-text-black u-text-default u-text-3" style="direction: rtl;">يمكنك <span
-                  style="font-weight: 700;"> استرداد اموالك بالكامل عن طريق التواصل مع الادارة</span>
+              <p class="u-custom-font u-text u-text-black u-text-default u-text-3" style="direction: rtl;"><span
+                  style="font-weight: 700;">{!! $faq->answer !!}</span>
               </p>
             </div>
           </div>
         </div>
-        <div class="u-accordion-item">
-          <a class="u-accordion-link u-active-palette-3-base u-border-2 u-border-active-white u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-border-palette-1-light-1 u-button-style u-custom-font u-hover-grey-5 u-text-active-custom-color-2 u-text-black u-text-hover-grey-75 u-white u-accordion-link-3"
-            id="link-accordion-1582" aria-controls="accordion-1582" aria-selected="false">
-            <span class="u-accordion-link-text">هل يمكن ادارة الطلبات من الهاتف ..؟</span><span
-              class="u-accordion-link-icon u-file-icon u-icon u-icon-4"><img src="{{ url('/')}}/images/10949014.png" alt=""></span>
-          </a>
-          <div class="u-accordion-pane u-align-right u-container-style u-accordion-pane-3" id="accordion-1582"
-            aria-labelledby="link-accordion-1582">
-            <div class="u-container-layout u-container-layout-3">
-              <p class="u-custom-font u-text u-text-black u-text-default u-text-4" style="direction: rtl;">نعم بمكنك متابعة الطلبات الواردة اليك
-                في حالة كنت موفر خدمة , من خلال تطبيق حريص للاعمال </p>
-            </div>
-          </div>
-        </div>
-        <div class="u-accordion-item">
-          <a class="u-accordion-link u-active-palette-3-base u-border-2 u-border-active-white u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-border-palette-1-light-1 u-button-style u-custom-font u-hover-grey-5 u-text-active-custom-color-2 u-text-black u-text-hover-grey-75 u-white u-accordion-link-4"
-            id="link-accordion-16ba" aria-controls="accordion-16ba" aria-selected="false">
-            <span class="u-accordion-link-text">كيف اتواصل مع الدعم ...؟</span><span
-              class="u-accordion-link-icon u-file-icon u-icon u-icon-5"><img src="{{ url('/')}}/images/10949014.png" alt=""></span>
-          </a>
-          <div class="u-accordion-pane u-align-right u-container-style u-accordion-pane-4" id="accordion-16ba"
-            aria-labelledby="link-accordion-16ba">
-            <div class="u-container-layout u-container-layout-4">
-              <p class="u-custom-font u-text u-text-black u-text-5" style="direction: rtl;">يمكنك التواصل مع اقسام الدم الفني من <a
-                  href="{{ url('/')}}/page/contact"
-                  class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-1"
-                  target="_blank">هنا</a>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+    @endforeach
+     </div>
       <div class="u-shape u-shape-svg u-text-custom-color-2 u-shape-1">
         <svg class="u-svg-link" preserveAspectRatio="none" viewBox="0 0 160 160" >
           <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-c347"></use>
