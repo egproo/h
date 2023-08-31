@@ -93,7 +93,7 @@ class Booking extends Page
         ->first();
 
     if ($existingAppointment) {
-        session()->flash('error', 'Session is not available');
+        
         return;
     }
 
@@ -109,7 +109,6 @@ class Booking extends Page
 	
 	$this->appointment_id = $appointment_id;
 
-    session()->flash('message', 'Please complete the payment process.');
 }
 
 

@@ -26,10 +26,16 @@ input {
 	min-height:50px !important;
 	line-height:40px !important;
 }
+#mysr-cc-number{text-align: left !important;font-size: 13px !important;}
+#mysr-form-form-el{max-width:100vw !important}
 label,button{font-family: 'Almarai' !important;}
 .dates-list {
     overflow-x: auto;
     white-space: nowrap;
+}
+@media screen and (min-width: 768px){
+.mysr-form-fixedWidth{max-width:100vw !important}
+
 }
 </style>	
 
