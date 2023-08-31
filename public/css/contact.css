@@ -1,12 +1,14 @@
+/*صفحة تواصل معنا*/
 .u-section-1 .u-sheet-1 {
-  min-height: 936px;
+  min-height: 713px;
 }
 
 .u-section-1 .u-group-1 {
   width: 601px;
   min-height: 586px;
   height: auto;
-  margin: 80px auto 60px;
+  box-shadow: 5px 5px 20px 0 rgba(73,168,160,0.4);
+  margin: 60px auto;
 }
 
 .u-section-1 .u-container-layout-1 {
@@ -158,7 +160,12 @@
 
 @media (max-width: 991px) {
   .u-section-1 .u-sheet-1 {
-    min-height: 1302px;
+    min-height: 699px;
+  }
+
+  .u-section-1 .u-group-1 {
+    margin-top: 57px;
+    margin-bottom: 57px;
   }
 }
 
@@ -175,11 +182,12 @@
 
 @media (max-width: 575px) {
   .u-section-1 .u-sheet-1 {
-    min-height: 881px;
+    min-height: 605px;
   }
 
   .u-section-1 .u-group-1 {
-    margin-top: 54px;
+    margin-top: 20px;
+    margin-bottom: 30px;
     min-height: 555px;
     margin-right: initial;
     margin-left: initial;
