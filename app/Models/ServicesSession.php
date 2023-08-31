@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Appointment;
 
 class ServicesSession extends Model
 {
@@ -27,4 +28,19 @@ class ServicesSession extends Model
     {
         return $this->belongsTo(Provider::class, 'provider_id');
     }
+    public function isAvailable($desiredDate)
+    {
+        // تحقق من وجود حجز في نفس الوقت والتاريخ
+        $existingAppointment = Appointment::where('services_session_id', $this->id)
+            ->whereDate('appointment_date', $desiredDate)
+            ->first();
+
+        // إذا لم يتم العثور على حجز، فإن الجلسة متاحة
+        return is_null($existingAppointment);
+    }	
+    public function appointments()
+    {
+        return $this->hasMany(Appointment::class, 'services_session_id', 'id');
+    }
+	
 }

@@ -16,17 +16,30 @@ use App\Models\Admin;
 use Moyasar\Providers\PaymentService;
 use Illuminate\Notifications\Messages\BroadcastMessage;
 use Illuminate\Support\Facades\Session;
+
 class Booking extends Page
 {
     public $services_id;
     public $session_id;
-    public $notes;	
-    public $credit_card;
+	public $provider_id;
+    public $notes;    
+    public $desiredDate; // تاريخ الموعد المطلوب
+    public $sessions = []; // الجلسات المتاحة بناءً على التاريخ المختار
+    public $maxDate;
+    public $today;
+    public $credit_card = [
+        'number' => '',
+        'expiry' => '',
+        'cvv' => ''
+    ];
+
     protected static string $resource = AppointmentResource::class;
+
     public function getBreadcrumb(): ?string
     {
         return false;
     }
+
     protected static string $view = 'filament.dashboard.resources.appointment-resource.pages.booking';
 
     protected static ?string $title = null;
@@ -35,48 +48,23 @@ class Booking extends Page
 
     protected ?string $subheading = "";
 
-protected function getViewData(): array
-{
-
-    $bookingDetails = Session::get('booking_details', []);
-if(!empty($bookingDetails)){
-    $this->services_id = $bookingDetails['service_id'] ?? null;
-    $this->provider_id = $bookingDetails['provider_id'] ?? null;
-
-    $service = Service::find($this->services_id);
-    $provider = Provider::find($this->provider_id);
-
-    // تحقق إذا كانت الخدمة هي خدمة فرعية
-    if ($service->parent_id) {
-        $parentService = Service::find($service->parent_id);
-        $fullServiceName = "{$parentService->name} ({$service->name})";
-    } else {
-        $fullServiceName = $service->name;
+    public function updatedDesiredDate()
+    {
+        $this->updateSessions();
     }
 
-    // جلب سعر الخدمة للمقدم المعني
-    $servicePrice = $service->activeProviders()->where('provider_id', $this->provider_id)->first()->pivot->price ?? null;
-	$sessionsx = ServicesSession::where('services_id', $this->services_id)->where('provider_id', $this->provider_id)->get(); 
+    public function updateSessions()
+    {
+        $dayOfWeek = date('N', strtotime($this->desiredDate));
 
- return [
-        'service' => $service,
-        'provider' => $provider,
-        'sessions' => $sessionsx,
-        'fullServiceName' => $fullServiceName,
-        'servicePrice' => $servicePrice,
-    ];
-}else{
-	
-    return [
-        'service' => [],
-        'provider' => [],
-        'sessions' => [],
-        'fullServiceName' => '',
-        'servicePrice' => '',
-    ];	
-}
-}
-
+        $this->sessions = ServicesSession::where('day_of_week', $dayOfWeek)
+            ->where('services_id', $this->services_id)
+            ->where('provider_id', $this->provider_id)
+            ->whereDoesntHave('appointments', function ($query) {
+                $query->whereDate('appointment_date', $this->desiredDate);
+            })
+            ->get();
+    }
 
     public function bookService()
     {
@@ -95,10 +83,14 @@ if(!empty($bookingDetails)){
         // 3. Fetch service and provider details
         $service = Service::find($this->services_id);
         $provider = Provider::find($service->provider_id);
-
         // 4. Check session availability
-        $session = ServicesSession::find($this->session_id);
-        if (!$session->isAvailable()) {
+		    $session = ServicesSession::find($this->session_id);
+
+        $existingAppointment = Appointment::where('services_session_id', $this->session_id)
+            ->whereDate('appointment_date', $this->desiredDate)
+            ->first();
+
+        if ($existingAppointment) {
             session()->flash('error', 'Session is not available');
             return;
         }
@@ -106,9 +98,10 @@ if(!empty($bookingDetails)){
         // 5. Create a preliminary appointment
         $appointment = new Appointment();
         $appointment->user_id = $userId;
-        $appointment->services_id = $service->id;
-        $appointment->session_id = $session->id;
+		$appointment->service_id = $this->services_id;
+        $appointment->services_session_id  = $this->session_id;
         $appointment->notes = $this->notes;
+		$appointment->appointment_date = $this->desiredDate;
         $appointment->status = 'pending';
         $appointment->save();
 
@@ -117,7 +110,7 @@ if(!empty($bookingDetails)){
         $payment = $paymentService->create([
             'amount' => $service->price,
             'currency' => 'SAR',
-            'description' => 'Booking service: ' . $service->name,
+            'description' => 'قيمة خدمة: ' . $service->name,
             'source' => $this->credit_card,
             'reference_id' => $appointment->id,
         ]);
@@ -141,6 +134,58 @@ if(!empty($bookingDetails)){
             session()->flash('error', 'Payment failed');
         }
     }
+
+protected function getViewData(): array
+{
+
+    $bookingDetails = Session::get('booking_details', []);
+if(!empty($bookingDetails)){
+    $this->services_id = $bookingDetails['service_id'] ?? null;
+    $this->provider_id = $bookingDetails['provider_id'] ?? null;
+
+	$today = now();
+    $this->today = $today;	
+    $this->maxDate = $today->addMonths(3)->endOfMonth()->toDateString();
+
+    $service = Service::find($this->services_id);
+    $provider = Provider::find($this->provider_id);
+
+    // تحقق إذا كانت الخدمة هي خدمة فرعية
+    if ($service->parent_id) {
+        $parentService = Service::find($service->parent_id);
+        $fullServiceName = "{$parentService->name} ({$service->name})";
+    } else {
+        $fullServiceName = $service->name;
+    }
+
+    // جلب سعر الخدمة للمقدم المعني
+    $servicePrice = $service->activeProviders()->where('provider_id', $this->provider_id)->first()->pivot->price ?? null;
+	$sessionxs = ServicesSession::where('services_id', $this->services_id)->where('provider_id', $this->provider_id)->get(); 
+
+ return [
+        'service' => $service,
+        'provider' => $provider,
+        'sessionxs' => $sessionxs,
+        'fullServiceName' => $fullServiceName,
+        'servicePrice' => $servicePrice,
+        'today' => $this->today,
+        'maxDate' => $this->maxDate,		
+    ];
+}else{
+		$today = now();
+    $this->today = $today;	
+    $this->maxDate = $today->addMonths(3)->endOfMonth()->toDateString();
+    return [
+        'service' => [],
+        'provider' => [],
+        'sessionxs' => [],
+        'fullServiceName' => '',
+        'servicePrice' => '',
+        'today' => $this->today,
+        'maxDate' => $this->maxDate,			
+    ];	
+}
+}
 
     private function sendNotification($user, $message)
     {

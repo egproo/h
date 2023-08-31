@@ -50,11 +50,18 @@
   <header class="u-clearfix u-header u-sticky u-sticky-bad1 u-white u-header" id="sec-e836">
     <div
       class="u-clearfix u-sheet u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xs u-sheet-1">
-      <span class="u-align-left-xl u-file-icon u-icon u-icon-1"><a href="{{ url('/dashboard/login') }}"><img src="{{ url('/images/11496762.png') }}" alt="حريص"></a></span>
-      <a href="{{ url('/') }}/"<h3 class="u-custom-font u-text u-text-black u-text-default u-text-1">حريص</h3></a>
+      <span class="u-align-left-xl u-file-icon u-icon u-icon-1"><a href="{{ url('/') }}/"><img src="{{ url('/images/11496762.png') }}" alt="حريص"></a></span>
+      <a href="{{ url('/') }}/"><h3 class="u-custom-font u-text u-text-black u-text-default u-text-1">حريص</h3></a>
+@auth('dashboard')
+      <a href="{{ url('/logout') }}"
+        class="u-border-2 u-border-grey-75 u-btn u-btn-round u-button-style u-custom-color-2 u-custom-font u-hover-palette-1-light-1 u-radius-6 u-btn-1">تسجيل
+         الخروج</a>
+	
+@else
       <a href="{{ url('/dashboard/login') }}"
         class="u-border-2 u-border-grey-75 u-btn u-btn-round u-button-style u-custom-color-2 u-custom-font u-hover-palette-1-light-1 u-radius-6 u-btn-1">تسجيل
         الدخول</a>
+@endauth
       <nav class="u-hidden-md u-hidden-sm u-hidden-xs u-menu u-menu-dropdown u-menu-open-right u-offcanvas u-menu-1"
         data-responsive-from="MD">
         <div class="menu-collapse u-custom-font" style="font-family: Almarai; font-weight: 800; font-size: 0.875rem;">
@@ -206,11 +213,18 @@
   <header class="u-clearfix u-header u-sticky u-sticky-bad1 u-white u-header" id="sec-e836">
     <div
       class="u-clearfix u-sheet u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xs u-sheet-1">
-      <span class="u-align-left-xl u-file-icon u-icon u-icon-1"><a href="{{ url('/dashboard/login') }}"><img src="{{ url('/images/11496762.png') }}" alt="حريص"></a></span>
-      <a href="{{ url('/') }}/"<h3 class="u-custom-font u-text u-text-black u-text-default u-text-1">حريص</h3></a>
+      <span class="u-align-left-xl u-file-icon u-icon u-icon-1"><a href="{{ url('/') }}/"><img src="{{ url('/images/11496762.png') }}" alt="حريص"></a></span>
+      <a href="{{ url('/') }}/"><h3 class="u-custom-font u-text u-text-black u-text-default u-text-1">حريص</h3></a>
+@auth('dashboard')
+      <a href="{{ url('/logout') }}"
+        class="u-border-2 u-border-grey-75 u-btn u-btn-round u-button-style u-custom-color-2 u-custom-font u-hover-palette-1-light-1 u-radius-6 u-btn-1">تسجيل
+         الخروج</a>
+	
+@else
       <a href="{{ url('/dashboard/login') }}"
         class="u-border-2 u-border-grey-75 u-btn u-btn-round u-button-style u-custom-color-2 u-custom-font u-hover-palette-1-light-1 u-radius-6 u-btn-1">تسجيل
         الدخول</a>
+@endauth
       <nav class="u-hidden-md u-hidden-sm u-hidden-xs u-menu u-menu-dropdown u-menu-open-right u-offcanvas u-menu-1"
         data-responsive-from="MD">
         <div class="menu-collapse u-custom-font" style="font-family: Almarai; font-weight: 800; font-size: 0.875rem;">

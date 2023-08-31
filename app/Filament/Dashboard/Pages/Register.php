@@ -24,6 +24,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
+use Illuminate\Support\Str;
+
 class Register extends Registerbase
 {
     public function register(): ?RegistrationResponse
@@ -48,17 +50,24 @@ class Register extends Registerbase
 
         $data = $this->form->getState();
 
-        $user = $this->getUserModel()::create($data);
 
+        $user = $this->getUserModel()::create($data);
+		
+		$this->sendOTP($user);
+	Notification::make()
+    ->title('رمز التفعيل بشكل مؤقت هو 123')
+    ->success()
+    ->send();	
         app()->bind(
             \Illuminate\Auth\Listeners\SendEmailVerificationNotification::class,
             \Filament\Listeners\Auth\SendEmailVerificationNotification::class,
         );
         event(new Registered($user));
 
+
         Filament::auth('dashboard')->login($user);
 
-        session()->regenerate();
+      session()->regenerate();  
 
         return app(RegistrationResponse::class);
     }
@@ -72,7 +81,18 @@ class Register extends Registerbase
             ->dehydrateStateUsing(fn ($state) => Hash::make($state));
     }
 	
-
+	public function sendOTP($user)
+	{
+		// إنشاء رمز OTP
+		$otp = '123';//rand(1000, 9999);
+		// حفظ الرمز في قاعدة البيانات
+		$user->otp = $otp;
+		$user->save();
+		// إرسال الرمز عبر الرسائل القصيرة
+		// هنا يمكنك استخدام خدمة الرسائل القصيرة التي قمت بإعدادها
+		// مثلاً إذا كنت تستخدم Twilio:
+		// $this->sendSMSTwilio($user->phone, $otp);
+	}
     protected function getPhoneFormComponent(): Component
     {
         return TextInput::make('phone')->tel()->label('رقم الجوال')

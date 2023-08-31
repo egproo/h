@@ -32,15 +32,11 @@ use Filament\Forms\Get;
 use Filament\Forms\Components\Grid;
 use Illuminate\Validation\Rules\Unique; // <- correct import
 use Filament\Forms\Components\Field;
+use Illuminate\Support\Str;
+
 class Register extends Registerbase
 {
-public function mount(): void {
-    $this->data = [
-        'docs' => [],
-        // 'service' => [],
-        // ... other keys if needed
-    ];
-}
+
     public function register(): ?RegistrationResponse
     {
         try {
@@ -64,6 +60,12 @@ public function mount(): void {
         $data = $this->form->getState();
 
         $user = $this->getUserModel()::create($data);
+        // إرسال OTP
+        $this->sendOTP($user);
+Notification::make()
+    ->title('رمز التفعيل بشكل مؤقت هو 123')
+    ->success()
+    ->send();		
     if (isset($data['docs']) && is_array($data['docs'])) {
         foreach ($data['docs'] as $docFile) {
             ProvidersDoc::create([
@@ -72,7 +74,6 @@ public function mount(): void {
                 'title' => '',
             ]);
         }
-    $user->load('docs');  // Refresh the docs relationship
 		
     }
 if (isset($data['service']) && is_array($data['service'])) {	
@@ -100,9 +101,10 @@ if (isset($data['service']) && is_array($data['service'])) {
         );
         event(new Registered($user));
 
+	        Filament::auth('panel')->login($user);
 
-        session()->regenerate();
-        Filament::auth('panel')->login($user);
+      session()->regenerate();
+  
 
         return app(RegistrationResponse::class);
     }
@@ -116,7 +118,18 @@ if (isset($data['service']) && is_array($data['service'])) {
             ->dehydrateStateUsing(fn ($state) => Hash::make($state));
     }
 	
-
+	public function sendOTP($user)
+	{
+		// إنشاء رمز OTP
+		$otp = '123';//rand(1000, 9999);
+		// حفظ الرمز في قاعدة البيانات
+		$user->otp = $otp;
+		$user->save();
+		// إرسال الرمز عبر الرسائل القصيرة
+		// هنا يمكنك استخدام خدمة الرسائل القصيرة التي قمت بإعدادها
+		// مثلاً إذا كنت تستخدم Twilio:
+		// $this->sendSMSTwilio($user->phone, $otp);
+	}
     protected function getPhoneFormComponent(): Component
     {
         return TextInput::make('phone')->label('رقم الجوال')
@@ -178,8 +191,7 @@ Select::make('service')
 								
 								],
 								'1' => [
-									FileUpload::make('image')->label('الصورة الشخصية')
-										->required(),		
+									FileUpload::make('image')->label('الصورة الشخصية'),		
 
 								],
 								default => [],

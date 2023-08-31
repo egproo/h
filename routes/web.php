@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\OTPController;
+use App\Http\Middleware\Authenticate;
+use App\Http\Controllers\LogoutControllerx;
 
 
 use Illuminate\Http\Request;
@@ -42,4 +45,12 @@ Route::get('/page/{page:slug}', function (Page $page) {
 Route::get('/service/{slug}', [ServiceController::class, 'show']);
 Route::get('/services', [ServiceController::class, 'all']);
 
-
+Route::prefix('dashboard')->group(function () {
+    Route::get('/verify', [OTPController::class, 'showdashboardVerifyForm'])->name('dashboard.verify.form');
+    Route::post('/verifyotp', [OTPController::class, 'dashboardverify'])->name('dashboard.verifyotp');
+});
+Route::prefix('panel')->group(function () {
+    Route::get('/verify', [OTPController::class, 'showpanelVerifyForm'])->name('panel.verify.form');
+    Route::post('/verifyotp', [OTPController::class, 'panelverify'])->name('panel.verifyotp');
+});
+Route::get('/logout', [LogoutControllerx::class, 'logout']);

@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Providers\Filament;
-
 use Filament\Http\Middleware\Authenticate;
+use App\Http\Middleware\OTPVerification;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Pages;
@@ -62,6 +62,7 @@ class PanelPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
+				OTPVerification::class,
             ])
 			->authGuard('panel')
 			->login(Login::class)->registration(Register::class);
