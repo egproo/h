@@ -29,72 +29,72 @@
         class="u-container-style u-custom-color-2 u-expanded-width u-group u-opacity u-opacity-30 u-radius-20 u-shape-round u-group-3">
         <div class="u-container-layout u-container-layout-3">
           <div class="u-align-left u-container-style u-group u-radius-15 u-shape-round u-white u-group-4"
-            data-href="{{ url('/')}}/virtual-services.php" title="استشارات عن بعد">
+            data-href="{{ url('/')}}/service/e-clinics" title="استشارات عن بعد">
             <div class="u-container-layout u-container-layout-4"><span class="u-file-icon u-icon u-icon-1"><img
                   src="{{ url('/')}}/images/10845964.png" alt=""></span>
               <h4 class="u-custom-font u-text u-text-default u-text-3">استشارات عن بعد</h4>
             </div>
           </div>
           <div class="u-align-left u-container-style u-group u-radius-15 u-shape-round u-white u-group-5"
-            data-href="{{ url('/')}}/analysis.php" title="التحاليل">
+            data-href="{{ url('/')}}/service/medical" title="التحاليل">
             <div class="u-container-layout u-container-layout-5"><span class="u-file-icon u-icon u-icon-2"><img
-                  src="images/6401477.png" alt=""></span>
+                  src="{{ url('/')}}/images/6401477.png" alt=""></span>
               <h4 class="u-custom-font u-text u-text-default u-text-4">خدمات التحليل</h4>
             </div>
           </div>
           <div class="u-align-center-xl u-container-style u-group u-radius-15 u-shape-round u-white u-group-6"
-            data-href="{{ url('/')}}/search-result.php" title="زيارة الطبيب">
+            data-href="{{ url('/')}}/service/medical-visit" title="زيارة الطبيب">
             <div class="u-container-layout u-container-layout-6"><span class="u-file-icon u-icon u-icon-3"><img
-                  src="images/6260300.png" alt=""></span>
+                  src="{{ url('/')}}/images/6260300.png" alt=""></span>
               <h4 class="u-custom-font u-text u-text-5">زيارة طبيب</h4>
             </div>
           </div>
           <div class="u-align-center-xl u-container-style u-group u-radius-15 u-shape-round u-white u-group-7"
-            data-href="{{ url('/')}}/nursing.php" title="خدمات التمريض">
+            data-href="{{ url('/')}}/service/nurse-visit" title="خدمات التمريض">
             <div class="u-container-layout u-container-layout-7"><span class="u-file-icon u-icon u-icon-4"><img
-                  src="images/5872821.png" alt=""></span>
+                  src="{{ url('/')}}/images/5872821.png" alt=""></span>
               <h4 class="u-custom-font u-text u-text-6">زيارة ممرض</h4>
             </div>
           </div>
           <div class="u-align-center-xl u-container-style u-group u-radius-15 u-shape-round u-white u-group-8"
-            data-href="{{ url('/')}}/search-result.php" title="محلول وريدي">
+            data-href="{{ url('/')}}/intravenous-solution" title="محلول وريدي">
             <div class="u-container-layout u-container-layout-8"><span class="u-file-icon u-icon u-icon-5"><img
-                  src="images/3003312.png" alt=""></span>
+                  src="{{ url('/')}}/images/3003312.png" alt=""></span>
               <h4 class="u-custom-font u-text u-text-7">محلول وريدي</h4>
             </div>
           </div>
           <div class="u-container-style u-group u-radius-15 u-shape-round u-white u-group-9"
-            data-href="{{ url('/')}}/search-result.php" title="فحص كورونا">
-            <div class="u-container-layout"><span class="u-file-icon u-icon u-icon-6"><img src="images/4190707.png"
+            data-href="{{ url('/')}}/covid-check" title="فحص كورونا">
+            <div class="u-container-layout"><span class="u-file-icon u-icon u-icon-6"><img src="{{ url('/')}}/images/4190707.png"
                   alt=""></span>
               <h4 class="u-custom-font u-text u-text-default u-text-8">فحص كروونا</h4>
             </div>
           </div>
           <div class="u-container-style u-group u-radius-15 u-shape-round u-white u-group-10"
-            data-href="{{ url('/')}}/search-result.php" title="قسم الأشعة">
-            <div class="u-container-layout"><span class="u-file-icon u-icon u-icon-7"><img src="images/9098623.png"
+            data-href="{{ url('/')}}/service/radiology" title="قسم الأشعة">
+            <div class="u-container-layout"><span class="u-file-icon u-icon u-icon-7"><img src="{{ url('/')}}/images/9098623.png"
                   alt=""></span>
               <h4 class="u-custom-font u-text u-text-default u-text-9">أشعة</h4>
             </div>
           </div>
           <div class="u-align-center u-container-style u-group u-radius-15 u-shape-round u-white u-group-11"
-            data-href="{{ url('/')}}/search-result.php" title="تطعيم طفل">
+            data-href="{{ url('/')}}/service/vaccinations" title="تطعيم طفل">
             <div class="u-container-layout u-container-layout-11"><span class="u-file-icon u-icon u-icon-8"><img
-                  src="images/2621722.png" alt=""></span>
+                  src="{{ url('/')}}/images/2621722.png" alt=""></span>
               <h4 class="u-custom-font u-text u-text-10">تطعيم طفل</h4>
             </div>
           </div>
           <div class="u-container-style u-group u-radius-15 u-shape-round u-white u-group-12"
-            data-href="{{ url('/')}}/search-result.php" title="قسم العلاج الطبيعي">
+            data-href="{{ url('/')}}/service/physiotherapist" title="قسم العلاج الطبيعي">
             <div class="u-container-layout u-container-layout-12"><span class="u-file-icon u-icon u-icon-9"><img
-                  src="images/8123360.png" alt=""></span>
+                  src="{{ url('/')}}/images/8123360.png" alt=""></span>
               <h4 class="u-custom-font u-text u-text-default u-text-11">العلاج الطبيعي</h4>
             </div>
           </div>
           <div class="u-container-style u-group u-radius-15 u-shape-round u-white u-group-13"
-            data-href="{{ url('/')}}/search-result.php" title="مرافق صحي">
+            data-href="{{ url('/')}}/service/attendant" title="مرافق صحي">
             <div class="u-container-layout u-container-layout-13"><span class="u-file-icon u-icon u-icon-10"><img
-                  src="images/4200528.png" alt=""></span>
+                  src="{{ url('/')}}/images/4200528.png" alt=""></span>
               <h4 class="u-align-left u-custom-font u-text u-text-default u-text-12">مرافق صحي</h4>
             </div>
           </div>
@@ -111,12 +111,12 @@
         class="u-container-style u-expanded-width u-group u-opacity u-opacity-70 u-radius-25 u-shape-round u-white u-group-15">
         <div class="u-container-layout u-container-layout-15">
           <h4 class="u-align-right u-custom-font u-text u-text-custom-color-3 u-text-14"><span
-              class="u-file-icon u-icon"><img src="images/10490235.png" alt=""></span>&nbsp;​مستشفى رقمية بها جميع
+              class="u-file-icon u-icon"><img src="{{ url('/')}}/images/10490235.png" alt=""></span>&nbsp;​مستشفى رقمية بها جميع
             التخصصات
           </h4>
           <img
             class="u-border-6 u-border-custom-color-2 u-border-no-left u-border-no-right u-border-no-top u-image u-image-round u-radius-15 u-image-1"
-            src="images/wallpaperflare.com_wallpaper1.jpg" alt="" data-image-width="2500" data-image-height="1478">
+            src="{{ url('/')}}/images/wallpaperflare.com_wallpaper1.jpg" alt="" data-image-width="2500" data-image-height="1478">
           <h4 class="u-align-right u-custom-font u-text u-text-custom-color-2 u-text-15"  style="direction: rtl;"> حريص يعمل مع مجموعة متنوعة من
             مقدمي الرعاية الصحية ، مما يضمن أن المرضى يحصلون على أفضل رعاية ممكنة.</h4>
           <h4 class="u-align-right u-custom-font u-text u-text-custom-color-2 u-text-16"  style="direction: rtl;"> نقدم في المنزل خدمات شاملة
@@ -132,10 +132,10 @@
     id="sec-2e83">
     <div class="u-clearfix u-sheet u-valign-middle-xl u-sheet-1">
       <h4 class="u-align-left-xl u-custom-font u-text u-text-custom-color-1 u-text-default u-text-1" > مجموعة خدمات طبية
-        متنوعة&nbsp;<span class="u-file-icon u-icon"><img src="images/11496723.png" alt=""></span>
+        متنوعة&nbsp;<span class="u-file-icon u-icon"><img src="{{ url('/')}}/images/11496723.png" alt=""></span>
       </h4>
       <img class="u-image u-image-round u-radius-15 u-image-1" alt="" data-image-width="2754" data-image-height="2496"
-        src="images/wallpaperflare.com_wallpaper2.jpg">
+        src="{{ url('/')}}/images/wallpaperflare.com_wallpaper2.jpg">
       <h4 class="u-align-right u-custom-font u-text u-text-custom-color-2 u-text-2" style="direction: rtl;"> يوفر موقع حريص مجموعة متنوعة من
         الخدمات الطبية الحديثة والمتقدمة للمرضى في العالم العربي وتشمل هذه الخدمات ما يلي:<br><i></i>تقديم خدمات الرعاية
         من قبل فرق مدربة بشكل جيد ووفقاً لأعلى معايير الصحة والسلامة.<br><i></i>فريق طبي ذو خبرة ومهنية
@@ -148,16 +148,16 @@
     id="sec-18a5">
     <div class="u-clearfix u-sheet u-sheet-1">
       <h4 class="u-align-center u-custom-font u-text u-text-custom-color-3 u-text-default u-text-1"><span
-          class="u-file-icon u-icon"><img src="images/2371329.png" alt=""></span>&nbsp;ماذا يقدم حريــــص
+          class="u-file-icon u-icon"><img src="{{ url('/')}}/images/2371329.png" alt=""></span>&nbsp;ماذا يقدم حريــــص
       </h4>
       <div class="u-container-align-center u-container-style u-group u-radius-20 u-shape-round u-white u-group-1">
         <div class="u-container-layout u-container-layout-1"><span
-            class="u-align-center u-file-icon u-icon u-icon-2"><img src="images/11126148.png" alt=""></span>
+            class="u-align-center u-file-icon u-icon u-icon-2"><img src="{{ url('/')}}/images/11126148.png" alt=""></span>
           <h3 class="u-align-center u-custom-font u-text u-text-custom-color-2 u-text-default u-text-2" style="direction: rtl;">كن حريصا علي
             نفسك وعلي عائلتك</h3>
           <h3 class="u-align-center u-custom-font u-text u-text-custom-color-2 u-text-default u-text-3" style="direction: rtl;"> نحن نتعاون مع
             مجموعة متنوعة من مقدمي الرعاية الصحية، مما يضمن أنك تحصل على أفضل رعاية ممكنة.</h3>
-          <a href="Home.php#sec-863c"
+          <a href="{{ url('/')}}/#sec-863c"
             class="u-align-center u-border-2 u-border-grey-75 u-btn u-btn-round u-button-style u-custom-color-2 u-custom-font u-hover-custom-color-1 u-radius-6 u-btn-1">أحصل
             علي الرعاية</a>
         </div>
@@ -167,11 +167,11 @@
   <section class="u-clearfix u-hidden-md u-hidden-sm u-hidden-xs u-white u-section-4" id="carousel_ea26">
     <div class="u-clearfix u-sheet u-sheet-1">
       <h4 class="u-align-center u-custom-font u-text u-text-custom-color-3 u-text-default u-text-1"><span
-          class="u-file-icon u-icon"><img src="images/2257282.png" alt=""></span>&nbsp;أنضم الي موفري الخدمات في حريص
+          class="u-file-icon u-icon"><img src="{{ url('/')}}/images/2257282.png" alt=""></span>&nbsp;أنضم الي موفري الخدمات في حريص
       </h4>
       <div class="u-align-center u-container-style u-group u-radius-25 u-shape-round u-white u-group-1">
         <div class="u-container-layout u-container-layout-1"><span
-            class="u-align-center u-file-icon u-icon u-icon-2"><img src="images/4326508.png" alt=""></span>
+            class="u-align-center u-file-icon u-icon u-icon-2"><img src="{{ url('/')}}/images/4326508.png" alt=""></span>
           <h3 class="u-custom-font u-text u-text-custom-color-2 u-text-default u-text-2">فرد</h3>
           <h3 class="u-align-center u-custom-font u-text u-text-custom-color-2 u-text-default u-text-3" style="direction: rtl;">يمكنك الانضمام
             الي مقدمي الخدمات في <span style="font-weight: 700;" class="u-text-custom-color-1">حريص</span> فقط بضع خطوات
@@ -185,7 +185,7 @@
       </div>
       <div class="u-container-style u-group u-radius-25 u-shape-round u-white u-group-2">
         <div class="u-container-layout u-container-layout-2"><span
-            class="u-align-center u-file-icon u-icon u-icon-3"><img src="images/609116.png" alt=""></span>
+            class="u-align-center u-file-icon u-icon u-icon-3"><img src="{{ url('/')}}/images/609116.png" alt=""></span>
           <h3 class="u-align-center u-custom-font u-text u-text-custom-color-2 u-text-default u-text-4">مؤسسة (أعمال)؟
           </h3>
           <h3 class="u-align-center u-custom-font u-text u-text-custom-color-2 u-text-default u-text-5" style="direction: rtl;">يمكنك الانضمام
@@ -202,14 +202,14 @@
   <section class="u-clearfix u-hidden-md u-hidden-sm u-hidden-xs u-white u-section-5" id="carousel_de2e">
     <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
       <h4 class="u-align-center u-custom-font u-text u-text-custom-color-3 u-text-1"><span
-          class="u-file-icon u-icon"><img src="images/10792960.png" alt=""></span>&nbsp;​أسئلة متكررة
+          class="u-file-icon u-icon"><img src="{{ url('/')}}/images/10792960.png" alt=""></span>&nbsp;​أسئلة متكررة
       </h4>
       <div class="u-accordion u-collapsed-by-default u-spacing-2 u-accordion-1">
         <div class="u-accordion-item">
           <a class="u-accordion-link u-active-palette-3-base u-border-2 u-border-active-white u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-border-palette-1-light-1 u-button-style u-custom-font u-hover-grey-5 u-text-active-custom-color-2 u-text-black u-text-hover-grey-75 u-white u-accordion-link-1"
             id="link-accordion-ef97" aria-controls="accordion-ef97" aria-selected="false">
             <span class="u-accordion-link-text">ماذا يميز حريص...؟</span><span
-              class="u-accordion-link-icon u-file-icon u-icon u-icon-2"><img src="images/10949014.png" alt=""></span>
+              class="u-accordion-link-icon u-file-icon u-icon u-icon-2"><img src="{{ url('/')}}/images/10949014.png" alt=""></span>
           </a>
           <div class="u-accordion-pane u-align-right u-container-style u-accordion-pane-1" id="accordion-ef97"
             aria-labelledby="link-accordion-ef97">
@@ -227,7 +227,7 @@
           <a class="u-accordion-link u-active-palette-3-base u-border-2 u-border-active-white u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-border-palette-1-light-1 u-button-style u-custom-font u-hover-grey-5 u-text-active-custom-color-2 u-text-black u-text-hover-grey-75 u-white u-accordion-link-2"
             id="link-accordion-60fa" aria-controls="accordion-60fa" aria-selected="false">
             <span class="u-accordion-link-text">ماذا في حالة الغي الطبيب الحجز ..؟</span><span
-              class="u-accordion-link-icon u-file-icon u-icon u-icon-3"><img src="images/10949014.png" alt=""></span>
+              class="u-accordion-link-icon u-file-icon u-icon u-icon-3"><img src="{{ url('/')}}/images/10949014.png" alt=""></span>
           </a>
           <div class="u-accordion-pane u-align-right u-container-style u-accordion-pane-2" id="accordion-60fa"
             aria-labelledby="link-accordion-60fa">
@@ -242,7 +242,7 @@
           <a class="u-accordion-link u-active-palette-3-base u-border-2 u-border-active-white u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-border-palette-1-light-1 u-button-style u-custom-font u-hover-grey-5 u-text-active-custom-color-2 u-text-black u-text-hover-grey-75 u-white u-accordion-link-3"
             id="link-accordion-1582" aria-controls="accordion-1582" aria-selected="false">
             <span class="u-accordion-link-text">هل يمكن ادارة الطلبات من الهاتف ..؟</span><span
-              class="u-accordion-link-icon u-file-icon u-icon u-icon-4"><img src="images/10949014.png" alt=""></span>
+              class="u-accordion-link-icon u-file-icon u-icon u-icon-4"><img src="{{ url('/')}}/images/10949014.png" alt=""></span>
           </a>
           <div class="u-accordion-pane u-align-right u-container-style u-accordion-pane-3" id="accordion-1582"
             aria-labelledby="link-accordion-1582">
@@ -256,13 +256,13 @@
           <a class="u-accordion-link u-active-palette-3-base u-border-2 u-border-active-white u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-border-palette-1-light-1 u-button-style u-custom-font u-hover-grey-5 u-text-active-custom-color-2 u-text-black u-text-hover-grey-75 u-white u-accordion-link-4"
             id="link-accordion-16ba" aria-controls="accordion-16ba" aria-selected="false">
             <span class="u-accordion-link-text">كيف اتواصل مع الدعم ...؟</span><span
-              class="u-accordion-link-icon u-file-icon u-icon u-icon-5"><img src="images/10949014.png" alt=""></span>
+              class="u-accordion-link-icon u-file-icon u-icon u-icon-5"><img src="{{ url('/')}}/images/10949014.png" alt=""></span>
           </a>
           <div class="u-accordion-pane u-align-right u-container-style u-accordion-pane-4" id="accordion-16ba"
             aria-labelledby="link-accordion-16ba">
             <div class="u-container-layout u-container-layout-4">
               <p class="u-custom-font u-text u-text-black u-text-5" style="direction: rtl;">يمكنك التواصل مع اقسام الدم الفني من <a
-                  href="contact.php"
+                  href="{{ url('/')}}/page/contact"
                   class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-1"
                   target="_blank">هنا</a>
               </p>
@@ -283,7 +283,7 @@
       </div>
       <div class="u-border-1 u-border-grey-75 u-container-style u-group u-radius-15 u-shape-round u-white u-group-1">
         <div class="u-container-layout u-container-layout-5"><span class="u-file-icon u-icon u-icon-6"><img
-              src="images/1321638.png" alt=""></span>
+              src="{{ url('/')}}/images/1321638.png" alt=""></span>
           <h3 class="u-align-center u-custom-font u-text u-text-custom-color-2 u-text-default u-text-6"> لمزيد من
             الإستفسارات</h3>
           <h3 class="u-align-center u-custom-font u-text u-text-custom-color-2 u-text-7" style="direction: rtl;">نحن في خدمتكم علي مدار 24 ساعة
@@ -298,13 +298,13 @@
   <section class="u-clearfix u-hidden-md u-hidden-sm u-hidden-xs u-white u-section-6" id="sec-f61f">
     <div class="u-clearfix u-sheet u-sheet-1">
       <h4 class="u-align-center u-custom-font u-text u-text-custom-color-3 u-text-default u-text-1"><span
-          class="u-file-icon u-icon"><img src="images/2645725.png" alt=""></span>&nbsp;تحميل تطبيق حريص
+          class="u-file-icon u-icon"><img src="{{ url('/')}}/images/2645725.png" alt=""></span>&nbsp;تحميل تطبيق حريص
       </h4>
       <div
         class="u-border-1 u-border-black u-container-style u-group u-hover-feature u-radius-12 u-shape-round u-white u-group-1">
         <div class="u-container-layout u-container-layout-1"><span
-            class="u-align-center u-file-icon u-icon u-icon-2"><img src="images/888857.png" alt=""></span>
-          <a href="app.php"
+            class="u-align-center u-file-icon u-icon u-icon-2"><img src="{{ url('/')}}/images/888857.png" alt=""></span>
+          <a href="{{ url('/')}}/page/app"
             class="u-align-center u-border-2 u-border-grey-75 u-btn u-btn-round u-button-style u-custom-color-4 u-custom-font u-hover-custom-color-2 u-radius-6 u-btn-1">أحصل
             علية الان</a>
         </div>
@@ -312,9 +312,9 @@
       <div
         class="u-black u-border-5 u-border-white u-container-style u-group u-hover-feature u-radius-12 u-shape-round u-group-2">
         <div class="u-container-layout u-container-layout-2"><span
-            class="u-align-center u-file-icon u-icon u-text-white u-icon-3"><img src="images/747-e7c1157e.png"
+            class="u-align-center u-file-icon u-icon u-text-white u-icon-3"><img src="{{ url('/')}}/images/747-e7c1157e.png"
               alt=""></span>
-          <a href="app.php"
+          <a href="{{ url('/')}}/page/app"
             class="u-align-center u-border-2 u-border-grey-75 u-btn u-btn-round u-button-style u-custom-font u-hover-custom-color-2 u-radius-6 u-white u-btn-2">أحصل
             علية الان</a>
         </div>
@@ -334,7 +334,7 @@
       <div
         class="u-align-right-sm u-align-right-xs u-border-1 u-border-grey-30 u-container-style u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-group u-radius-12 u-shape-round u-white u-group-2">
         <div class="u-container-layout u-container-layout-2"><span class="u-file-icon u-icon u-icon-1"><img
-              src="images/7212799.png" alt=""></span>
+              src="{{ url('/')}}/images/7212799.png" alt=""></span>
           <h4 class="u-custom-font u-text u-text-default-md u-text-2" style="direction: rtl;">سجل الدخول كي تتمكن من متابعة سجلك الصحي , يتم حفظ
             بياناتك في قواعد بيانات مشفرة , لا يمكن سوي للك والطبيب الاطلاع عليها</h4>
         </div>
@@ -348,7 +348,7 @@
         class="u-align-left-md u-align-left-sm u-border-2 u-border-grey-75 u-border-no-bottom u-border-no-left u-border-no-top u-container-style u-custom-color-7 u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-group u-radius-15 u-shape-round u-group-3"
         data-href="{{ url('/')}}/virtual-services.php" title="خدمات افتراضية">
         <div class="u-container-layout u-container-layout-3"><span class="u-file-icon u-icon u-icon-2"><img
-              src="images/9553959.png" alt=""></span>
+              src="{{ url('/')}}/images/9553959.png" alt=""></span>
           <h6 class="u-custom-font u-text u-text-default-md u-text-default-sm u-text-default-xs u-text-5">استشارات عن
             بعد</h6>
         </div>
@@ -357,7 +357,7 @@
         class="u-align-left-md u-align-left-sm u-border-2 u-border-grey-75 u-border-no-bottom u-border-no-left u-border-no-top u-container-style u-custom-color-7 u-group u-radius-15 u-shape-round u-group-4"
         data-href="{{ url('/')}}/virtual-services.php" title="استشارات افتراضية">
         <div class="u-container-layout u-container-layout-4"><span class="u-file-icon u-icon u-icon-3"><img
-              src="images/9553959.png" alt=""></span>
+              src="{{ url('/')}}/images/9553959.png" alt=""></span>
           <h6 class="u-custom-font u-text u-text-default-md u-text-default-sm u-text-6">استشارات افتراضية</h6>
         </div>
       </div>
@@ -365,7 +365,7 @@
         class="u-border-2 u-border-grey-75 u-border-no-bottom u-border-no-left u-border-no-top u-container-style u-custom-color-7 u-group u-radius-15 u-shape-round u-group-5"
         data-href="{{ url('/')}}/search-result.php" title="search-result">
         <div class="u-container-layout u-container-layout-5"><span class="u-file-icon u-icon u-icon-4"><img
-              src="images/3567474.png" alt=""></span>
+              src="{{ url('/')}}/images/3567474.png" alt=""></span>
           <h6
             class="u-align-center-md u-align-center-sm u-align-center-xs u-custom-font u-text u-text-default-md u-text-default-sm u-text-default-xs u-text-7">
             مرافق صحي</h6>
@@ -375,7 +375,7 @@
         class="u-align-left-md u-align-left-sm u-border-2 u-border-grey-75 u-border-no-bottom u-border-no-left u-border-no-top u-container-style u-custom-color-7 u-group u-radius-15 u-shape-round u-group-6"
         data-href="{{ url('/')}}/analysis.php" title="التحاليل">
         <div class="u-container-layout u-container-layout-6"><span class="u-file-icon u-icon u-icon-5"><img
-              src="images/7918332.png" alt=""></span>
+              src="{{ url('/')}}/images/7918332.png" alt=""></span>
           <h6 class="u-custom-font u-text u-text-default-md u-text-default-sm u-text-default-xs u-text-8">خدمات التحليل
           </h6>
         </div>
@@ -384,7 +384,7 @@
         class="u-border-2 u-border-grey-75 u-border-no-bottom u-border-no-left u-border-no-top u-container-style u-custom-color-7 u-group u-radius-15 u-shape-round u-group-7"
         data-href="{{ url('/')}}/search-result.php" title="قسم العلاج الطبيعي">
         <div class="u-container-layout u-container-layout-7"><span class="u-file-icon u-icon u-icon-6"><img
-              src="images/9442145.png" alt=""></span>
+              src="{{ url('/')}}/images/9442145.png" alt=""></span>
           <h6
             class="u-align-center-md u-align-center-sm u-align-center-xs u-custom-font u-text u-text-default-md u-text-default-sm u-text-default-xs u-text-9">
             علاج طبيعي</h6>
@@ -394,7 +394,7 @@
         class="u-border-2 u-border-grey-75 u-border-no-bottom u-border-no-left u-border-no-top u-container-style u-custom-color-7 u-group u-radius-15 u-shape-round u-group-8"
         data-href="{{ url('/')}}/search-result.php" title="تطعيم طفل">
         <div class="u-container-layout u-container-layout-8"><span class="u-file-icon u-icon u-icon-7"><img
-              src="images/2621722.png" alt=""></span>
+              src="{{ url('/')}}/images/2621722.png" alt=""></span>
           <h6
             class="u-align-center-md u-align-center-sm u-align-center-xs u-custom-font u-text u-text-default-md u-text-default-sm u-text-default-xs u-text-10">
             التطعيمات</h6>
@@ -404,7 +404,7 @@
         class="u-border-2 u-border-grey-75 u-border-no-bottom u-border-no-left u-border-no-top u-container-style u-custom-color-7 u-group u-radius-15 u-shape-round u-group-9"
         data-href="{{ url('/')}}/search-result.php" title="قسم الأشعة">
         <div class="u-container-layout u-container-layout-9"><span class="u-file-icon u-icon u-icon-8"><img
-              src="images/10476427.png" alt=""></span>
+              src="{{ url('/')}}/images/10476427.png" alt=""></span>
           <h6
             class="u-align-center-md u-align-center-sm u-align-center-xs u-custom-font u-text u-text-default-md u-text-default-sm u-text-default-xs u-text-11">
             الأشعة</h6>
@@ -414,7 +414,7 @@
         class="u-border-2 u-border-grey-75 u-border-no-bottom u-border-no-left u-border-no-top u-container-style u-custom-color-7 u-group u-radius-15 u-shape-round u-group-10"
         data-href="{{ url('/')}}/search-result.php" title="فحص كورونا">
         <div class="u-container-layout u-container-layout-10"><span class="u-file-icon u-icon u-icon-9"><img
-              src="images/4190707.png" alt=""></span>
+              src="{{ url('/')}}/images/4190707.png" alt=""></span>
           <h6
             class="u-align-center-md u-align-center-sm u-align-center-xs u-custom-font u-text u-text-default-md u-text-default-sm u-text-default-xs u-text-12">
             فحص كوفيد 19</h6>
@@ -424,7 +424,7 @@
         class="u-align-left-md u-align-left-sm u-border-2 u-border-grey-75 u-border-no-bottom u-border-no-left u-border-no-top u-container-style u-custom-color-7 u-group u-radius-15 u-shape-round u-group-11"
         data-href="{{ url('/')}}/search-result.php" title="زيارة الطبيب المنزلية">
         <div class="u-container-layout u-container-layout-11"><span class="u-file-icon u-icon u-icon-10"><img
-              src="images/6401060.png" alt=""></span>
+              src="{{ url('/')}}/images/6401060.png" alt=""></span>
           <h6
             class="u-align-center-xs u-custom-font u-text u-text-default-md u-text-default-sm u-text-default-xs u-text-13">
             زيارة الطبيب</h6>
@@ -434,7 +434,7 @@
         class="u-align-left-md u-align-left-sm u-border-2 u-border-grey-75 u-border-no-bottom u-border-no-left u-border-no-top u-container-style u-custom-color-7 u-group u-radius-15 u-shape-round u-group-12"
         data-href="{{ url('/')}}/nursing.php" title="قسم خدمات التمريض">
         <div class="u-container-layout u-container-layout-12"><span class="u-file-icon u-icon u-icon-11"><img
-              src="images/9842273.png" alt=""></span>
+              src="{{ url('/')}}/images/9842273.png" alt=""></span>
           <h6 class="u-custom-font u-text u-text-default-md u-text-default-sm u-text-default-xs u-text-14">زيارة ممرض
           </h6>
         </div>
@@ -443,7 +443,7 @@
         class="u-border-2 u-border-grey-75 u-border-no-bottom u-border-no-left u-border-no-top u-container-style u-custom-color-7 u-group u-radius-15 u-shape-round u-group-13"
         data-href="{{ url('/')}}/search-result.php" title="محلول وريدي">
         <div class="u-container-layout u-container-layout-13"><span class="u-file-icon u-icon u-icon-12"><img
-              src="images/3974935.png" alt=""></span>
+              src="{{ url('/')}}/images/3974935.png" alt=""></span>
           <h6
             class="u-align-center-md u-align-center-sm u-align-center-xs u-custom-font u-text u-text-default-md u-text-default-sm u-text-default-xs u-text-15">
             محلول وريدي</h6>
@@ -461,18 +461,18 @@
             خريطة الموقع</h4>
         </div>
       </div>
-      <div class="u-container-style u-group u-radius-12 u-shape-round u-white u-group-2" data-href="index.php#sec-7b5e">
+      <div class="u-container-style u-group u-radius-12 u-shape-round u-white u-group-2" data-href="{{ url('/')}}/#sec-7b5e">
         <div class="u-container-layout"><span
             class="u-align-center-md u-align-center-sm u-align-center-xs u-file-icon u-icon u-icon-1"><img
-              src="images/179571.png" alt=""></span>
+              src="{{ url('/')}}/images/179571.png" alt=""></span>
           <h5 class="u-custom-font u-text u-text-default-md u-text-default-sm u-text-default-xs u-text-2">خدماتنا</h5>
         </div>
       </div>
-      <div class="u-container-style u-group u-radius-12 u-shape-round u-white u-group-3" data-href="app.php"
+      <div class="u-container-style u-group u-radius-12 u-shape-round u-white u-group-3" data-href="{{ url('/')}}/page/app"
         title="app">
         <div class="u-container-layout u-container-layout-3"><span
             class="u-align-center-md u-align-center-sm u-align-center-xs u-file-icon u-icon u-icon-2"><img
-              src="images/6187807.png" alt=""></span>
+              src="{{ url('/')}}/images/6187807.png" alt=""></span>
           <h5 class="u-align-center-md u-align-center-sm u-align-center-xs u-custom-font u-text u-text-3">تطبيقاتنا</h5>
         </div>
       </div>
@@ -480,7 +480,7 @@
         data-href="#" title="تسجيل الدخول">
         <div class="u-container-layout"><span
             class="u-align-center-md u-align-center-sm u-align-center-xs u-file-icon u-icon u-icon-3"><img
-              src="images/6460789.png" alt=""></span>
+              src="{{ url('/')}}/images/6460789.png" alt=""></span>
           <h5 class="u-custom-font u-text u-text-default-md u-text-default-sm u-text-default-xs u-text-4">سجل الدخول
           </h5>
         </div>
@@ -489,7 +489,7 @@
         title="اسئلة متكررة">
         <div class="u-container-layout"><span
             class="u-align-center-md u-align-center-sm u-align-center-xs u-file-icon u-icon u-icon-4"><img
-              src="images/942751.png" alt=""></span>
+              src="{{ url('/')}}/images/942751.png" alt=""></span>
           <h5
             class="u-align-center-sm u-align-center-xs u-custom-font u-text u-text-default-md u-text-default-sm u-text-default-xs u-text-5">
             اسئلة متكررة</h5>
@@ -499,27 +499,27 @@
         data-href="#" title="انضم كموفر خدمة">
         <div class="u-container-layout u-container-layout-6"><span
             class="u-align-center-md u-align-center-sm u-align-center-xs u-file-icon u-icon u-icon-5"><img
-              src="images/2448634.png" alt=""></span>
+              src="{{ url('/')}}/images/2448634.png" alt=""></span>
           <h5
             class="u-align-center-xs u-custom-font u-text u-text-default-md u-text-default-sm u-text-default-xs u-text-6">
             انضم كموفر خدمة</h5>
         </div>
       </div>
-      <div class="u-container-style u-group u-radius-12 u-shape-round u-white u-group-7" data-href="terms.php"
+      <div class="u-container-style u-group u-radius-12 u-shape-round u-white u-group-7" data-href="{{ url('/')}}/page/policy"
         title="سياسة الخصوصية">
         <div class="u-container-layout"><span
             class="u-align-center-md u-align-center-sm u-align-center-xs u-file-icon u-icon u-icon-6"><img
-              src="images/10348844.png" alt=""></span>
+              src="{{ url('/')}}/images/10348844.png" alt=""></span>
           <h5
             class="u-align-center-xs u-custom-font u-text u-text-default-md u-text-default-sm u-text-default-xs u-text-7">
             سياسة الخصوصية</h5>
         </div>
       </div>
       <div class="u-align-left-md u-container-style u-group u-radius-12 u-shape-round u-white u-group-8"
-        data-href="About.php" title="من نحن">
+        data-href="{{ url('/')}}/page/about" title="من نحن">
         <div class="u-container-layout u-container-layout-8"><span
             class="u-align-center-md u-align-center-sm u-align-center-xs u-file-icon u-icon u-icon-7"><img
-              src="images/4890237.png" alt=""></span>
+              src="{{ url('/')}}/images/4890237.png" alt=""></span>
           <h5 class="u-custom-font u-text u-text-default-md u-text-default-sm u-text-default-xs u-text-8">من نحن</h5>
         </div>
       </div>
@@ -527,7 +527,7 @@
         title="تواصل معنا">
         <div class="u-container-layout"><span
             class="u-align-center-md u-align-center-sm u-align-center-xs u-file-icon u-icon u-icon-8"><img
-              src="images/2487861.png" alt=""></span>
+              src="{{ url('/')}}/images/2487861.png" alt=""></span>
           <h5 class="u-custom-font u-text u-text-default-md u-text-default-sm u-text-default-xs u-text-9">تواصل معنا
           </h5>
         </div>
