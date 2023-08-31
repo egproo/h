@@ -1,5 +1,5 @@
 <x-filament-panels::page>
-@livewire('notifications')
+@livewire('database-notifications')
 @if($fullServiceName != '')
 @if(session('message'))
     <div class="alert alert-success">
@@ -27,7 +27,13 @@ input {
 	line-height:40px !important;
 }
 label,button{font-family: 'Almarai' !important;}
+.dates-list {
+    overflow-x: auto;
+    white-space: nowrap;
+}
 </style>	
+
+	
 <div style="margin-top:-50px">
     <div class="flex items-center space-x-4 mb-4">
         <div class="w-1/4">
@@ -52,25 +58,59 @@ label,button{font-family: 'Almarai' !important;}
             </div>
         </div>
 <div class="bg-white p-4 rounded shadow-md mb-6">
-    <h3 class="text-lg font-semibold mb-2">اختر التاريخ:</h3>
-    <input type="date" wire:model="desiredDate" wire:change="updateSessions" min="{{ now()->toDateString() }}" max="{{ $maxDate }}" class="border rounded p-2">
+    <h3 class="text-lg font-semibold mb-2">حدد تاريخ الحجز :</h3>
+	<div class="dates-list flex overflow-x-auto">
+    @foreach($dates as $date)
+	    @php
+		 \Carbon\Carbon::setLocale('ar');
+			$daysInArabic = [
+				'Sunday' => 'الأحد',
+				'Monday' => 'الاثنين',
+				'Tuesday' => 'الثلاثاء',
+				'Wednesday' => 'الأربعاء',
+				'Thursday' => 'الخميس',
+				'Friday' => 'الجمعة',
+				'Saturday' => 'السبت',
+			];		
+          $dayNameEnglish = \Carbon\Carbon::parse($date)->format('l');
+        @endphp
+        <button style="margin-inline-end: 20px; padding: 10px; font-weight: 900; border-radius: 10px; font-size: 20px;"  wire:click="selectDate('{{ $date }}')" class="hover:bg-red-800 hover:text-white p-4 mx-3 border rounded {{ $sDate == $date ? 'bg-primary-500 text-white' : '' }}">
+		<p>{{ $daysInArabic[$dayNameEnglish] }}</p>
+		
+        {{ \Carbon\Carbon::parse($date)->format('d-m') }}
+		</button>
+    @endforeach
+    </div>
+    <div class="bg-white p-4 rounded shadow-md mb-6">
+    <h3 class="text-lg font-semibold mb-2">أو اختر التاريخ :</h3>
+       <input style="
+    min-width: 239px;
+    max-width: 100%;
+    height: 60px;
+    font-size: 20px;
+" type="date" wire:model="desiredDate" wire:change="updateSessions" min="{{ now()->toDateString() }}" max="{{ $maxDate }}" class="border rounded p-2">
+    </div>
 </div>
 <div class="bg-white p-4 rounded shadow-md mb-6">
             <h3 class="text-lg font-semibold mb-2">تحديد الموعد المناسب :</h3>
-    <div class="flex flex-wrap">
-        @foreach($sessionxs as $session)
-		@php
-			$myDateTime = $session->start_time;
-			$formattedTime = \Carbon\Carbon::parse($myDateTime)->format('H:i');
-		@endphp		
+<div class="flex flex-wrap">
+    @foreach($sessionxs as $session)
+        @php
+            $myDateTime = $session->start_time;
+            $hour = \Carbon\Carbon::parse($myDateTime)->format('H');
+            $formattedTime = \Carbon\Carbon::parse($myDateTime)->format('g:i');
+            $label = $hour >= 12 ? 'مساءً' : 'صباحاً';
+        @endphp		
         <button 
             wire:click="$set('session_id', {{ $session->id }})" 
-            class="bg-gray-100 text-black px-5 py-2 m-1 rounded hover:bg-gray-00 {{ $session_id == $session->id ? 'bg-gray-600 text-white' : '' }}" 
-            style="margin-inline-end: 20px; padding: 5px; font-weight: 900; border-radius: 10px; font-size: 20px;">
-            {{ $formattedTime }}
+            class="bg-gray-100 text-black  p-4 mx-3 border rounded {{ $session_id == $session->id ? 'bg-primary-500 text-white' : '' }}" 
+            style="margin-inline-end: 20px; padding: 10px; font-weight: 900; border-radius: 10px; font-size: 20px;">
+            {{ $formattedTime }} 
+			<p>{{ $label }}</p>
         </button>
-        @endforeach
-    </div>
+    @endforeach
+</div>
+
 </div>
 
 <div class="mb-4">
@@ -81,6 +121,34 @@ label,button{font-family: 'Almarai' !important;}
             <h3 class="text-lg font-semibold mb-2">الدفع الإلكتروني</h3>
 <div class="mysr-form"></div>
 <script>
+		var servicename = '{{$service->name}}';
+		var servicePrice = '{{$servicePrice}}';
+		var total = servicePrice * 100;
+		  Moyasar.init({
+			element: '.mysr-form',
+			amount: total,
+			language: 'ar',
+			currency: 'SAR',
+			description: 'قيمة خدمة: ' + servicename,
+			publishable_api_key: 'pk_test_SKXGyT96T35GUGyLNSnp3JuKk1ZZhXN68die24HD',
+			callback_url: '{{url('/')}}/thanks',
+			methods: ['creditcard','stcpay','applepay'],
+			apple_pay: {
+				country: 'SA',
+				label: 'حريص',
+				validate_merchant_url: 'https://api.moyasar.com/v1/applepay/initiate',
+			},
+			  on_completed: function (payment) {
+				return new Promise(function (resolve, reject) {
+					// savePayment is just an example, your usage may vary.
+					if (savePayment(payment)) {
+						resolve({});
+					} else {
+						reject();
+					}
+				});
+			  },			
+		  });
 document.addEventListener("DOMContentLoaded", function() {
     // استمع لحدث النقر على زر الدفع
     document.querySelector("#mysr-form-form-el > div:nth-child(2) > div > form > button").addEventListener("click", function(e) {
@@ -90,19 +158,7 @@ document.addEventListener("DOMContentLoaded", function() {
         window.livewire.emit('bookService');
 
 
-		var servicename = '{{$service->name}}';
-		var servicePrice = '{{$servicePrice}}';
-		var total = servicePrice * 100;
-		  Moyasar.init({
-			element: '.mysr-form',
-			amount: total,
-			currency: 'SAR',
-			description: 'قيمة خدمة: ' + total,
-			publishable_api_key: 'pk_test_SKXGyT96T35GUGyLNSnp3JuKk1ZZhXN68die24HD',
-			callback_url: '{{url('/')}}/thanks',
-			supported_networks: ['mada'],
-			methods: ['creditcard']
-		  });
+
 
     });
 });

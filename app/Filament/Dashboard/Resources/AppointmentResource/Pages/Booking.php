@@ -21,14 +21,16 @@ class Booking extends Page
     public $services_id;
     public $session_id;
     public $provider_id;
+    public $appointment_id;	
     public $notes;    
-    public $desiredDate; // تاريخ الموعد المطلوب
-    public $sessions = []; // الجلسات المتاحة بناءً على التاريخ المختار
+    public $desiredDate;
+    public $sDate;	
+    public $sessions = [];
     public $maxDate;
     public $today;
 
     protected static string $resource = AppointmentResource::class;
-    protected $listeners = ['bookService' => 'bookService'];
+    protected $listeners = ['bookService' => 'bookService', 'savePayment' => 'savePayment'];
 
     public function getBreadcrumb(): ?string
     {
@@ -61,8 +63,8 @@ class Booking extends Page
             ->get();
     }
 
-public function bookService()
-{
+	public function bookService()
+	{
     // 1. Validate the input data
     $validatedData = $this->validate([
         'services_id' => 'required|exists:services,id',
@@ -72,7 +74,19 @@ public function bookService()
 
     // 2. Get the current user
     $userId = Filament::auth()->user()->id;
+    $user = User::find($userId);
+	if (empty($this->desiredDate)) {
+		$message = 'يجب اختيار تاريخ الحجز.';
 
+		Notification::make()
+			->title($message)
+			->sendToDatabase($user);
+		Notification::make()
+			->title($message)	
+						->danger()
+						->send();	
+	  return;
+	}
     // 3. Check session availability
     $existingAppointment = Appointment::where('services_session_id', $this->session_id)
         ->whereDate('appointment_date', $this->desiredDate)
@@ -92,6 +106,8 @@ public function bookService()
     $appointment->appointment_date = $this->desiredDate;
     $appointment->status = 'pending';
     $appointment->save();
+	
+	$this->appointment_id = $appointment->save();
 
     session()->flash('message', 'Please complete the payment process.');
 }
@@ -122,7 +138,10 @@ public function bookService()
             // جلب سعر الخدمة للمقدم المعني
             $servicePrice = $service->activeProviders()->where('provider_id', $this->provider_id)->first()->pivot->price ?? null;
             $sessionxs = ServicesSession::where('services_id', $this->services_id)->where('provider_id', $this->provider_id)->get(); 
-
+			$dates = collect(range(0, 6))->map(function ($days) {
+				return now()->addDays($days)->format('Y-m-d');
+			});	
+			
             return [
                 'service' => $service,
                 'provider' => $provider,
@@ -130,12 +149,16 @@ public function bookService()
                 'fullServiceName' => $fullServiceName,
                 'servicePrice' => $servicePrice,
                 'today' => $this->today,
-                'maxDate' => $this->maxDate,        
+                'maxDate' => $this->maxDate,
+				'dates' => $dates,				
             ];
         } else {
-            $today = now();
+            $today = now()->addDays(0)->format('Y-m-d');
             $this->today = $today;    
-            $this->maxDate = $today->addMonths(3)->endOfMonth()->toDateString();
+            $this->maxDate = $today->addMonths(3)->endOfMonth()->toDateString()->format('Y-m-d');
+			$dates = collect(range(0, 6))->map(function ($days) {
+				return now()->addDays($days)->format('Y-m-d');
+			});	
             return [
                 'service' => [],
                 'provider' => [],
@@ -143,9 +166,26 @@ public function bookService()
                 'fullServiceName' => '',
                 'servicePrice' => '',
                 'today' => $this->today,
-                'maxDate' => $this->maxDate,            
+                'maxDate' => $this->maxDate,
+				'dates' => $dates,
             ];    
         }
     }
+	public function selectDate($selectedDate)
+	{
+		$this->desiredDate = $selectedDate;
+		$this->sDate = $selectedDate;
+		$this->updateSessions();
+	}	
 
+	public function savePayment($payment)
+	{
+		// اختيار اذا ما تم الدفع بنجاح
+		// تغيير الحالة في جدول payment_attempts is_successful => 1 
+		// يتم ارسال اشعار لموفر الخدمة بوجود حجز جديد + يتم ارسال رسالة sms
+		// اذا تعذر الدفع او اي شيء اخر يتم حذف الموعد من جدول appointments عن طريق $this->appointment_id
+		// يتم ارسال اشعار مثل (empty($this->desiredDate)) حيث يتم ارسال اشعارين سواء في حالة الدفع الناجح او الفاشل
+		// التدقيق هل نحتاج شيء اخر
+	}
+	
 }
