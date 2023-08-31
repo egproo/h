@@ -1,28 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'موقعي')</title>
-</head>
-<body class="bg-gray-100 text-gray-800">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
 
-    <nav class="bg-blue-600 text-white p-4">
-        <div class="container mx-auto">
-            <a href="{{ url('/') }}" class="text-2xl font-bold">حريص</a>
-            <!-- يمكنك إضافة روابط أخرى هنا -->
-        </div>
-    </nav>
+        <meta name="application-name" content="{{ config('app.name') }}">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <div class="container mx-auto mt-5 p-4">
-        @yield('content')
-    </div>
+        <title>{{ config('app.name') }}</title>
 
-    <footer class="bg-blue-600 text-white p-4 mt-5">
-        <div class="container mx-auto text-center">
-            جميع الحقوق محفوظة © 2023
-        </div>
-    </footer>
+        <style>[x-cloak] { display: none !important; }</style>
+        @livewireStyles
+        @filamentStyles
+        @vite('resources/css/app.css')
+    </head>
 
-</body>
+    <body class="antialiased">
+        {{ $slot }}
+
+        @livewire('notifications')
+        @livewire('notifications-database')
+        @livewireScripts
+        @filamentScripts
+        @vite('resources/js/app.js')
+        <script src="//unpkg.com/alpinejs" defer></script>
+    </body>
 </html>
