@@ -20,6 +20,7 @@
         <div class="u-custom-menu u-nav-container">
           <ul class="u-custom-font u-nav u-unstyled u-nav-1">
             <!--انضم كموفر خدمات-->
+			@guest
             <li class="u-nav-item"><a class="u-button-style u-nav-link" style="padding: 10px 24px;">انضم كموفر خدمة</a>
               <div class="u-nav-popup">
                 <ul class="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10">
@@ -33,6 +34,7 @@
                 </ul>
               </div>
             </li>
+			@endguest
             <li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{ url('/') }}/page/policy"
                 style="padding: 10px 24px;">سياسة الخصوصية</a>
             </li>
