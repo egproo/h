@@ -105,9 +105,9 @@ class Booking extends Page
     $appointment->notes = $this->notes;
     $appointment->appointment_date = $this->desiredDate;
     $appointment->status = 'pending';
-    $appointment->save();
+    $appointment_id = $appointment->save();
 	
-	$this->appointment_id = $appointment->save();
+	$this->appointment_id = $appointment_id;
 
     session()->flash('message', 'Please complete the payment process.');
 }
