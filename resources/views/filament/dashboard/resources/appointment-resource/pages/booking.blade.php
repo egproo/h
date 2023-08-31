@@ -81,19 +81,32 @@ label,button{font-family: 'Almarai' !important;}
             <h3 class="text-lg font-semibold mb-2">الدفع الإلكتروني</h3>
 <div class="mysr-form"></div>
 <script>
-var servicename = '{{$service->name}}';
-var servicePrice = '{{$servicePrice}}';
-var total = servicePrice * 100;
-  Moyasar.init({
-    element: '.mysr-form',
-    amount: total,
-    currency: 'SAR',
-    description: 'قيمة خدمة: ' + total,
-    publishable_api_key: 'pk_test_SKXGyT96T35GUGyLNSnp3JuKk1ZZhXN68die24HD',
-    callback_url: '{{url('/')}}/thanks',
-    supported_networks: ['mada'],
-    methods: ['creditcard']
-  });
+document.addEventListener("DOMContentLoaded", function() {
+    // استمع لحدث النقر على زر الدفع
+    document.querySelector("#mysr-form-form-el > div:nth-child(2) > div > form > button").addEventListener("click", function(e) {
+        e.preventDefault(); // منع الافتراضي
+
+        // استدعاء دالة Livewire
+        window.livewire.emit('bookService');
+
+
+		var servicename = '{{$service->name}}';
+		var servicePrice = '{{$servicePrice}}';
+		var total = servicePrice * 100;
+		  Moyasar.init({
+			element: '.mysr-form',
+			amount: total,
+			currency: 'SAR',
+			description: 'قيمة خدمة: ' + total,
+			publishable_api_key: 'pk_test_SKXGyT96T35GUGyLNSnp3JuKk1ZZhXN68die24HD',
+			callback_url: '{{url('/')}}/thanks',
+			supported_networks: ['mada'],
+			methods: ['creditcard']
+		  });
+
+    });
+});
+
 </script>
 
         </div>

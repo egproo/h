@@ -28,6 +28,7 @@ class Booking extends Page
     public $today;
 
     protected static string $resource = AppointmentResource::class;
+    protected $listeners = ['bookService' => 'bookService'];
 
     public function getBreadcrumb(): ?string
     {
@@ -147,9 +148,4 @@ public function bookService()
         }
     }
 
-    private function sendNotification($user, $message)
-    {
-        // Using Filament's broadcast notifications
-        Notification::send($user, new BroadcastMessage(['message' => $message]));
-    }
 }
