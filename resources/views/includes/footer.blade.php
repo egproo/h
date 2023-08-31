@@ -1,6 +1,10 @@
 
-<footer class="footer footer-static footer-light">
-    <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2">
-      <span class="d-block d-md-inline-block">Copyright &copy; {{date('Y')}} <a class="text-bold-800 black darken-2" href=""
-    </p>
+<footer class="footer footer-static footer-light text-center">
+  <section class="u-clearfix">
+     <div class="u-clearfix u-sheet u-sheet-1" style="font-family: 'Almarai';text-align: center;font-weight: 900;">
+ Copyright &copy; {{date('Y')}}
+    </div>
+  </section>
 </footer>
+
+
