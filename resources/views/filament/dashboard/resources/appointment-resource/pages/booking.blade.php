@@ -51,7 +51,7 @@ label,button{font-family: 'Almarai' !important;}
         </div>
     </div>
 
-    <form wire:submit.prevent="bookService">
+    <form wire:submit="bookService">
         <div class="bg-white p-4 rounded shadow-md mb-6">
             <div class="flex justify-between items-center">
                 <div>
@@ -94,7 +94,7 @@ label,button{font-family: 'Almarai' !important;}
     max-width: 100%;
     height: 60px;
     font-size: 20px;
-" type="date" wire:model="desiredDate" wire:change="updateSessions" min="{{ now()->toDateString() }}" max="{{ $maxDate }}" class="border rounded p-2">
+" type="date" wire:model.live="desiredDate" wire:change="updateSessions" min="{{ now()->toDateString() }}" max="{{ $maxDate }}" class="border rounded p-2">
     </div>
 </div>
 <div class="bg-white p-4 rounded shadow-md mb-6">
@@ -121,7 +121,7 @@ label,button{font-family: 'Almarai' !important;}
 
 <div class="mb-4">
     <label for="notes" class="block text-sm font-medium text-gray-700">رسالتك  لــ : {{ $provider->name }} </label>
-    <textarea wire:model="notes" id="notes" name="notes" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border-gray-300 rounded-md"></textarea>
+    <textarea wire:model.live="notes" id="notes" name="notes" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border-gray-300 rounded-md"></textarea>
 </div>
         <div class="bg-white p-4 rounded shadow-md mb-6">
             <h3 class="text-lg font-semibold mb-2">الدفع الإلكتروني</h3>

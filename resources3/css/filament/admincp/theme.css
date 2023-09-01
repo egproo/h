@@ -1,0 +1,7 @@
+@import '../../../../vendor/filament/filament/resources/css/theme.css';
+
+@config './tailwind.config.js';
+aside nav ul li ul li a svg {
+    width: 100px; /* تحديد عرض SVG */
+    height: 100px; /* تحديد ارتفاع SVG */
+}

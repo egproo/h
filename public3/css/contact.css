@@ -1,0 +1,318 @@
+.u-section-1 .u-sheet-1 {
+  min-height: 936px;
+}
+
+.u-section-1 .u-group-1 {
+  width: 601px;
+  min-height: 586px;
+  height: auto;
+  margin: 80px auto 60px;
+}
+
+.u-section-1 .u-container-layout-1 {
+  padding: 27px 23px;
+}
+
+.u-section-1 .u-icon-1 {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto;
+}
+
+.u-section-1 .u-text-1 {
+  font-family: Tajawal-Bold;
+  font-size: 1.25rem;
+  width: 166px;
+  margin: 30px 7px 0 auto;
+}
+
+.u-section-1 .u-icon-2 {
+  width: 37px;
+  height: 37px;
+  margin: 19px 7px 0 auto;
+  padding: 0;
+}
+
+.u-section-1 .u-text-2 {
+  font-family: Almarai;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: -30px 57px 0 auto;
+}
+
+.u-section-1 .u-text-3 {
+  font-family: Tajawal-Bold;
+  font-size: 1.25rem;
+  font-weight: 800;
+  width: 95px;
+  margin: 35px 0 0 auto;
+}
+
+.u-section-1 .u-text-4 {
+  font-family: Tajawal-Bold;
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin: -24px auto 0 45px;
+}
+
+.u-section-1 .u-text-5 {
+  font-family: Tajawal-Bold;
+  font-size: 1.25rem;
+  font-weight: 800;
+  width: 161px;
+  margin: 13px 0 0 auto;
+}
+
+.u-section-1 .u-text-6 {
+  font-family: Tajawal-Bold;
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin: -25px auto 0 0;
+}
+
+.u-section-1 .u-text-7 {
+  font-family: Tajawal-Bold;
+  font-size: 1.25rem;
+  font-weight: 800;
+  width: 232px;
+  margin: 29px 7px 0 auto;
+}
+
+.u-section-1 .u-text-8 {
+  font-family: Tajawal-Bold;
+  font-size: 1.25rem;
+  font-weight: 800;
+  width: 204px;
+  margin: 13px 7px 0 auto;
+}
+
+.u-section-1 .u-btn-1 {
+  background-image: none;
+  font-size: 1.25rem;
+  padding: 0;
+}
+
+.u-section-1 .u-text-9 {
+  font-family: Tajawal-Bold;
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin: 20px auto 0 22px;
+}
+
+.u-section-1 .u-text-10 {
+  font-family: Tajawal-Bold;
+  font-size: 1.25rem;
+  font-weight: 800;
+  width: 202px;
+  margin: -23px 0 0 auto;
+}
+
+.u-section-1 .u-text-11 {
+  font-family: Tajawal-Bold;
+  font-size: 1.25rem;
+  font-weight: 800;
+  width: 154px;
+  margin: 13px 0 0 auto;
+}
+
+.u-section-1 .u-btn-2 {
+  background-image: none;
+  font-size: 1.25rem;
+  padding: 0;
+}
+
+.u-section-1 .u-text-12 {
+  font-family: Tajawal-Bold;
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin: -24px auto 0 0;
+}
+
+.u-section-1 .u-btn-3 {
+  background-image: none;
+  font-size: 1.25rem;
+  padding: 0;
+}
+
+.u-section-1 .u-icon-5 {
+  width: 45px;
+  height: 45px;
+  transition-duration: 0.5s;
+  transform: translateX(0px) translateY(0px) scale(1) rotate(0deg);
+  margin: 41px auto 0;
+}
+
+@media (max-width: 1199px) {
+  .u-section-1 .u-group-1 {
+    height: auto;
+  }
+
+  .u-section-1 .u-text-7 {
+    margin-top: 26px;
+  }
+
+  .u-section-1 .u-text-11 {
+    margin-top: 12px;
+  }
+}
+
+@media (max-width: 991px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 1302px;
+  }
+}
+
+@media (max-width: 767px) {
+  .u-section-1 .u-group-1 {
+    width: 540px;
+  }
+
+  .u-section-1 .u-container-layout-1 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 881px;
+  }
+
+  .u-section-1 .u-group-1 {
+    margin-top: 54px;
+    min-height: 555px;
+    margin-right: initial;
+    margin-left: initial;
+    width: auto;
+  }
+
+  .u-section-1 .u-text-1 {
+    font-size: 1rem;
+    width: auto;
+    margin-right: auto;
+  }
+
+  .u-section-1 .u-icon-2 {
+    width: 20px;
+    height: 20px;
+    margin-top: 13px;
+    margin-right: auto;
+    margin-left: 114px;
+  }
+
+  .u-section-1 .u-text-2 {
+    font-size: 0.75rem;
+    width: auto;
+    margin-top: -17px;
+    margin-right: auto;
+  }
+
+  .u-section-1 .u-text-3 {
+    font-size: 1rem;
+    width: auto;
+    margin-top: 19px;
+  }
+
+  .u-section-1 .u-text-4 {
+    font-size: 1rem;
+    width: auto;
+    margin-top: -19px;
+    margin-left: 0;
+  }
+
+  .u-section-1 .u-text-5 {
+    font-size: 0.75rem;
+    width: auto;
+    margin-top: 10px;
+    margin-left: 155px;
+  }
+
+  .u-section-1 .u-text-6 {
+    font-size: 0.75rem;
+    width: auto;
+    margin-top: -15px;
+  }
+
+  .u-section-1 .u-text-7 {
+    font-size: 1rem;
+    width: auto;
+    margin-top: 17px;
+    margin-right: auto;
+  }
+
+  .u-section-1 .u-text-8 {
+    width: auto;
+    margin-right: auto;
+  }
+
+  .u-section-1 .u-btn-1 {
+    font-size: 1rem;
+  }
+
+  .u-section-1 .u-text-9 {
+    font-size: 1rem;
+    width: auto;
+    margin-top: 94px;
+    margin-left: auto;
+  }
+
+  .u-section-1 .u-text-10 {
+    font-size: 1rem;
+    width: auto;
+    margin-top: -98px;
+    margin-right: auto;
+  }
+
+  .u-section-1 .u-text-11 {
+    width: auto;
+    margin-top: 15px;
+    margin-right: auto;
+  }
+
+  .u-section-1 .u-btn-2 {
+    font-size: 1rem;
+  }
+
+  .u-section-1 .u-text-12 {
+    width: auto;
+    margin-top: 56px;
+    margin-left: auto;
+  }
+
+  .u-section-1 .u-btn-3 {
+    font-size: 0.875rem;
+  }
+
+  .u-section-1 .u-icon-5 {
+    width: 40px;
+    height: 40px;
+    margin-top: 25px;
+  }
+}
+
+.u-section-1 .u-icon-5,
+.u-section-1 .u-icon-5:before,
+.u-section-1 .u-icon-5 > .u-container-layout:before {
+  transition-property: fill, color, background-color, stroke-width, border-style, border-width, border-top-width, border-left-width, border-right-width, border-bottom-width, custom-border, borders, box-shadow, text-shadow, opacity, border-radius, stroke, border-color, font-size, font-style, font-weight, text-decoration, letter-spacing, transform, background-image, image-zoom, background-size, background-position;
+}
+
+.u-section-1 .u-icon-5.u-icon-5.u-icon-5:hover {
+  transform: translateX(0px) translateY(-5px) scale(1) !important;
+}
+
+.u-section-1 .u-icon-5.u-icon-5.u-icon-5.hover {
+  transform: translateX(0px) translateY(-5px) scale(1) !important;
+}
+
+.u-section-1 .u-container-layout:hover .u-icon-5 {
+  transform: rotate(0deg) scale(1) translateX(0px) translateY(0px) !important;
+}
+
+.u-container-layout.hover .u-section-1 .u-icon-5 {
+  transform: rotate(0deg) scale(1) translateX(0px) translateY(0px) !important;
+}@font-face {
+  font-family: 'Tajawal-Bold';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/Tajawal-Bold.ttf);
+}

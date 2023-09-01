@@ -205,39 +205,23 @@
           class="u-file-icon u-icon"><img src="{{ url('/')}}/images/10792960.png" alt=""></span>&nbsp;​أسئلة متكررة
       </h4>
       <div class="u-accordion u-collapsed-by-default u-spacing-2 u-accordion-1">
-     @foreach(App\Models\Faq::where('status', 1)->get() as $faq)
-        <div class="u-accordion-item">
-          <a class="u-accordion-link u-active-palette-3-base u-border-2 u-border-active-white u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-border-palette-1-light-1 u-button-style u-custom-font u-hover-grey-5 u-text-active-custom-color-2 u-text-black u-text-hover-grey-75 u-white u-accordion-link-2"
-            id="link-accordion-60fa" aria-controls="accordion-60fa" aria-selected="false">
-            <span class="u-accordion-link-text">{{ $faq->question }}</span><span
-              class="u-accordion-link-icon u-file-icon u-icon u-icon-3"><img src="{{ url('/')}}/images/10949014.png" alt=""></span>
-          </a>
-          <div class="u-accordion-pane u-align-right u-container-style u-accordion-pane-2" id="accordion-60fa"
-            aria-labelledby="link-accordion-60fa">
-            <div class="u-container-layout u-valign-top u-container-layout-2">
-              <p class="u-custom-font u-text u-text-black u-text-default u-text-3" style="direction: rtl;"><span
-                  style="font-weight: 700;">{!! $faq->answer !!}</span>
-              </p>
-            </div>
-          </div>
-        </div>
-    @endforeach
-          <a class="u-accordion-link u-active-palette-3-base u-border-2 u-border-active-white u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-border-palette-1-light-1 u-button-style u-custom-font u-hover-grey-5 u-text-active-custom-color-2 u-text-black u-text-hover-grey-75 u-white u-accordion-link-4"
-            id="link-accordion-16ba" aria-controls="accordion-16ba" aria-selected="false">
-            <span class="u-accordion-link-text">كيف اتواصل مع الدعم ...؟</span><span
-              class="u-accordion-link-icon u-file-icon u-icon u-icon-5"><img src="{{ url('/')}}/images/10949014.png" alt=""></span>
-          </a>
-          <div class="u-accordion-pane u-align-right u-container-style u-accordion-pane-4" id="accordion-16ba"
-            aria-labelledby="link-accordion-16ba">
-            <div class="u-container-layout u-container-layout-4">
-              <p class="u-custom-font u-text u-text-black u-text-5" style="direction: rtl;">يمكنك التواصل مع اقسام الدم الفني من <a
-                  href="{{ url('/')}}/page/contact"
-                  class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-1"
-                  target="_blank">هنا</a>
-              </p>
-            </div>
-          </div>
-        </div>
+		 @foreach(App\Models\Faq::where('status', 1)->get() as $faq)
+			<div class="u-accordion-item">
+			  <a class="u-accordion-link u-active-palette-3-base u-border-2 u-border-active-white u-border-hover-palette-1-base u-border-no-left u-border-no-right u-border-no-top u-border-palette-1-light-1 u-button-style u-custom-font u-hover-grey-5 u-text-active-custom-color-2 u-text-black u-text-hover-grey-75 u-white u-accordion-link-2"
+				id="link-accordion-60fa" aria-controls="accordion-60fa" aria-selected="false">
+				<span class="u-accordion-link-text">{{ $faq->question }}</span><span
+				  class="u-accordion-link-icon u-file-icon u-icon u-icon-3"><img src="{{ url('/')}}/images/10949014.png" alt=""></span>
+			  </a>
+			  <div class="u-accordion-pane u-align-right u-container-style u-accordion-pane-2" id="accordion-60fa"
+				aria-labelledby="link-accordion-60fa">
+				<div class="u-container-layout u-valign-top u-container-layout-2">
+				  <p class="u-custom-font u-text u-text-black u-text-default u-text-3" style="direction: rtl;"><span
+					  style="font-weight: 700;">{!! $faq->answer !!}</span>
+				  </p>
+				</div>
+			  </div>
+			</div>
+		@endforeach
       </div>
       <div class="u-shape u-shape-svg u-text-custom-color-2 u-shape-1">
         <svg class="u-svg-link" preserveAspectRatio="none" viewBox="0 0 160 160" >
@@ -446,7 +430,7 @@
         </div>
       </div>
       <div class="u-align-left-md u-container-style u-group u-radius-12 u-shape-round u-white u-group-4"
-        data-href="#" title="تسجيل الدخول">
+        data-href="{{ url('/')}}/dashboard/login" title="تسجيل الدخول">
         <div class="u-container-layout"><span
             class="u-align-center-md u-align-center-sm u-align-center-xs u-file-icon u-icon u-icon-3"><img
               src="{{ url('/')}}/images/6460789.png" alt=""></span>

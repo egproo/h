@@ -5,7 +5,8 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\OTPController;
 use App\Http\Middleware\Authenticate;
 use App\Http\Controllers\LogoutControllerx;
-
+use App\Livewire\Counter;
+ 
 
 use Illuminate\Http\Request;
 
@@ -54,3 +55,5 @@ Route::prefix('panel')->group(function () {
     Route::post('/verifyotp', [OTPController::class, 'panelverify'])->name('panel.verifyotp');
 });
 Route::get('/logout', [LogoutControllerx::class, 'logout']);
+
+Route::get('/counter', Counter::class);

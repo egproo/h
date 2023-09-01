@@ -5,7 +5,7 @@
         class="u-border-2 u-border-grey-75 u-btn u-btn-round u-button-style u-custom-color-2 u-custom-font u-hidden-xs u-hover-palette-1-light-1 u-radius-6 u-btn-1">تسجيل
         الخروج</a>
 	 @else
-      <a href="{{ url('/')}}/"
+      <a href="{{ url('/')}}/dashboard/login"
         class="u-border-2 u-border-grey-75 u-btn u-btn-round u-button-style u-custom-color-2 u-custom-font u-hidden-xs u-hover-palette-1-light-1 u-radius-6 u-btn-1">تسجيل
         الدخول</a>
 		@endauth

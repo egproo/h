@@ -21,7 +21,6 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 use App\Filament\Dashboard\Pages\Login;
 use App\Filament\Dashboard\Pages\Register;
 use Filament\Navigation\NavigationItem;
-use Njxqlus\FilamentProgressbar\FilamentProgressbarPlugin;
 
 class DashboardPanelProvider extends PanelProvider
 {
@@ -34,7 +33,7 @@ class DashboardPanelProvider extends PanelProvider
             ->path('dashboard')
 			->breadcrumbs(false)
 			->plugins([                
-               FilamentProgressbarPlugin::make()->color('#FF0000')
+              
             ])
 			->navigationItems([
             NavigationItem::make('home')->label('الرئيسية')
@@ -78,7 +77,7 @@ class DashboardPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-				OTPDashVerification::class,
+				//OTPDashVerification::class,
             ])->authGuard('dashboard');
     }
 }

@@ -1,6 +1,6 @@
 @if (count($service->childServices) > 1)
 @extends('layouts.app')
-@section('title', '{{$service->title}}')
+@section('title', $service->name)
 @section('content')
  <link rel="stylesheet" href="{{url('/')}}/css/analysis.css?ver=10.10.10.09" media="screen">	
 
@@ -28,14 +28,15 @@
   </section>
 @endsection
 @else
+@section('title', $service->name)
 @section('content')	
-
 
   <link rel="stylesheet" href="{{url('/')}}/css/search-result.css?ver=10.10.10.09" media="screen">	
 
   <section class="u-clearfix u-custom-color-5 u-section-1" id="sec-3e49">
 
-    <div  class="u-clearfix u-sheet u-sheet-1">
+    <div wire:poll="refreshservicepage" class="u-clearfix u-sheet u-sheet-1">
+
 @livewire('servicepage', ['slug' => $slug,'service' => $service])
 
     </div>

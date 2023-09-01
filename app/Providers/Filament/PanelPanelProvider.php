@@ -21,7 +21,7 @@ use Filament\Navigation\NavigationBuilder;
 use Filament\Navigation\NavigationItem;
 use App\Filament\Panel\Pages\Login;
 use App\Filament\Panel\Pages\Register;
-use Njxqlus\FilamentProgressbar\FilamentProgressbarPlugin;
+
 
 class PanelPanelProvider extends PanelProvider
 {
@@ -40,7 +40,7 @@ class PanelPanelProvider extends PanelProvider
                 'primary' => Color::Amber,
             ])
 			->plugins([
-			 FilamentProgressbarPlugin::make()->color('#ffbf00')
+			 
 			])
             ->discoverResources(in: app_path('Filament/Panel/Resources'), for: 'App\\Filament\\Panel\\Resources')
             ->discoverPages(in: app_path('Filament/Panel/Pages'), for: 'App\\Filament\\Panel\\Pages')

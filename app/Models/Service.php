@@ -51,6 +51,7 @@ public function children()
     }
 public function activeProviders()
 {
+	
     return $this->belongsToMany(Provider::class, 'services_providers', 'services_id', 'provider_id')
                 ->whereHas('services', function ($query) {
                     $query->where('is_visible', 1);
