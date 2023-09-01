@@ -9,7 +9,7 @@ class Page extends Component
 {
     public $page;
 
-    public function mount($slug)
+    public function mount($slug): void
     {
         $this->page = Page::where('slug', $slug)->first();
     }
