@@ -1,3 +1,6 @@
+<style>select:not(.choices) {
+    background-image: none;
+}</style>
   <section class="u-clearfix u-section-1" id="sec-3e49">
     <div class="u-clearfix u-sheet u-valign-middle-md u-sheet-1">
       <div
@@ -28,14 +31,14 @@
       <div  wire:key="{{$provider->id}}"  class="u-align-left u-container-style u-expanded-width u-group u-radius-12 u-shape-round u-white u-group-2">
         <div class="u-container-layout u-container-layout-2">
           <div class="u-border-2 u-border-grey-40 u-hover-feature u-image u-image-circle u-radius-10 u-image-1" alt=""
-            data-image-width="512" data-image-height="512"></div>
+            data-image-width="512" data-image-height="512" style="background-image: url({{$provider->image}});"></div>
           <h5 class="u-align-center u-custom-font u-text u-text-custom-color-2 u-text-default u-text-2"
-            style="direction: rtl;">د.
+            style="direction: rtl;">
             <span>
               {{ $provider->name }}
             </span>
           </h5>
-          <h5 class="u-align-center u-custom-font u-text u-text-default u-text-3" style="direction: rtl;">{{ $provider->title }}</h5>
+          <h5 class="u-align-center u-custom-font u-text u-text-default u-text-3" style="direction: rtl;width: auto;">{{ $provider->title }}</h5>
           <h5 class="u-align-center u-custom-font u-text u-text-default u-text-4" style="direction: rtl;"> السعر</h5>
           <h5 class="u-align-center u-custom-font u-text u-text-custom-color-2 u-text-default u-text-5"
             style="direction: rtl;">  {{ $provider->pivot->price }} ريال</h5>
