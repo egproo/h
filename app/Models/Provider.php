@@ -80,6 +80,9 @@ public function sessionsForService($serviceId)
     return $this->hasMany(ServiceSession::class, 'provider_id')
                 ->where('services_id', $serviceId);
 }
+public function getFullProviderNameAttribute() {
+    return $this->name;
+}
     /**
      * العلاقة بين موفر الخدمة والرسائل.
      */

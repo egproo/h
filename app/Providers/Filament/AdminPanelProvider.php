@@ -23,6 +23,7 @@ use Filament\Navigation\NavigationItem;
 use App\Filament\Resources\AdminResource;
 use App\Filament\Resources\ServiceResource;
 use Althinect\FilamentSpatieRolesPermissions\FilamentSpatieRolesPermissionsPlugin;
+use Njxqlus\FilamentProgressbar\FilamentProgressbarPlugin;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -31,7 +32,7 @@ class AdminPanelProvider extends PanelProvider
         return $panel
             ->id('admincp')
             ->path('admincp')
-			->favicon(asset('images/favicon.png'))
+			->favicon(asset('images/Harees-Final.png'))
 			->font('Almarai')
 			->sidebarCollapsibleOnDesktop()
 			->breadcrumbs(false)
@@ -77,6 +78,6 @@ class AdminPanelProvider extends PanelProvider
                 Authenticate::class,
             ])
 			->authGuard('admincp')
-			->plugins([]);
+			->plugins([FilamentProgressbarPlugin::make()->color('#49a8a0')]);
     }
 }

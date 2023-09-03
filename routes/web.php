@@ -5,13 +5,14 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\OTPController;
 use App\Http\Middleware\Authenticate;
 use App\Http\Controllers\LogoutControllerx;
-use App\Livewire\Counter;
- 
+
 
 use Illuminate\Http\Request;
 
 use App\Models\Page;
 use App\Models\Service;
+use App\Models\Appointment;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -27,15 +28,8 @@ use App\Models\Service;
 Route::get('/', function () {
     return view('home');
 });
-Route::get('/dashboard', function () {
-    return redirect('dashboard/appointments');
-})->name('appointments');
-Route::get('/login', function () {
-    return redirect('dashboard/login');
-})->name('login');
-Route::get('/register', function () {
-    return redirect('dashboard/register');
-})->name('register');
+
+
 Route::get('/booking', function () {
     return redirect('dashboard/appointments/booking');
 })->name('booking');
@@ -56,4 +50,7 @@ Route::prefix('panel')->group(function () {
 });
 Route::get('/logout', [LogoutControllerx::class, 'logout']);
 
-Route::get('/counter', Counter::class);
+Route::get('/test', function() {
+    $appointment = Appointment::find(10);
+    dd($appointment->provider->full_provider_name);
+});

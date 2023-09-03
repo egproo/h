@@ -21,6 +21,7 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 use App\Filament\Dashboard\Pages\Login;
 use App\Filament\Dashboard\Pages\Register;
 use Filament\Navigation\NavigationItem;
+use Njxqlus\FilamentProgressbar\FilamentProgressbarPlugin;
 
 class DashboardPanelProvider extends PanelProvider
 {
@@ -29,20 +30,20 @@ class DashboardPanelProvider extends PanelProvider
         return $panel
 		    ->default()
             ->id('dashboard')
-			->favicon(asset('images/favicon.png'))
+			->favicon(asset('images/Harees-Final.png'))
             ->path('dashboard')
 			->breadcrumbs(false)
 			->plugins([                
-              
+               FilamentProgressbarPlugin::make()->color('#FF0000')
             ])
 			->navigationItems([
             NavigationItem::make('home')->label('الرئيسية')
-                ->url('https://haris.egproo.com/', shouldOpenInNewTab: true)
+                ->url('https://hareescare.com/', shouldOpenInNewTab: true)
                 ->icon('heroicon-o-presentation-chart-line')
 				->group('وصول سريع')
                 ->sort(1),
             NavigationItem::make('addservice')->label('حجز خدمة جديدة')
-                ->url('https://haris.egproo.com/services', shouldOpenInNewTab: true)
+                ->url('https://hareescare.com/services', shouldOpenInNewTab: true)
                 ->icon('heroicon-o-plus-circle')
 				->group('وصول سريع')
                 ->sort(1),				
@@ -60,7 +61,7 @@ class DashboardPanelProvider extends PanelProvider
             ->discoverResources(in: app_path('Filament/Dashboard/Resources'), for: 'App\\Filament\\Dashboard\\Resources')
             ->discoverPages(in: app_path('Filament/Dashboard/Pages'), for: 'App\\Filament\\Dashboard\\Pages')
             ->pages([
-                //Pages\Dashboard::class,
+                Pages\Dashboard::class,
             ])
             ->discoverWidgets(in: app_path('Filament/Dashboard/Widgets'), for: 'App\\Filament\\Dashboard\\Widgets')
             ->widgets([])
@@ -77,7 +78,7 @@ class DashboardPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-				//OTPDashVerification::class,
+				OTPDashVerification::class,
             ])->authGuard('dashboard');
     }
 }

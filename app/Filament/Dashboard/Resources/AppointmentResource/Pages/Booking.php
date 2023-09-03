@@ -101,10 +101,11 @@ class Booking extends Page
     $appointment = new Appointment();
     $appointment->user_id = $userId;
     $appointment->service_id = $this->services_id;
+    $appointment->provider_id = $this->provider_id;
     $appointment->services_session_id  = $this->session_id;
     $appointment->notes = $this->notes;
     $appointment->appointment_date = $this->desiredDate;
-    $appointment->status = 'pending';
+    $appointment->status = 'في الانتظار';
     $appointment_id = $appointment->save();
 	
 	$this->appointment_id = $appointment_id;

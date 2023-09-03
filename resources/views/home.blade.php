@@ -57,14 +57,14 @@
             </div>
           </div>
           <div class="u-align-center-xl u-container-style u-group u-radius-15 u-shape-round u-white u-group-8"
-            data-href="{{ url('/')}}/service/intravenous-solution" title="محلول وريدي">
+            data-href="{{ url('/')}}/intravenous-solution" title="محلول وريدي">
             <div class="u-container-layout u-container-layout-8"><span class="u-file-icon u-icon u-icon-5"><img
                   src="{{ url('/')}}/images/3003312.png" alt=""></span>
               <h4 class="u-custom-font u-text u-text-7">محلول وريدي</h4>
             </div>
           </div>
           <div class="u-container-style u-group u-radius-15 u-shape-round u-white u-group-9"
-            data-href="{{ url('/')}}/service/covid-check" title="فحص كورونا">
+            data-href="{{ url('/')}}/covid-check" title="فحص كورونا">
             <div class="u-container-layout"><span class="u-file-icon u-icon u-icon-6"><img src="{{ url('/')}}/images/4190707.png"
                   alt=""></span>
               <h4 class="u-custom-font u-text u-text-default u-text-8">فحص كروونا</h4>
@@ -430,7 +430,7 @@
         </div>
       </div>
       <div class="u-align-left-md u-container-style u-group u-radius-12 u-shape-round u-white u-group-4"
-        data-href="{{ url('/')}}/dashboard/login" title="تسجيل الدخول">
+        data-href="#" title="تسجيل الدخول">
         <div class="u-container-layout"><span
             class="u-align-center-md u-align-center-sm u-align-center-xs u-file-icon u-icon u-icon-3"><img
               src="{{ url('/')}}/images/6460789.png" alt=""></span>

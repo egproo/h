@@ -1,6 +1,6 @@
 @if (count($service->childServices) > 1)
 @extends('layouts.app')
-@section('title', $service->name)
+@section('title', '{{$service->title}}')
 @section('content')
  <link rel="stylesheet" href="{{url('/')}}/css/analysis.css?ver=10.10.10.09" media="screen">	
 
@@ -11,7 +11,9 @@
       <div class="u-container-style u-group u-radius-7 u-shape-round u-white u-group-1" data-animation-name="pulse"
         data-animation-duration="3500" data-animation-direction="">
         <div class="u-container-layout u-valign-middle-md u-valign-middle-sm u-valign-middle-xs u-container-layout-1">
-          <h3 class="u-align-center u-custom-font u-text u-text-custom-color-2 u-text-1">  {{ $service->name }} </h3>
+ <h3 class="u-align-center u-custom-font u-text u-text-custom-color-2 u-text-1" style="
+    margin: 15px;
+"> {{ $service->name }} </h3>
         </div>
       </div>
 @foreach($service->childServices as $servicex)	  
@@ -28,15 +30,14 @@
   </section>
 @endsection
 @else
-@section('title', $service->name)
 @section('content')	
+
 
   <link rel="stylesheet" href="{{url('/')}}/css/search-result.css?ver=10.10.10.09" media="screen">	
 
   <section class="u-clearfix u-custom-color-5 u-section-1" id="sec-3e49">
 
-    <div wire:poll="refreshservicepage" class="u-clearfix u-sheet u-sheet-1">
-
+    <div  class="u-clearfix u-sheet u-sheet-1">
 @livewire('servicepage', ['slug' => $slug,'service' => $service])
 
     </div>

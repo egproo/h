@@ -12,6 +12,7 @@
         {{ session('error') }}
     </div>
 @endif
+
 	
 <!-- Moyasar Styles -->
 <link rel="stylesheet" href="https://cdn.moyasar.com/mpf/1.10.0/moyasar.css" />
@@ -41,7 +42,7 @@ label,button{font-family: 'Almarai' !important;}
 
 	
 <div style="margin-top:-50px">
-    <div class="flex items-center space-x-4 mb-4">
+    <div class="  flex items-center space-x-4 mb-4">
         <div class="w-1/4">
             <img src="{{ $provider->image }}" alt="{{ $provider->name }}" class="rounded-full w-24 h-24">
         </div>
@@ -51,8 +52,8 @@ label,button{font-family: 'Almarai' !important;}
         </div>
     </div>
 
-    <form wire:submit="bookService">
-        <div class="bg-white p-4 rounded shadow-md mb-6">
+    <form wire:submit.prevent="bookService">
+        <div class="bg-white  dark:bg-gray-800  p-4 rounded shadow-md mb-6">
             <div class="flex justify-between items-center">
                 <div>
                     <h3 class="text-lg font-semibold mb-2">الخدمة المطلوبة</h3>
@@ -63,7 +64,7 @@ label,button{font-family: 'Almarai' !important;}
                 </div>
             </div>
         </div>
-<div class="bg-white p-4 rounded shadow-md mb-6">
+<div class="bg-white  dark:bg-gray-800  p-4 rounded shadow-md mb-6">
     <h3 class="text-lg font-semibold mb-2">حدد تاريخ الحجز :</h3>
 	<div class="dates-list flex overflow-x-auto">
     @foreach($dates as $date)
@@ -80,24 +81,24 @@ label,button{font-family: 'Almarai' !important;}
 			];		
           $dayNameEnglish = \Carbon\Carbon::parse($date)->format('l');
         @endphp
-        <button style="margin-inline-end: 20px; padding: 10px; font-weight: 900; border-radius: 10px; font-size: 20px;"  wire:click="selectDate('{{ $date }}')" class="hover:bg-red-800 hover:text-white p-4 mx-3 border rounded {{ $sDate == $date ? 'bg-primary-500 text-white' : '' }}">
+        <button style="margin-inline-end: 20px; padding: 10px; font-weight: 900; border-radius: 10px; font-size: 20px;"  wire:click="selectDate('{{ $date }}')" class="hover:bg-red-800  dark:bg-gray-800 hover:text-white p-4 mx-3 border rounded {{ $sDate == $date ? 'bg-primary-500 text-white' : '' }}">
 		<p>{{ $daysInArabic[$dayNameEnglish] }}</p>
 		
         {{ \Carbon\Carbon::parse($date)->format('d-m') }}
 		</button>
     @endforeach
     </div>
-    <div class="bg-white p-4 rounded shadow-md mb-6">
+    <div class="bg-white  dark:bg-gray-800  p-4 rounded shadow-md mb-6">
     <h3 class="text-lg font-semibold mb-2">أو اختر التاريخ :</h3>
        <input style="
     min-width: 239px;
     max-width: 100%;
     height: 60px;
     font-size: 20px;
-" type="date" wire:model.live="desiredDate" wire:change="updateSessions" min="{{ now()->toDateString() }}" max="{{ $maxDate }}" class="border rounded p-2">
+" type="date" wire:model="desiredDate" wire:change="updateSessions" min="{{ now()->toDateString() }}" max="{{ $maxDate }}" class="dark:bg-gray-800 border rounded p-2">
     </div>
 </div>
-<div class="bg-white p-4 rounded shadow-md mb-6">
+<div class="bg-white  dark:bg-gray-800  p-4 rounded shadow-md mb-6">
             <h3 class="text-lg font-semibold mb-2">تحديد الموعد المناسب :</h3>
 <div class="flex flex-wrap">
     @foreach($sessionxs as $session)
@@ -109,7 +110,7 @@ label,button{font-family: 'Almarai' !important;}
         @endphp		
         <button 
             wire:click="$set('session_id', {{ $session->id }})" 
-            class="bg-gray-100 text-black  p-4 mx-3 border rounded {{ $session_id == $session->id ? 'bg-primary-500 text-white' : '' }}" 
+            class=" dark:bg-gray-800 bg-gray-100 text-black  p-4 mx-3 border rounded {{ $session_id == $session->id ? 'bg-primary-500 text-white  dark:bg-gray-800  dark:text-white ' : '' }}" 
             style="margin-inline-end: 20px; padding: 10px; font-weight: 900; border-radius: 10px; font-size: 20px;">
             {{ $formattedTime }} 
 			<p>{{ $label }}</p>
@@ -120,12 +121,12 @@ label,button{font-family: 'Almarai' !important;}
 </div>
 
 <div class="mb-4">
-    <label for="notes" class="block text-sm font-medium text-gray-700">رسالتك  لــ : {{ $provider->name }} </label>
-    <textarea wire:model.live="notes" id="notes" name="notes" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border-gray-300 rounded-md"></textarea>
+    <label for="notes" class="bg-white  dark:bg-gray-800  block text-sm font-medium text-gray-700  dark:text-white ">رسالتك  لــ : {{ $provider->name }} </label>
+    <textarea wire:model="notes" id="notes" name="notes" rows="3" class=" dark:bg-gray-800  dark:text-white  bg-white text-black shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border-gray-300 rounded-md"></textarea>
 </div>
-        <div class="bg-white p-4 rounded shadow-md mb-6">
+        <div class="bg-white  dark:bg-gray-800  p-4 rounded shadow-md mb-6">
             <h3 class="text-lg font-semibold mb-2">الدفع الإلكتروني</h3>
-<div class="mysr-form"></div>
+<div class=" dark:bg-gray-800  dark:text-center mysr-form"></div>
 <script>
 		var servicename = '{{$service->name}}';
 		var servicePrice = '{{$servicePrice}}';

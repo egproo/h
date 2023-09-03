@@ -21,7 +21,7 @@ use Filament\Navigation\NavigationBuilder;
 use Filament\Navigation\NavigationItem;
 use App\Filament\Panel\Pages\Login;
 use App\Filament\Panel\Pages\Register;
-
+use Njxqlus\FilamentProgressbar\FilamentProgressbarPlugin;
 
 class PanelPanelProvider extends PanelProvider
 {
@@ -31,7 +31,7 @@ class PanelPanelProvider extends PanelProvider
             ->id('panel')
             ->path('panel')
 			->font('Almarai')
-			->favicon(asset('images/favicon.png'))
+			->favicon(asset('images/Harees-Final.png'))
 			->sidebarCollapsibleOnDesktop()
 			->databaseNotifications()
 			->databaseNotificationsPolling('160s')
@@ -40,12 +40,12 @@ class PanelPanelProvider extends PanelProvider
                 'primary' => Color::Amber,
             ])
 			->plugins([
-			 
+			 FilamentProgressbarPlugin::make()->color('#ffbf00')
 			])
             ->discoverResources(in: app_path('Filament/Panel/Resources'), for: 'App\\Filament\\Panel\\Resources')
             ->discoverPages(in: app_path('Filament/Panel/Pages'), for: 'App\\Filament\\Panel\\Pages')
             ->pages([
-                //Pages\Dashboard::class,
+                Pages\Dashboard::class,
             ])
             ->discoverWidgets(in: app_path('Filament/Panel/Widgets'), for: 'App\\Filament\\Panel\\Widgets')
             ->widgets([])

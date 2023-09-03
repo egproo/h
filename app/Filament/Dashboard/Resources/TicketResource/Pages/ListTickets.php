@@ -13,7 +13,7 @@ class ListTickets extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            Actions\CreateAction::make(),
+            Actions\CreateAction::make()->label('فتح تذكرة جديدة'),
         ];
     }
         public function getTitle(): string

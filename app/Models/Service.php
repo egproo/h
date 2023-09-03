@@ -27,6 +27,15 @@ class Service extends Model
     {
         return $this->belongsTo(Service::class, 'parent_id');
     }
+public function getFullServiceNameAttribute() {
+    if ($this->parent_id) {
+        $parentServiceName = $this->parent->name;
+        return "{$parentServiceName} ({$this->name})";
+    } else {
+        return $this->name;
+    }	
+}
+
     public function isMainService()
     {
         return is_null($this->parent_id);
@@ -51,13 +60,22 @@ public function children()
     }
 public function activeProviders()
 {
-	
     return $this->belongsToMany(Provider::class, 'services_providers', 'services_id', 'provider_id')
                 ->whereHas('services', function ($query) {
                     $query->where('is_visible', 1);
                 })
                 ->withPivot(['price', 'duration_in_minutes']);
 }
+public function getDurationForProvider($providerId)
+{
+    $relation = $this->belongsToMany(Provider::class, 'services_providers', 'services_id', 'provider_id')
+                ->where('provider_id', $providerId)
+                ->first();
+    return $relation ? $relation->duration_in_minutes : null;
+}
+
+
+
     public function type()
     {
         return $this->belongsTo(ServicesType::class, 'services_type_id');

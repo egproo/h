@@ -1,26 +1,28 @@
 <div>
-@if(count($providers) > 0)
+
 <div  data-animation-name="pulse" style="width: auto;margin: 0 auto;text-align: center;margin-top: 10px;margin-bottom: 10px;"
 
         data-animation-duration="3500" data-animation-direction="" style="margin-bottom: 30px;">
-<input style="height:50px;width: 180px;text-align: center;max-width: 30%;font-size: 12px;" type="text" wire:model.live.debounce.300ms="searchTerm" placeholder="بحث بالاسم...">
-<select  style="height:50px;width: 180px;text-align: center;max-width: 30%;font-size: 12px" wire:model.live="city">
+<input style="color: #888;border-radius: 3px;height:50px;width: 180px;text-align: center;max-width: 30%;font-weight: 900;font-size: 11px;font-family: 'Almarai';border: 1px solid #58aac6;" type="text" wire:model.live.debounce.300ms="searchTerm" placeholder="بحث بالاسم...">
+<select  style="color: #888;border-radius: 3px;height:50px;width: 180px;text-align: center;max-width: 30%;font-weight: 900;font-size: 11px;font-family: 'Almarai';border: 1px solid #58aac6;" wire:model.live="city">
     <option value="">اختر المدينة</option>
 @foreach($service->services_zones as $zone)
-    <option wire:key="{{ $zone->id }}" value="{{$zone->id}}">{{$zone->name}}</option>
+    <option style="height:60px" wire:key="{{ $zone->id }}" value="{{$zone->id}}">{{$zone->name}}</option>
 @endforeach
 </select>
-<select  style="height:50px;width: 180px;text-align: center;max-width: 30%;font-size: 12px;" wire:model.live="order">
-    <option value="asc">السعر الأقل</option>
-    <option value="desc">السعر الأعلى</option>
+<select  style="color: #888;border-radius: 3px;height:50px;width: 180px;text-align: center;max-width: 30%;font-weight: 900;font-size: 11px;font-family: 'Almarai';border: 1px solid #58aac6;" wire:model.live="order">
+    <option style="height:60px" value="asc">السعر الأقل</option>
+    <option style="height:60px" value="desc">السعر الأعلى</option>
 </select>
 
 </div>	
-@endif
+
       <div class="providerg u-container-style u-group u-radius-25 u-shape-round u-white u-group-1" data-animation-name="pulse"
         data-animation-duration="3500" data-animation-direction="" style="margin-bottom: 30px;">
         <div class="u-container-layout u-valign-middle-sm u-container-layout-1">
-          <h3 class="u-align-center u-custom-font u-text u-text-custom-color-2 u-text-1"> {{ $service->name }} </h3>
+  <h3 class="u-align-center u-custom-font u-text u-text-custom-color-2 u-text-1" style="
+    margin: 15px;
+"> {{ $service->name }} </h3>
         </div>
       </div>
 		@foreach($providers as $provider)
@@ -43,7 +45,20 @@
       </div>
 		@endforeach
 @if(count($providers) == 0)
-          <h5 style="direction: rtl;text-align: center;
-    margin: 30px 50px;"class="u-align-center u-custom-font u-text u-text-custom-color-2 u-text-default u-text-2">لا يوجد موفري خدمات متاحين في الوقت الحالي لهذة الخدمة</h5>
+
+<div class="u-align-center u-container-style u-expanded-width u-group u-radius-12 u-shape-round u-white ">
+        <div class="" style="
+    padding: 30px;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    font-size: 16px;
+    font-family: 'Almarai';
+">
+              لا يوجد موفري خدمات متاحين في الوقت الحالي لهذة الخدمة
+
+        </div>
+      </div>
+
 @endif
 </div>

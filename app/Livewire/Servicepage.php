@@ -20,7 +20,7 @@ class Servicepage extends Component
     public function mount($slug)
     {
         $this->service =  Service::where('slug', $slug)->firstOrFail();
-        $this->loadProviders();
+         $this->loadProviders();
 		$this->slug = $slug;
 
 		 // تحميل المناطق المفعلة
@@ -28,7 +28,6 @@ class Servicepage extends Component
 
     public function updatedSearchTerm()
     {
-
         $this->loadProviders();
         $this->dispatch('refreshservicepage'); 
   
@@ -56,7 +55,6 @@ public function refreshservicepage()
 
     public function loadProviders()
     {
-
         if ($this->city) {
 			$query = $this->service->activeProvidersInZone($this->city);
         }else{
@@ -67,18 +65,16 @@ public function refreshservicepage()
         }
 
         if (!$this->order) {
-            $this->order = 'desc';
+            $this->order = 'asc';
         }
 			
 			
         $this->providers = $query->orderBy('price', $this->order)->get();
 		
-		
     }
 
     public function render()
     {
-
     return view('livewire.servicepage', [
         'service' =>  $this->service,
         'providers' =>  $this->providers,

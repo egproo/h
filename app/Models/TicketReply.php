@@ -12,7 +12,8 @@ class TicketReply extends Model
     protected $fillable = [
         'ticket_id',
         'user_id',
-        'content',
+		'client_type',
+        'reply',
     ];
 
     public function ticket()

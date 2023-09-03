@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Models\Page as PageModel;
+use App\Models\Page;
 
 class Page extends Component
 {
@@ -11,7 +11,7 @@ class Page extends Component
 
     public function mount($slug): void
     {
-        $this->page = PageModel::where('slug', $slug)->first();
+        $this->page = Page::where('slug', $slug)->first();
     }
 
     public function render()

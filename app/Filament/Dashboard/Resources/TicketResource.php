@@ -3,7 +3,6 @@
 namespace App\Filament\Dashboard\Resources;
 
 use App\Filament\Dashboard\Resources\TicketResource\Pages;
-use App\Filament\Dashboard\Resources\TicketResource\RelationManagers;
 use App\Models\Ticket;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -13,7 +12,16 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\Hidden;
-
+use Filament\Tables\Columns\Layout\Grid;
+use Filament\Tables\Columns\Layout\Stack;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
+use Filament\Forms\Components\DatePicker;
+use Filament\Tables\Filters\Filter;
+use Filament\Forms\Components\Select;
+use Filament\Infolists\Components;
+use Filament\Infolists\Infolist;
+use Filament\Facades\Filament;
 class TicketResource extends Resource
 {
     protected static ?string $model = Ticket::class;
@@ -92,10 +100,14 @@ protected function mutateFormDataBeforeCreate(array $data): array
     public static function getRelations(): array
     {
         return [
-			RelationManagers\RepliesRelationManager::class,
+
         ];
     }
-    
+     public static function getEloquentQuery(): Builder
+    {
+        $userId = Filament::auth('dashboard')->user()->id;
+        return parent::getEloquentQuery()->where('user_id', $userId)->where('client_type', "user")->orderBy('created_at', 'desc');
+    }   
     public static function getPages(): array
     {
         return [

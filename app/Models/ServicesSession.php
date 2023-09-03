@@ -16,14 +16,15 @@ class ServicesSession extends Model
         'day_of_week',
         'start_time',
         'end_time',
-        'duration_in_minutes',
     ];
 
     public function service()
     {
         return $this->belongsTo(Service::class, 'services_id');
     }
-
+	public function getFullSessionTimeAttribute() {
+		return $this->start_time;
+	}
     public function provider()
     {
         return $this->belongsTo(Provider::class, 'provider_id');

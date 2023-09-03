@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Filament\Dashboard\Resources\TicketResource\Pages;
+namespace App\Filament\Dashboard\Resources\AppointmentResource\Pages;
 
-use App\Filament\Dashboard\Resources\TicketResource;
+use App\Filament\Dashboard\Resources\AppointmentResource;
 use App\Models\Appointment;
 use Filament\Facades\Filament;
 use Filament\Resources\Pages\Page;
@@ -12,17 +12,15 @@ use App\Models\Service;
 use App\Models\Provider;
 use App\Models\ServicesSession;
 use App\Models\PaymentAttempt;
-use App\Models\Ticket;
-use App\Models\TicketReply;
 use App\Models\Admin;
 use Illuminate\Notifications\Messages\BroadcastMessage;
 use Illuminate\Support\Facades\Session;
-class ViewTicket extends Page
+class ViewAppointment extends Page
 {
-    protected static string $resource = TicketResource::class;
-    protected static string $view = 'filament.dashboard.resources.appointment-resource.pages.view-ticket';
+    protected static string $resource = AppointmentResource::class;
+    protected static string $view = 'filament.dashboard.resources.appointment-resource.pages.view-appointment';
 
-    protected $ticket;
+    protected $appointment;
 
     protected static ?string $title = null;
 
@@ -40,7 +38,7 @@ class ViewTicket extends Page
     {
         // Load the appointment with related service and provider details
 		
-    $this->ticket = Ticket::with(['client', 'replies'])->findOrFail($record);
+    $this->appointment = Appointment::with(['service', 'provider','paymentAttempt'])->findOrFail($record);
     }
 
     /**
@@ -51,7 +49,8 @@ class ViewTicket extends Page
     protected function getViewData(): array
     {
         return [
-            'ticket' => $this->ticket,
+            'appointment' => $this->appointment,
+			'duration' => $this->appointment->service->getDurationForProvider($this->appointment->provider->id)
         ];
     }
 }
