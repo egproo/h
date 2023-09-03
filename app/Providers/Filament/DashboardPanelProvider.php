@@ -11,6 +11,10 @@ use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
 use Filament\Widgets;
+use App\Filament\Widgets\dashboardWidget1;
+use App\Filament\Widgets\dashboardWidget2;
+use App\Filament\Widgets\dashboardWidget3;
+use App\Filament\Widgets\dashboardWidget4;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
@@ -21,7 +25,7 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 use App\Filament\Dashboard\Pages\Login;
 use App\Filament\Dashboard\Pages\Register;
 use Filament\Navigation\NavigationItem;
-use Njxqlus\FilamentProgressbar\FilamentProgressbarPlugin;
+//use Njxqlus\FilamentProgressbar\FilamentProgressbarPlugin;
 
 class DashboardPanelProvider extends PanelProvider
 {
@@ -34,7 +38,7 @@ class DashboardPanelProvider extends PanelProvider
             ->path('dashboard')
 			->breadcrumbs(false)
 			->plugins([                
-               FilamentProgressbarPlugin::make()->color('#FF0000')
+               //FilamentProgressbarPlugin::make()->color('#FF0000')
             ])
 			->navigationItems([
             NavigationItem::make('home')->label('الرئيسية')
@@ -61,10 +65,15 @@ class DashboardPanelProvider extends PanelProvider
             ->discoverResources(in: app_path('Filament/Dashboard/Resources'), for: 'App\\Filament\\Dashboard\\Resources')
             ->discoverPages(in: app_path('Filament/Dashboard/Pages'), for: 'App\\Filament\\Dashboard\\Pages')
             ->pages([
-                Pages\Dashboard::class,
+               // Pages\Dashboard::class,
             ])
             ->discoverWidgets(in: app_path('Filament/Dashboard/Widgets'), for: 'App\\Filament\\Dashboard\\Widgets')
-            ->widgets([])
+            ->widgets([
+                dashboardWidget1::class,
+				dashboardWidget2::class,
+				dashboardWidget3::class,
+				dashboardWidget4::class,
+			])
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,

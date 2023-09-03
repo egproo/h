@@ -23,7 +23,7 @@ use Filament\Navigation\NavigationItem;
 use App\Filament\Resources\AdminResource;
 use App\Filament\Resources\ServiceResource;
 use Althinect\FilamentSpatieRolesPermissions\FilamentSpatieRolesPermissionsPlugin;
-use Njxqlus\FilamentProgressbar\FilamentProgressbarPlugin;
+//use Njxqlus\FilamentProgressbar\FilamentProgressbarPlugin;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -78,6 +78,8 @@ class AdminPanelProvider extends PanelProvider
                 Authenticate::class,
             ])
 			->authGuard('admincp')
-			->plugins([FilamentProgressbarPlugin::make()->color('#49a8a0')]);
+			->plugins([
+			//FilamentProgressbarPlugin::make()->color('#49a8a0')
+			]);
     }
 }
