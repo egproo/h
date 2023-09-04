@@ -13,6 +13,7 @@ class ServicesProvider extends Model
         'services_id',
         'provider_id',
         'price',
+		'duration_in_minutes',
     ];
 
     public function service()
@@ -24,4 +25,16 @@ class ServicesProvider extends Model
     {
         return $this->belongsTo(Provider::class, 'provider_id');
     }
+	public function sessions()
+	{
+			return $this->hasMany(ServicesSession::class, 'services_id');
+	}
+	public function zones()
+	{
+			return $this->hasMany(ServicesZone::class, 'services_id');
+	}	
+	public function zone()
+	{
+			return $this->hasMany(ServicesZone::class, 'services_id');
+	}		
 }

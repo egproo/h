@@ -3,15 +3,16 @@
 namespace App\Filament\Widgets;
 
 use Leandrocfe\FilamentApexCharts\Widgets\ApexChartWidget;
-
-class dashboardWidget6 extends ApexChartWidget
+use App\Models\Appointment;
+use Filament\Facades\Filament;
+class panelWidget4 extends ApexChartWidget
 {
     /**
      * Chart Id
      *
      * @var string
      */
-    protected static string $chartId = 'dashboardWidget6';
+    protected static string $chartId = 'panelWidget4';
 
     /**
      * Widget Title
@@ -19,6 +20,7 @@ class dashboardWidget6 extends ApexChartWidget
      * @var string|null
      */
     protected static ?string $heading = null;
+
 
     /**
      * Chart options (series, labels, types, size, animations...)
@@ -28,12 +30,26 @@ class dashboardWidget6 extends ApexChartWidget
      */
     protected function getOptions(): array
     {
+	$provider_id = Filament::auth('panel')->user()->id;		
+    // استعلم عن إجمالي الحجوزات التي تخص العميل الحالي
+    $totalAppointments = Appointment::where('provider_id', $provider_id)->count();
+    // استعلم عن الحجوزات التي تخص العميل الحالي والتي تحمل الحالة "مكتملة"
+    $completedAppointments = Appointment::where('provider_id', $provider_id)->where('status', 'قيد التنفيذ')->count();
+/*
+						'في الانتظار' => 'في الانتظار',
+						'قيد التنفيذ' => 'قيد التنفيذ',
+						'ملغاه' => 'ملغاه',
+						'مكتملة' => 'مكتملة',
+*/
+    // احسب النسبة
+    $percentage = ($totalAppointments > 0) ? ($completedAppointments / $totalAppointments) * 100 : 0;
+		
         return [
             'chart' => [
                 'type' => 'radialBar',
                 'height' => 300,
             ],
-            'series' => [75],
+            'series' => [$percentage],
             'plotOptions' => [
                 'radialBar' => [
                     'hollow' => [
@@ -58,8 +74,8 @@ class dashboardWidget6 extends ApexChartWidget
             'stroke' => [
                 'lineCap' => 'round',
             ],
-            'labels' => ['dashboardWidget6'],
-            'colors' => ['#FF0000'],
+            'labels' => ['حجوزات قيد التنفيذ'],
+            'colors' => ['#5aabd2'],
         ];
     }
 }

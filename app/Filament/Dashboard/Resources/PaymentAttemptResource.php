@@ -39,12 +39,15 @@ class PaymentAttemptResource extends Resource
     }
 public static function getNavigationBadge(): ?string
 {
-	$user_id = Filament::auth('dashboard')->user()->id;
-return static::getModel()::query()
-    ->leftJoin('appointments', 'appointments.id', '=', 'payment_attempts.appointment_id')
-    ->where('appointments.user_id', $user_id)->where('is_successful', 1)
-    ->count();
-}	
+    $userId = Filament::auth('dashboard')->user()->id;
+
+    return (string) static::getModel()::query()
+        ->leftJoin('appointments', 'appointments.id', '=', 'payment_attempts.appointment_id')
+        ->where('appointments.user_id', $userId)
+        ->where('is_successful', 1)
+        ->sum('total');
+}
+
     public static function form(Form $form): Form
     {
         return $form
@@ -72,9 +75,9 @@ return static::getModel()::query()
                 TextColumn::make('appointment.provider.full_provider_name')
                     ->label('موفر الخدمة'),
                 TextColumn::make('total')
-                    ->numeric()
+                     ->money('sar')
                     ->sortable()
-                    ->label('المبلغ (ريال سعودي)'),
+                    ->label('المبلغ'),
                      Tables\Columns\IconColumn::make('is_successful')->label('حالة الدفع')
                     ->boolean(),
                 TextColumn::make('created_at')

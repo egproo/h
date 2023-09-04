@@ -49,8 +49,3 @@ Route::prefix('panel')->group(function () {
     Route::post('/verifyotp', [OTPController::class, 'panelverify'])->name('panel.verifyotp');
 });
 Route::get('/logout', [LogoutControllerx::class, 'logout']);
-
-Route::get('/test', function() {
-    $appointment = Appointment::find(10);
-    dd($appointment->provider->full_provider_name);
-});

@@ -21,6 +21,8 @@ use Filament\Tables\Filters\Filter;
 use Filament\Forms\Components\Select;
 use Filament\Infolists\Components;
 use Filament\Infolists\Infolist;
+use App\Models\Appointment;
+
 class MessageResource extends Resource
 {
     protected static ?string $model = Message::class;
@@ -29,18 +31,26 @@ class MessageResource extends Resource
     protected static ?string $navigationGroup = 'طلباتي';
     protected static ?string $recordTitleAttribute = 'content';
     protected static ?int $navigationSort = 1;
-    protected static ?string $navigationLabel = 'مراسلاتي';
+    protected static ?string $navigationLabel = 'الرسائل';
 
     protected static function getTitle(): string
     {
-        return 'مراسلاتي';
+        return 'رسائل موفري الخدمات';
     }
 
-    public static function getNavigationBadge(): ?string
-    {
-		$user_id = Filament::auth('dashboard')->user()->id;
-        return static::getModel()::query()->where('user_id', $user_id)->count();
-    }
+public static function getNavigationBadge(): ?string
+{
+    $userId = Filament::auth('dashboard')->user()->id;
+
+    // جلب معرفات المواعيد التي تخص العميل الحالي
+    $appointmentIds = Appointment::where('user_id', $userId)->pluck('id')->toArray();
+
+    return static::getModel()::query()
+        ->whereIn('appointment_id', $appointmentIds)
+        ->where('provider_id', '!=', 0)
+        ->count();
+}
+
 
     public static function form(Forms\Form $form): Forms\Form
     {
@@ -57,14 +67,20 @@ public static function table(Table $table): Table
 {
     return $table
         ->columns([
-            Grid::make(5)
+            Grid::make(8)
                 ->schema([
                     TextColumn::make('content')
                         ->label('الرسالة')->columnSpan([
-            'lg' => 4,
-            'md' => 4,			
-            '2xl' => 4,
+            'lg' => 6,
+            'md' => 6,			
+            '2xl' => 6,
         ]),
+                    TextColumn::make('user.name')
+                        ->label('موفر الخدمة')->columnSpan([
+            'lg' => 1,
+            'md' => 1,			
+            '2xl' => 1,
+        ]),		
 
                     TextColumn::make('created_at')
                         ->label('تاريخ الإرسال')
@@ -139,10 +155,18 @@ public static function table(Table $table): Table
         ];
     }
 
-    // فقط عرض الرسائل التي تخص مواعيد العميل
-    public static function getEloquentQuery(): Builder
-    {
-        $userId = Filament::auth('dashboard')->user()->id;
-        return parent::getEloquentQuery()->where('user_id', $userId)->orderBy('created_at', 'desc');
-    }
+// فقط عرض الرسائل التي تخص مواعيد العميل
+public static function getEloquentQuery(): Builder
+{
+    $userId = Filament::auth('dashboard')->user()->id;
+
+    // جلب معرفات المواعيد التي تخص العميل الحالي
+    $appointmentIds = Appointment::where('user_id', $userId)->pluck('id')->toArray();
+
+    return parent::getEloquentQuery()
+        ->whereIn('appointment_id', $appointmentIds)
+        ->where('provider_id', '!=', 0)
+        ->orderBy('created_at', 'asc');
+}
+
 }

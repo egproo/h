@@ -3,15 +3,16 @@
 namespace App\Filament\Widgets;
 
 use Leandrocfe\FilamentApexCharts\Widgets\ApexChartWidget;
-
-class dashboardWidget5 extends ApexChartWidget
+use App\Models\Appointment;
+use Filament\Facades\Filament;
+class panelWidget2 extends ApexChartWidget
 {
     /**
      * Chart Id
      *
      * @var string
      */
-    protected static string $chartId = 'dashboardWidget5';
+    protected static string $chartId = 'panelWidget2';
 
     /**
      * Widget Title
@@ -28,12 +29,26 @@ class dashboardWidget5 extends ApexChartWidget
      */
     protected function getOptions(): array
     {
+	$provider_id = Filament::auth('panel')->user()->id;		
+    // استعلم عن إجمالي الحجوزات التي تخص العميل الحالي
+    $totalAppointments = Appointment::where('provider_id', $provider_id)->count();
+    // استعلم عن الحجوزات التي تخص العميل الحالي والتي تحمل الحالة "مكتملة"
+    $completedAppointments = Appointment::where('provider_id', $provider_id)->where('status', 'في الانتظار')->count();
+/*
+						'في الانتظار' => 'في الانتظار',
+						'قيد التنفيذ' => 'قيد التنفيذ',
+						'ملغاه' => 'ملغاه',
+						'مكتملة' => 'مكتملة',
+*/
+    // احسب النسبة
+    $percentage = ($totalAppointments > 0) ? ($completedAppointments / $totalAppointments) * 100 : 0;
+		
         return [
             'chart' => [
                 'type' => 'radialBar',
                 'height' => 300,
             ],
-            'series' => [75],
+            'series' => [$percentage],
             'plotOptions' => [
                 'radialBar' => [
                     'hollow' => [
@@ -58,8 +73,8 @@ class dashboardWidget5 extends ApexChartWidget
             'stroke' => [
                 'lineCap' => 'round',
             ],
-            'labels' => ['dashboardWidget5'],
-            'colors' => ['#FF0000'],
+            'labels' => ['حجوزات لم توافق عليها'],
+            'colors' => ['#5aabd2'],
         ];
     }
 }

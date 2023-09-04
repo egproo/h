@@ -15,7 +15,7 @@ use App\Models\Admin;
 use Illuminate\Notifications\Messages\BroadcastMessage;
 use Illuminate\Support\Facades\Session;
 use Filament\Notifications\Events\DatabaseNotificationsSent;
-class AppointmentChat extends Component
+class AppointmentpChat extends Component
 {
     protected $userId;
     public $appointmentId;
@@ -25,7 +25,7 @@ public $appointment;
     public function mount($appointmentId)
     {
         $this->appointmentId = $appointmentId;
-        $this->userId = Filament::auth('dashboard')->user()->id;
+        $this->userId = Filament::auth('panel')->user()->id;
 	$appointment = Appointment::find($this->appointmentId);
         $this->appointment = $appointment;
 		
@@ -36,49 +36,49 @@ public $appointment;
 		
 		$appointment = Appointment::find($this->appointmentId);
         $this->appointment = $appointment;	
-		return view('livewire.appointment-chat', ['messages' => $this->messages,'appointment' =>  $this->appointment]);
+		return view('livewire.appointmentp-chat', ['messages' => $this->messages,'appointment' =>  $this->appointment]);
 
     }
 
     public function sendMessage()
     {
-	$userIdx = Filament::auth('dashboard')->user()->id;
+	$userIdx = Filament::auth('panel')->user()->id;
 	
         // التحقق من وجود رسالة جديدة قبل حفظها
         if(trim($this->newMessage) !== '') {
             Message::create([
                 'appointment_id' => $this->appointmentId,
                 'content' => $this->newMessage,
-                'user_id' => $userIdx,
+                'provider_id' => $userIdx,
             ]);
 
-$message = 'تم ارسال رسالتك الى موفر الخدمة بنجاح';
+$message = 'تم ارسال رسالتك الى العميل بنجاح';
 
-    $user = User::find($userIdx);
-	$userfullname = $user->name;
+    $provider = Provider::find($userIdx);
+	$userfullname = $provider->name;
 	
 		Notification::make()
 			->title($message)
-			->sendToDatabase($user);
+			->sendToDatabase($provider);
 		Notification::make()
 			->title($message)	
 						->danger()
 						->send();			
-$provider = Provider::find($this->appointment->provider->id);//$this->appointment->provider;
+$user = User::find($this->appointment->user->id);//$this->appointment->provider;
 
-$messagep = 'رسالة جديدة من العميل '.$userfullname.' بخصوص الحجز رقم '.$this->appointmentId;
+$messagep = 'رسالة جديدة من  موفر الخدمة '.$userfullname.' بخصوص الحجز رقم '.$this->appointmentId;
 
-// إشعار للمزود
+// إشعار للعميل
 Notification::make()
     ->title($messagep)
     ->danger()
-    ->sendToDatabase($provider); // إرسال الإشعار إلى المزود
+    ->sendToDatabase($user); // إرسال الإشعار إلى المزود
 
 event(new DatabaseNotificationsSent($provider));
 		$admins = Admin::all();//$this->ticket->provider;
 
 		foreach($admins as $admin){
-$messagep = 'رسالة جديدة من العميل '.$userfullname.' بخصوص الحجز رقم '.$this->appointmentId;
+$messagep = 'رسالة جديدة من  موفر الخدمة '.$userfullname.' بخصوص الحجز رقم '.$this->appointmentId;
 
 		// إشعار للمزود
 		Notification::make()

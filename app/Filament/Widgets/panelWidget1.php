@@ -5,14 +5,14 @@ namespace App\Filament\Widgets;
 use Leandrocfe\FilamentApexCharts\Widgets\ApexChartWidget;
 use App\Models\Appointment;
 use Filament\Facades\Filament;
-class dashboardWidget4 extends ApexChartWidget
+class panelWidget1 extends ApexChartWidget
 {
     /**
      * Chart Id
      *
      * @var string
      */
-    protected static string $chartId = 'dashboardWidget4';
+    protected static string $chartId = 'panelWidget1';
 
     /**
      * Widget Title
@@ -29,11 +29,11 @@ class dashboardWidget4 extends ApexChartWidget
      */
     protected function getOptions(): array
     {
-	$user_id = Filament::auth('dashboard')->user()->id;		
+	$provider_id = Filament::auth('panel')->user()->id;		
     // استعلم عن إجمالي الحجوزات التي تخص العميل الحالي
-    $totalAppointments = Appointment::where('user_id', $user_id)->count();
+    $totalAppointments = Appointment::where('provider_id', $provider_id)->count();
     // استعلم عن الحجوزات التي تخص العميل الحالي والتي تحمل الحالة "مكتملة"
-    $completedAppointments = Appointment::where('user_id', $user_id)->where('status', 'ملغاه')->count();
+    $completedAppointments = Appointment::where('provider_id', $provider_id)->where('status', 'مكتملة')->count();
 /*
 						'في الانتظار' => 'في الانتظار',
 						'قيد التنفيذ' => 'قيد التنفيذ',
@@ -41,7 +41,8 @@ class dashboardWidget4 extends ApexChartWidget
 						'مكتملة' => 'مكتملة',
 */
     // احسب النسبة
-    $percentage = ($totalAppointments > 0) ? ($completedAppointments / $totalAppointments) * 100 : 0;		
+    $percentage = ($totalAppointments > 0) ? ($completedAppointments / $totalAppointments) * 100 : 0;
+		
         return [
             'chart' => [
                 'type' => 'radialBar',
@@ -72,8 +73,8 @@ class dashboardWidget4 extends ApexChartWidget
             'stroke' => [
                 'lineCap' => 'round',
             ],
-            'labels' => ['حجوزات ملغاة'],
-            'colors' => ['#FF0000'],
+            'labels' => ['حجوزات مكتملة'],
+            'colors' => ['#5aabd2'],
         ];
     }
 }

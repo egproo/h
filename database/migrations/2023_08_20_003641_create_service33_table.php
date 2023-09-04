@@ -37,6 +37,7 @@ return new class extends Migration
             $table->foreignId('services_id')->nullable()->constrained()->cascadeOnDelete();
             $table->bigInteger('provider_id');
             $table->decimal('price', 8, 2)->nullable();
+            $table->integer('duration_in_minutes');
             $table->timestamps();
         });
         Schema::create('zones', function (Blueprint $table) {

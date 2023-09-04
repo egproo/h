@@ -22,6 +22,10 @@ use Filament\Navigation\NavigationItem;
 use App\Filament\Panel\Pages\Login;
 use App\Filament\Panel\Pages\Register;
 //use Njxqlus\FilamentProgressbar\FilamentProgressbarPlugin;
+use App\Filament\Widgets\panelWidget1;
+use App\Filament\Widgets\panelWidget2;
+use App\Filament\Widgets\panelWidget3;
+use App\Filament\Widgets\panelWidget4;
 
 class PanelPanelProvider extends PanelProvider
 {
@@ -37,7 +41,7 @@ class PanelPanelProvider extends PanelProvider
 			->databaseNotificationsPolling('160s')
 			->breadcrumbs(false)
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::hex('#5aabd2'),
             ])
 			->plugins([
 			 //FilamentProgressbarPlugin::make()->color('#ffbf00')
@@ -45,10 +49,15 @@ class PanelPanelProvider extends PanelProvider
             ->discoverResources(in: app_path('Filament/Panel/Resources'), for: 'App\\Filament\\Panel\\Resources')
             ->discoverPages(in: app_path('Filament/Panel/Pages'), for: 'App\\Filament\\Panel\\Pages')
             ->pages([
-                Pages\Dashboard::class,
+                //Pages\Dashboard::class,
             ])
             ->discoverWidgets(in: app_path('Filament/Panel/Widgets'), for: 'App\\Filament\\Panel\\Widgets')
-            ->widgets([])
+            ->widgets([
+                panelWidget1::class,
+				panelWidget2::class,
+				panelWidget3::class,
+				panelWidget4::class,
+			])
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,

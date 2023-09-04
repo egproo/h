@@ -18,7 +18,7 @@ class ListPaymentAttempts extends ListRecords
     }
         public function getTitle(): string
     {
-        return "المدفوعات";
+        return "الإيرادات";
     }
     protected function getRedirectUrl(): string
     {
