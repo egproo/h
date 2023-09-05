@@ -1,7 +1,7 @@
 @extends('layouts.app')
-@section('title', '{{$page->title}}')
-@section('keywords', '{{$page->keywords}}')
-@section('description', '{{$page->meta_description}}')
+@section('title', $page->title)
+@section('keywords', $page->keywords)
+@section('description', $page->meta_description)
 @section('content')
 @if($page->slug == 'about' )
   <link rel="stylesheet" href="{{ url('css/About.css?ver=10.10.10.09') }}" media="screen">

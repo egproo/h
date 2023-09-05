@@ -16,9 +16,9 @@ use Illuminate\Notifications\Messages\BroadcastMessage;
 use Illuminate\Support\Facades\Session;
 use Filament\Notifications\Events\DatabaseNotificationsSent;
 
-class TicketChat extends Component
+class TicketaChat extends Component
 {
-    protected $userId;
+    protected $adminId;
     public $ticketId;
     public $replies = [];
     public $newReply;
@@ -26,7 +26,7 @@ class TicketChat extends Component
     public function mount($ticketId)
     {
         $this->ticketId = $ticketId;
-        $this->userId = Filament::auth('dashboard')->user()->id;
+        $this->adminId = Filament::auth('admincp')->user()->id;
     	$ticket = Ticket::find($this->ticketId);
         $this->ticket = $ticket;
 		
@@ -38,44 +38,42 @@ class TicketChat extends Component
 		
 		$ticket = Ticket::find($this->ticketId);
         $this->ticket = $ticket;	
-		return view('livewire.ticket-chat', ['replies' => $this->replies,'ticket' =>  $this->ticket]);
+		return view('livewire.ticketa-chat', ['replies' => $this->replies,'ticket' =>  $this->ticket]);
 
     }
 
     public function sendMessage()
     {
-		$userIdx = Filament::auth('dashboard')->user()->id;
+		$adminIdx = Filament::auth('admincp')->user()->id;
         // التحقق من وجود رسالة جديدة قبل حفظها
         if(trim($this->newReply) !== '') {
             TicketReply::create([
                 'ticket_id' => $this->ticketId,
-                'client_type' => 'user',
+                'client_type' => 'admin',
 				'reply' => $this->newReply,
-                'user_id' => $userIdx,
+                'user_id' => $adminIdx,
             ]);
-		$message = 'تم ارسال رسالتك الى إدارة حريص بنجاح';
-		$user = User::find($userIdx);
-		$userfullname = $user->name;
+		$message = 'تم ارسال رسالتك الى العميل بنجاح';
+		$admin = Admin::find($adminIdx);
 		Notification::make()
 			->title($message)
-			->sendToDatabase($user);
+			->sendToDatabase($admin);
+		event(new DatabaseNotificationsSent($admin));
+			
 		Notification::make()
 			->title($message)	
 						->danger()
 						->send();			
-		$admins = Admin::all();//$this->ticket->provider;
-
-		foreach($admins as $admin){
-		$messagep = 'رسالة جديدة من العميل '.$userfullname.' في تذكرة الدعم رقم '.$this->ticketId;
-
-		// إشعار للمزود
+		$userT = Ticket::where('client_type','user')->where('id',$this->ticketId)->first();
+		$user = User::find($userT->id);
+		//$this->ticket->provider;
+		$messagep = 'رسالة جديدة من إدارة حريص في تذكرة الدعم رقم '.$this->ticketId;
 		Notification::make()
-			->title($messagep)
-			->danger()
-			->sendToDatabase($admin); // إرسال الإشعار إلى المزود
+			->title($message)
+			->sendToDatabase($user);
+		event(new DatabaseNotificationsSent($user));
+	
 
-		event(new DatabaseNotificationsSent($admin));
-		}
             $this->newReply = ''; // لإعادة تعيين حقل الإدخال
         }
     }

@@ -414,7 +414,7 @@
             خريطة الموقع</h4>
         </div>
       </div>
-      <div class="u-container-style u-group u-radius-12 u-shape-round u-white u-group-2" data-href="{{ url('/')}}/#sec-7b5e">
+      <div class="u-container-style u-group u-radius-12 u-shape-round u-white u-group-2" data-href="{{ url('/')}}/services">
         <div class="u-container-layout"><span
             class="u-align-center-md u-align-center-sm u-align-center-xs u-file-icon u-icon u-icon-1"><img
               src="{{ url('/')}}/images/179571.png" alt=""></span>
@@ -430,7 +430,7 @@
         </div>
       </div>
       <div class="u-align-left-md u-container-style u-group u-radius-12 u-shape-round u-white u-group-4"
-        data-href="#" title="تسجيل الدخول">
+        data-href="{{ url('/')}}/dashboard/login" title="تسجيل الدخول">
         <div class="u-container-layout"><span
             class="u-align-center-md u-align-center-sm u-align-center-xs u-file-icon u-icon u-icon-3"><img
               src="{{ url('/')}}/images/6460789.png" alt=""></span>
@@ -438,7 +438,7 @@
           </h5>
         </div>
       </div>
-      <div class="u-container-style u-group u-radius-12 u-shape-round u-white u-group-5" data-href="#"
+      <div class="u-container-style u-group u-radius-12 u-shape-round u-white u-group-5" data-href="{{ url('/')}}/faqs"
         title="اسئلة متكررة">
         <div class="u-container-layout"><span
             class="u-align-center-md u-align-center-sm u-align-center-xs u-file-icon u-icon u-icon-4"><img
@@ -449,7 +449,7 @@
         </div>
       </div>
       <div class="u-align-left-md u-container-style u-group u-radius-12 u-shape-round u-white u-group-6"
-        data-href="#" title="انضم كموفر خدمة">
+        data-href="{{ url('/')}}/panel/login" title="انضم كموفر خدمة">
         <div class="u-container-layout u-container-layout-6"><span
             class="u-align-center-md u-align-center-sm u-align-center-xs u-file-icon u-icon u-icon-5"><img
               src="{{ url('/')}}/images/2448634.png" alt=""></span>

@@ -21,8 +21,10 @@ class User extends Authenticatable implements FilamentUser
         'name',
         'phone',
 		'image',
+		'identification',
         'email',
         'password',
+		'phone_verified_at',
         'verified_at',
     ];
 
@@ -47,5 +49,9 @@ class User extends Authenticatable implements FilamentUser
     public function canAccessPanel(Panel $panel): bool
     {
         return true;
+    }
+    public function getImageAttribute($value)
+    {
+        return asset('storage/' . $value);
     }	
 }

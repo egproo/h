@@ -52,4 +52,8 @@ class Admin extends Authenticatable implements FilamentUser
     {
         return true;
     }
+    public function getImageAttribute($value)
+    {
+        return asset('storage/' . $value);
+    }	
 }

@@ -49,9 +49,7 @@ Tables\Columns\TextColumn::make('type')
     ->label('الفئة')
     ->state(fn ($record) => $record->type == 1 ? 'فرد' : 'مؤسسة'),
 
-                Tables\Columns\TextColumn::make('title')->label('وصف مختصر')
-                    ->searchable(isIndividual: false,isGlobal:true)
-					->sortable(),	
+
                 Tables\Columns\TextColumn::make('identification')->label('رقم الهوية')
                     ->searchable(isIndividual: false,isGlobal:true)
                     ->sortable(),
@@ -61,6 +59,9 @@ Tables\Columns\TextColumn::make('type')
                 Tables\Columns\TextColumn::make('phone')->label('الهاتف')
                     ->searchable(isIndividual: false,isGlobal:true)
 					->sortable(),
+                Tables\Columns\TextColumn::make('title')->label('وصف مختصر')
+                    ->searchable(isIndividual: false,isGlobal:true)
+					->sortable(),						
                 Tables\Columns\IconColumn::make('status')->label('الحالة')
                     ->boolean(),					
 

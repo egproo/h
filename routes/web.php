@@ -8,6 +8,7 @@ use App\Http\Controllers\LogoutControllerx;
 
 
 use Illuminate\Http\Request;
+use App\Models\Faq;
 
 use App\Models\Page;
 use App\Models\Service;
@@ -29,14 +30,21 @@ Route::get('/', function () {
     return view('home');
 });
 
-
+Route::get('/login', function () {
+    return redirect('dashboard/appointments/booking');
+})->name('login');
+Route::get('/register', function () {
+    return redirect('dashboard/register');
+})->name('register');
 Route::get('/booking', function () {
     return redirect('dashboard/appointments/booking');
 })->name('booking');
 Route::get('/page/{page:slug}', function (Page $page) {
 	return view('livewire.page', ['page' => $page]);
 });
-
+Route::get('/faqs', function (Faq $faq) {
+	return view('livewire.faqs', ['faq' => $faq]);
+});
 Route::get('/service/{slug}', [ServiceController::class, 'show']);
 Route::get('/services', [ServiceController::class, 'all']);
 

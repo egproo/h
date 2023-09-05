@@ -15,9 +15,9 @@ use App\Models\Admin;
 use Illuminate\Notifications\Messages\BroadcastMessage;
 use Illuminate\Support\Facades\Session;
 use Filament\Notifications\Events\DatabaseNotificationsSent;
-class AppointmentChat extends Component
+class AppointmentaChat extends Component
 {
-    protected $userId;
+    protected $adminId;
     public $appointmentId;
     public $messages = [];
     public $newMessage;
@@ -25,7 +25,7 @@ public $appointment;
     public function mount($appointmentId)
     {
         $this->appointmentId = $appointmentId;
-        $this->userId = Filament::auth('dashboard')->user()->id;
+        $this->adminId = Filament::auth('admincp')->user()->id;
 	$appointment = Appointment::find($this->appointmentId);
         $this->appointment = $appointment;
 		
@@ -36,58 +36,59 @@ public $appointment;
 		
 		$appointment = Appointment::find($this->appointmentId);
         $this->appointment = $appointment;	
-		return view('livewire.appointment-chat', ['messages' => $this->messages,'appointment' =>  $this->appointment]);
+		return view('livewire.appointmenta-chat', ['messages' => $this->messages,'appointment' =>  $this->appointment]);
 
     }
 
     public function sendMessage()
     {
-	$userIdx = Filament::auth('dashboard')->user()->id;
+	$adminIdx = Filament::auth('admincp')->user()->id;
 	
         // التحقق من وجود رسالة جديدة قبل حفظها
         if(trim($this->newMessage) !== '') {
             Message::create([
                 'appointment_id' => $this->appointmentId,
                 'content' => $this->newMessage,
-                'user_id' => $userIdx,
+                'admin_id' => $adminIdx,
             ]);
 
-$message = 'تم ارسال رسالتك الى موفر الخدمة بنجاح';
+$message = 'تم ارسال رسالتك الى العميل بنجاح';
 
-    $user = User::find($userIdx);
-	$userfullname = $user->name;
-	
+    $admin = Admin::find($adminIdx);
+
 		Notification::make()
 			->title($message)
-			->sendToDatabase($user);
+			->sendToDatabase($admin);
 		Notification::make()
 			->title($message)	
 						->danger()
 						->send();			
+$user = User::find($this->appointment->user->id);//$this->appointment->provider;
+
+$messagep = 'رسالة جديدة من  إدارة حريص بخصوص الحجز رقم '.$this->appointmentId;
+
+// إشعار للعميل
+Notification::make()
+    ->title($messagep)
+    ->danger()
+    ->sendToDatabase($user); // إرسال الإشعار إلى المزود
+
+event(new DatabaseNotificationsSent($user));
+
+
 $provider = Provider::find($this->appointment->provider->id);//$this->appointment->provider;
 
-$messagep = 'رسالة جديدة من العميل '.$userfullname.' بخصوص الحجز رقم '.$this->appointmentId;
+$messagep = 'رسالة جديدة من  إدارة حريص بخصوص الحجز رقم '.$this->appointmentId;
 
-// إشعار للمزود
+// إشعار للعميل
 Notification::make()
     ->title($messagep)
     ->danger()
     ->sendToDatabase($provider); // إرسال الإشعار إلى المزود
 
 event(new DatabaseNotificationsSent($provider));
-		$admins = Admin::all();//$this->ticket->provider;
-
-		foreach($admins as $admin){
-$messagep = 'رسالة جديدة من العميل '.$userfullname.' بخصوص الحجز رقم '.$this->appointmentId;
-
-		// إشعار للمزود
-		Notification::make()
-			->title($messagep)
-			->danger()
-			->sendToDatabase($admin); // إرسال الإشعار إلى المزود
-
-		event(new DatabaseNotificationsSent($admin));
-		}	
+	
+	
             $this->newMessage = ''; // لإعادة تعيين حقل الإدخال
         }
     }

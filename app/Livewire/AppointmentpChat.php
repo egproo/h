@@ -32,7 +32,7 @@ public $appointment;
     }
     public function render()
     {
-        $this->messages = Message::where('appointment_id', $this->appointmentId)->latest()->orderBy('created_at', 'asc')->get();
+        $this->messages = Message::where('appointment_id', $this->appointmentId)->orderBy('id', 'asc')->latest()->get();
 		
 		$appointment = Appointment::find($this->appointmentId);
         $this->appointment = $appointment;	

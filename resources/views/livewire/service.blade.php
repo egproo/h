@@ -1,6 +1,6 @@
 @if (count($service->childServices) > 1)
 @extends('layouts.app')
-@section('title', '{{$service->title}}')
+@section('title', $service->name)
 @section('content')
  <link rel="stylesheet" href="{{url('/')}}/css/analysis.css?ver=10.10.10.09" media="screen">	
 
@@ -20,7 +20,7 @@
       <div class="u-align-left-xl u-container-style u-group u-radius-10 u-shape-round u-white u-group-{{ $loop->index + 2}}"
         data-href="{{url('/')}}/service/{{ $servicex->slug }}" title="{{ $servicex->name }}">
         <div class="u-container-layout u-container-layout-{{ $loop->index + 2 }}"><span class="u-file-icon u-icon u-icon-{{ $loop->index + 1}}"><img
-              src="{{url('/')}}/storage/{{ $servicex->image }}" alt="{{ $servicex->name }}"></span>
+              src="{{ $servicex->image }}" alt="{{ $servicex->name }}"></span>
           <h5 class="u-align-center u-custom-font u-text u-text-default u-text-2">  {{ $servicex->name }} </h5>
         </div>
       </div>
@@ -30,6 +30,7 @@
   </section>
 @endsection
 @else
+	@section('title', $service->name)
 @section('content')	
 
 

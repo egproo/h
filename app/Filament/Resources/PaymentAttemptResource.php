@@ -12,7 +12,16 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-
+use Filament\Tables\Columns\Layout\Grid;
+use Filament\Tables\Columns\Layout\Stack;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
+use Filament\Forms\Components\DatePicker;
+use Filament\Tables\Filters\Filter;
+use Filament\Forms\Components\Select;
+use Filament\Infolists\Components;
+use Filament\Infolists\Infolist;
+use Filament\Facades\Filament;
 class PaymentAttemptResource extends Resource
 {
     protected static ?string $model = PaymentAttempt::class;
@@ -24,10 +33,10 @@ class PaymentAttemptResource extends Resource
 
     protected static ?int $navigationSort = 1;
 
-    protected static ?string $navigationLabel = 'المدفوعات';
+    protected static ?string $navigationLabel = 'الإيرادات';
     protected static function getTitle() : string 
     {
-        return 'المدفوعات';
+        return 'الإيرادات';
     }
 	public static function getNavigationBadge(): ?string
 {
@@ -57,31 +66,47 @@ class PaymentAttemptResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('appointment_id')
                     ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('total')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\IconColumn::make('is_successful')
+                    ->sortable()->label('رقم الحجز'),
+                 Tables\Columns\TextColumn::make('appointment.service.full_service_name')
+                    ->label('إسم الخدمة'),
+                 Tables\Columns\TextColumn::make('appointment.provider.full_provider_name')
+                    ->label('موفر الخدمة'),
+                 Tables\Columns\TextColumn::make('total')
+                     ->money('sar')
+                    ->sortable()
+                    ->label('المبلغ'),
+                     Tables\Columns\IconColumn::make('is_successful')->label('حالة الدفع')
                     ->boolean(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
+                 Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime('d-m-Y')
                     ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->label('تاريخ الدفع'),
             ])
             ->filters([
-                //
+                SelectFilter::make('is_successful')
+                    ->label('حالة الدفع')
+                    ->options([
+                        '1' => 'تم الدفع',
+                        '0' => 'لم يتم الدفع',
+                    ]),
+                Filter::make('created_at')
+                    ->label('تاريخ الدفع')
+                    ->form([
+                        DatePicker::make('date')
+                            ->label('تاريخ الدفع')
+                    ])
+                    ->query(function (Builder $query, array $data): Builder {
+                        return $query->when(
+                            $data['date'] ?? null,
+                            fn (Builder $query, $date): Builder => $query->whereDate('created_at', $date)
+                        );
+                    }),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+               // Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+
             ]);
     }
     
@@ -96,7 +121,6 @@ class PaymentAttemptResource extends Resource
     {
         return [
             'index' => Pages\ListPaymentAttempts::route('/'),
-            'edit' => Pages\EditPaymentAttempt::route('/{record}/edit'),
         ];
     }    
 }

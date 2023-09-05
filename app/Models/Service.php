@@ -110,4 +110,8 @@ public function getDurationForProvider($providerId)
     {
         return $this->hasMany(Appointment::class, 'service_id');
     }
+    public function getImageAttribute($value)
+    {
+        return asset('storage/' . $value);
+    }	
 }
